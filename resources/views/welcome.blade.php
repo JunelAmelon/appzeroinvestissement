@@ -44,7 +44,7 @@
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-       <img src="{{ asset('build/assets/img/zero.png')}}" alt="" >
+       <img src="{{ asset('build/assets/img/logo.png')}}" alt="" style="width: 90px;">
        
       </a>
 
@@ -341,7 +341,8 @@
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              <img src="./assets/img/zero.png" alt="">
+             
+       <img src="{{ asset('build/assets/img/logo.png')}}" alt="" style="width: 90px;">
             </a>
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
             <div class="social-links d-flex  mt-3">
