@@ -40,7 +40,7 @@
 						<i class="icon-menu" style="color:#6A00B8;"></i>
 					</span>
 				</button>
-				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+				<button class="topbar-toggler more"><i class="icon-options-vertical" style="color:#6A00B8;"></i></button>
 				<div class="nav-toggle">
 					<button class="btn btn-toggle toggle-sidebar">
 						<i class="icon-menu"></i>
