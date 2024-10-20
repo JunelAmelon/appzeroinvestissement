@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
+	<link rel="icon" href="{{ asset('build/assets/img/icon.ico') }}" type="image/x-icon"/>
 
 	<!-- Fonts and icons -->
 	<script src="{{ asset('build/assets/js/plugin/webfont/webfont.min.js') }}"></script>
@@ -21,7 +21,7 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('build/assets/css/atlantis.min.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('build/assets/css/fonts.min.css') }}">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="{{ asset('build/assets/css/demo.css') }}">
 </head>
@@ -37,7 +37,7 @@
 
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
-						<i class="icon-menu"></i>
+						<i class="icon-menu" style="color:#6A00B8;"></i>
 					</span>
 				</button>
 				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
@@ -79,8 +79,12 @@
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
-													<i class="flaticon-database"></i>
-													<span class="text">Deconnexion</span>
+                                                    <a href="{{ route('logout') }}">
+													<i class="icon-logout"></i>
+													<span class="text"> Deconnexion</span>
+                                                    </a> 
+
+                                                 
 												</div>
 											</a>
 										 
@@ -103,21 +107,12 @@
 											<div class="avatar-lg"><img src="https://img.freepik.com/free-vector/mans-face-flat-style_90220-2877.jpg?uid=R143971211&ga=GA1.1.1911634789.1729294558
 " alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<h4>{{ Auth::user()->name }}</h4>
+												<p class="text-muted">{{ Auth::user()->email }}</p><a href="{{ route('logout') }}" class="btn btn-xs btn-secondary btn-sm">Se deconnecter</a>
 											</div>
 										</div>
 									</li>
-									<li>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">My Profile</a>
-										<a class="dropdown-item" href="#">My Balance</a>
-										<a class="dropdown-item" href="#">Inbox</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Account Setting</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Logout</a>
-									</li>
+									
 								</div>
 							</ul>
 						</li>
@@ -128,7 +123,7 @@
 		</div>
 
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2" style="background-color:  ;">			
+		<div class="sidebar sidebar-style-2" style="background-color: none ;">			
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -139,9 +134,9 @@
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									Hizrian
-									<span class="user-level">Administrator</span>
-									<span class="caret"></span>
+									{{ Auth::user()->name }}
+									<span class="user-level">Espace client</span>
+									<!--<span class="caret"></span>-->
 								</span>
 							</a>
 							<div class="clearfix"></div>
@@ -150,26 +145,17 @@
 								<ul class="nav">
 									<li>
 										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
+											<!--<span class="link-collapse">My Profile</span>-->
 										</a>
 									</li>
-									<li>
-										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
-										</a>
-									</li>
+								 
 								</ul>
 							</div>
 						</div>
 					</div>
 					<ul class="nav" style="color:white;">
 						<li class="nav-item active">
-							<a href="#dashboard" class="collapsed" aria-expanded="false" style="background-color:  color:white;">
+							<a href="#dashboard" class="collapsed" aria-expanded="false" style="background-color: bone;  color:white;">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 								
@@ -184,7 +170,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#sidebarLayouts">
-								<i class="fas fa-th-list"></i>
+								<i class="fas flaticon-envelope-3"></i>
 								<p>Soumettre un projet</p>
 								<span class="caret"></span>
 							</a>
@@ -215,8 +201,8 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a  href="#sidebarLayouts">
-								<i class="fas fa-th-list"></i>
+							<a  href="{{ route('logout') }}">
+								<i class="fas icon-logout"></i>
 								<p>Se deconnecter</p>
 								 
 							</a>
@@ -231,15 +217,15 @@
 
 		<div class="main-panel">
 			<div class="content">
-				<div class="panel-header " style="background-color: ; " >
+				<div class="panel-header " style="background-color: none; " >
 					<div class="page-inner py-5">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
 								<h2 class=" pb-2 fw-bold"  style=" color:#6A00B8;">Dashboard</h2>
-								<h5 class=" op-7 mb-2"  style=" color:#6A00B8;">Bienvenue sur votre espace client Hamzan !</h5>
+								<h5 class=" op-7 mb-2"  style=" color:#6A00B8;">Bienvenue sur votre espace client {{ Auth::user()->name }} !</h5>
 							</div>
 							<div class="ml-md-auto py-2 py-md-0">
-								<a href="#" class="btn btn-secondary btn-round">Add Customer</a>
+								<a href="#" class="btn btn-secondary btn-round">Soumettre un projet</a>
 							</div>
 						</div>
 					</div>
@@ -249,20 +235,20 @@
 						<div class="col-md-6">
 							<div class="card full-height">
 								<div class="card-body">
-									<div class="card-title">Overall statistics</div>
+									<div class="card-title">Apercu des statistiques</div>
 									<div class="card-category">Daily information about statistics in system</div>
 									<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
 										<div class="px-2 pb-2 pb-md-0 text-center">
 											<div id="circles-1"></div>
-											<h6 class="fw-bold mt-3 mb-0">New Users</h6>
+											<h6 class="fw-bold mt-3 mb-0">Total projet soumis</h6>
 										</div>
 										<div class="px-2 pb-2 pb-md-0 text-center">
 											<div id="circles-2"></div>
-											<h6 class="fw-bold mt-3 mb-0">Sales</h6>
+											<h6 class="fw-bold mt-3 mb-0">Total projet validé</h6>
 										</div>
 										<div class="px-2 pb-2 pb-md-0 text-center">
 											<div id="circles-3"></div>
-											<h6 class="fw-bold mt-3 mb-0">Subscribers</h6>
+											<h6 class="fw-bold mt-3 mb-0">Total rojet rejeté</h6>
 										</div>
 									</div>
 								</div>
@@ -379,9 +365,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="custom-toggle">
-				<i class="flaticon-settings"></i>
-			</div>
+			
 		</div>
 		<!-- End Custom template -->
 	</div>

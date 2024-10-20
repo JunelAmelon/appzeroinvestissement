@@ -22,4 +22,4 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/welcome', [ClientController::class, 'showWelcome']);
+Route::get('/welcome', [ClientController::class, 'showWelcome'])->name(name: 'welcome');
