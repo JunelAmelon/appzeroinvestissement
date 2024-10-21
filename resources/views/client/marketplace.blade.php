@@ -164,7 +164,7 @@
                     </div>
                     <ul class="nav" style="color:white;">
                         <li class="nav-item active">
-                            <a href="/dashboard" class="collapsed" aria-expanded="false" style="background-color: bone;  color:white;">
+                            <a href="/welcome" class="collapsed" aria-expanded="false" style="background-color: bone;  color:white;">
                                 <i class="fas fa-home"></i>
                                 <p>Dashboard</p>
 
@@ -233,11 +233,11 @@
                                 <h2 class=" pb-2 fw-bold" style=" color:#6A00B8;">Soumettre un projet</h2>
                                 <h5 class=" op-7 mb-2" style=" color:#6A00B8;">Veuillez remplir ces champs de formulaire {{ Auth::user()->name }} !</h5>
                             </div>
-                           
+
                         </div>
                     </div>
         </div>
-              
+
 
 
 
@@ -257,7 +257,7 @@
         @endif
         <!-- En-tête modifiée ici -->
         <h2 class="text-center mb-4 p-3" style="background-color: #6A00B8; color: white;">Marketplace</h2>
-        
+
         <form action="{{ route('marketplace.save') }}" method="POST" class="bg-white p-5 rounded shadow">
             @csrf
             <div class="mb-3">
