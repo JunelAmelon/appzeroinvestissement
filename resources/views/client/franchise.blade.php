@@ -164,7 +164,7 @@
                     </div>
                     <ul class="nav" style="color:white;">
                         <li class="nav-item active">
-                            <a href="/dashboard" class="collapsed" aria-expanded="false" style="background-color: bone;  color:white;">
+                            <a href="/welcome" class="collapsed" aria-expanded="false" style="background-color: bone;  color:white;">
                                 <i class="fas fa-home"></i>
                                 <p>Dashboard</p>
 
