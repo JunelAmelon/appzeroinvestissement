@@ -80,7 +80,7 @@
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
                                         <div class="row m-0">
-                                            <a class="col-6 col-md-4 p-0" href="#">
+                                            <a class="col-6 col-md-4 p-0" href="/welcome">
                                                 <div class="quick-actions-item">
                                                     <i class="flaticon-file-1"></i>
                                                     <span class="text">Dashboard</span>
@@ -233,11 +233,11 @@
                                 <h2 class=" pb-2 fw-bold" style=" color:#6A00B8;">Soumettre un projet</h2>
                                 <h5 class=" op-7 mb-2" style=" color:#6A00B8;">Veuillez remplir ces champs de formulaire {{ Auth::user()->name }} !</h5>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
-              
+
 
 <section class="bg-gray-100 mb-4">
     <div class="container mx-auto mt-2">
@@ -254,8 +254,8 @@
         @endif
         <!-- En-tête modifiée ici -->
         <h2 class="text-center mb-4 p-3" style="background-color: #6A00B8; color: white;">Site/app</h2>
-        
-        
+
+
                         <form method="POST" action="{{ route('siteapp.save') }}" class="bg-white p-5 rounded shadow">
                             @csrf
                             <div class="mb-3">

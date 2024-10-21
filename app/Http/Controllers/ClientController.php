@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use app;
-use App\Models\Projectdetailsmarketplacebusiness;
+use Exception;
+use App\Models\Siteapp;
+use App\Models\Franchise;
 use Illuminate\Http\Request;
 use App\Models\FranchiseDetail;
+use App\Models\Marketplacebusiness;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Projectdetailssiteapp;
-use App\Models\Project_details_site_app;
-use Exception;
-use PhpParser\Node\Stmt\Catch_;
-use PhpParser\Node\Stmt\TryCatch;
+use App\Models\Projectdetailsmarketplacebusiness;
 
 class ClientController extends Controller
 {
@@ -60,7 +59,7 @@ class ClientController extends Controller
         $validatedData['user_id'] = Auth::id();
 
         try{
-            Projectdetailssiteapp::create($validatedData);
+            Siteapp::create($validatedData);
             return redirect()->route('siteapp')->with('success', 'Détails du projet enregistrés avec succès.');
         }catch(Exception $e){
             return redirect()->route('siteapp')->with('error', 'Erreur. '.$e);
@@ -107,7 +106,7 @@ class ClientController extends Controller
         $validatedData['user_id'] = Auth::id();
 
         try{
-            FranchiseDetail::create($validatedData);
+            Franchise::create($validatedData);
             return redirect()->route('franchise')->with('success', 'Détails de la franchise enregistrés avec succès.');
         }catch(Exception $e){
             return redirect()->route('franchise')->with('error', 'Erreur. '.$e);
@@ -141,10 +140,10 @@ class ClientController extends Controller
 
         $validatedData['user_id'] = Auth::id();
         try{
-            Projectdetailsmarketplacebusiness::create($validatedData);
-            return redirect()->route('markeplace')->with('success', 'Détails du projet enregistrés avec succès.');
+            Marketplacebusiness::create($validatedData);
+            return redirect()->route('marketplace')->with('success', 'Détails du projet enregistrés avec succès.');
         }catch(Exception $e){
-            return redirect()->route('markeplace')->with('error', 'Erreur. '.$e);
+            return redirect()->route('marketplace')->with('error', 'Erreur. '.$e);
         }
 
     }

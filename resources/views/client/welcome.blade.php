@@ -81,7 +81,7 @@
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
                                         <div class="row m-0">
-                                            <a class="col-6 col-md-4 p-0" href="#">
+                                            <a class="col-6 col-md-4 p-0" href="/welcome">
                                                 <div class="quick-actions-item">
                                                     <i class="flaticon-file-1"></i>
                                                     <span class="text">Dashboard</span>
@@ -308,18 +308,7 @@
                                                     <th scope="col">Statut</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                @foreach()
-                                                <tr>
-                                                    <th scope="row"><a href="#">{{ $->id }}</a></th>
-                                                    <td>{{ $->nom }}</td>
-                                                    <td>{{ $->description }}</td>
-                                                    <td>{{ $->type}}</td>
-                                                    <td>{{ $->status }}</td>
-                                                </tr>
-                                                @endforeach
-
-                                            </tbody>
+                                           
                                         </table>
 
                                     </div>
