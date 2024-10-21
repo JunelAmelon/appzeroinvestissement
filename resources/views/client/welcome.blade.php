@@ -24,6 +24,9 @@
         });
     </script>
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/atlantis.min.css') }}">
@@ -305,7 +308,18 @@
                                                     <th scope="col">Statut</th>
                                                 </tr>
                                             </thead>
-                                           
+                                            <tbody>
+                                                @foreach()
+                                                <tr>
+                                                    <th scope="row"><a href="#">{{ $->id }}</a></th>
+                                                    <td>{{ $->nom }}</td>
+                                                    <td>{{ $->description }}</td>
+                                                    <td>{{ $->type}}</td>
+                                                    <td>{{ $->status }}</td>
+                                                </tr>
+                                                @endforeach
+
+                                            </tbody>
                                         </table>
 
                                     </div>
@@ -438,6 +452,11 @@
     <script src="{{ asset('build/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('build/assets/js/demo.js') }}"></script>
 
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
     <script>
         Circles.create({
             id: 'circles-1',
