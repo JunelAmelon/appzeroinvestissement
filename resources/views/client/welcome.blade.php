@@ -184,17 +184,17 @@
                             <div class="collapse" id="sidebarLayouts">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="sidebar-style-1.html">
+                                        <a href="/siteapp">
                                             <span class="sub-item">Mon site/Appli</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="overlay-sidebar.html">
+                                        <a href="/franchise">
                                             <span class="sub-item">Ma franchise</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="compact-sidebar.html">
+                                        <a href="/marketplace">
                                             <span class="sub-item">Marketplace</span>
                                         </a>
                                     </li>
@@ -305,18 +305,7 @@
                                                     <th scope="col">Statut</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                @foreach()
-                                                <tr>
-                                                    <th scope="row"><a href="#">{{ $->id }}</a></th>
-                                                    <td>{{ $->nom }}</td>
-                                                    <td>{{ $->description }}</td>
-                                                    <td>{{ $->type}}</td>
-                                                    <td>{{ $->status }}</td>
-                                                </tr>
-                                                @endforeach
-
-                                            </tbody>
+                                           
                                         </table>
 
                                     </div>
