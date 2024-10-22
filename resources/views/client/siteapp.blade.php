@@ -257,108 +257,88 @@
 
 
                         <form method="POST" action="{{ route('siteapp.save') }}" class="bg-white p-5 rounded shadow">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nom du Projet</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" name="description" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="animal" class="form-label">Animal</label>
-                                <input type="text" class="form-control" id="animal" name="animal" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="problem" class="form-label">Problème</label>
-                                <textarea class="form-control" id="problem" name="problem" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="main_feature" class="form-label">Caractéristique Principale</label>
-                                <input type="text" class="form-control" id="main_feature" name="main_feature" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="secondary_feature" class="form-label">Caractéristique Secondaire</label>
-                                <input type="text" class="form-control" id="secondary_feature" name="secondary_feature">
-                            </div>
-                            <div class="mb-3">
-                                <label for="why_good" class="form-label">Pourquoi c'est bon</label>
-                                <textarea class="form-control" id="why_good" name="why_good" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="idea_origin" class="form-label">Origine de l'idée</label>
-                                <textarea class="form-control" id="idea_origin" name="idea_origin" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="competition" class="form-label">Concurrence</label>
-                                <textarea class="form-control" id="competition" name="competition" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="excitement" class="form-label">Excitation</label>
-                                <textarea class="form-control" id="excitement" name="excitement" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="fallback_plan" class="form-label">Plan de Repli</label>
-                                <textarea class="form-control" id="fallback_plan" name="fallback_plan" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="revenue_model" class="form-label">Modèle de Revenus</label>
-                                <textarea class="form-control" id="revenue_model" name="revenue_model" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="target_customers" class="form-label">Clients Cibles</label>
-                                <textarea class="form-control" id="target_customers" name="target_customers" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="social_platform" class="form-label">Plateforme Sociale</label>
-                                <input type="text" class="form-control" id="social_platform" name="social_platform" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="availability" class="form-label">Disponibilité</label>
-                                <input type="text" class="form-control" id="availability" name="availability" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="funding_status" class="form-label">Statut de Financement</label>
-                                <input type="text" class="form-control" id="funding_status" name="funding_status" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="project_pitch" class="form-label">Présentation du Projet</label>
-                                <textarea class="form-control" id="project_pitch" name="project_pitch" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="dominant_color" class="form-label">Couleur Dominante</label>
-                                <input type="text" class="form-control" id="dominant_color" name="dominant_color" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="design_style" class="form-label">Style de Design</label>
-                                <textarea class="form-control" id="design_style" name="design_style" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="graphic_elements" class="form-label">Éléments Graphiques</label>
-                                <select class="form-select" id="graphic_elements" name="graphic_elements" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="support_type" class="form-label">Type de Support</label>
-                                <input type="text" class="form-control" id="support_type" name="support_type" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="platforms" class="form-label">Plateformes</label>
-                                <input type="text" class="form-control" id="platforms" name="platforms" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tech_requirements" class="form-label">Exigences Techniques</label>
-                                <textarea class="form-control" id="tech_requirements" name="tech_requirements" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="status" class="form-label"></label>
-                                <input type="hidden" name="status" value="en attente" id="status" required>
-                            </div>
-                            <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-                        </form>
+    @csrf
+    <h2 class="text-center mb-4">Bienvenue dans notre questionnaire interactif ! 🚀</h2>
+    <p class="text-center mb-4">Pour que nous puissions bien comprendre votre projet et votre motivation, répondez à ces quelques questions. Amusez-vous et soyez créatif, nous vous attendons avec impatience !</p>
+    
+    <div class="mb-3">
+        <label for="name" class="form-label">Nom de votre projet (soyez créatif !)</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    
+    <div class="mb-3">
+        <label for="description" class="form-label">En une phrase, décrivez votre idée comme si vous la pitchiez à un alien (oui, un alien) :</label>
+        <textarea class="form-control" id="description" name="description" required></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label for="animal" class="form-label">Si votre projet était un animal, lequel serait-il et pourquoi ?</label>
+        <input type="text" class="form-control" id="animal" name="animal" required>
+    </div>
+    
+    <div class="mb-3">
+        <label for="problem" class="form-label">Quel est le problème majeur que votre idée va résoudre ?</label>
+        <textarea class="form-control" id="problem" name="problem" required></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label for="main_feature" class="form-label">Fonctionnalité phare : Quelle est la fonctionnalité qui rendra votre site ou appli indispensable ?</label>
+        <input type="text" class="form-control" id="main_feature" name="main_feature" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="why_good" class="form-label">Pourquoi pensez-vous que votre idée est meilleure que ce qui existe déjà ?</label>
+        <textarea class="form-control" id="why_good" name="why_good" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="idea_origin" class="form-label">Comment vous est venue cette idée ?</label>
+        <textarea class="form-control" id="idea_origin" name="idea_origin" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="competition" class="form-label">Avez-vous déjà pensé à une stratégie pour atteindre vos clients cibles ? Si oui, laquelle ?</label>
+        <textarea class="form-control" id="competition" name="competition" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="target_customers" class="form-label">Votre cible idéale : Décrivez votre client idéal.</label>
+        <textarea class="form-control" id="target_customers" name="target_customers" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="revenue_model" class="form-label">Comment votre projet va-t-il rapporter des sous ?</label>
+        <textarea class="form-control" id="revenue_model" name="revenue_model" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="dominant_color" class="form-label">Si votre site/appli avait une couleur dominante, ce serait…</label>
+        <input type="text" class="form-control" id="dominant_color" name="dominant_color" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="design_style" class="form-label">Quel est le style de design qui vous attire le plus ?</label>
+        <textarea class="form-control" id="design_style" name="design_style" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="platforms" class="form-label">Sur quelle(s) plateforme(s) souhaitez-vous que votre appli soit disponible ?</label>
+        <input type="text" class="form-control" id="platforms" name="platforms" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="tech_requirements" class="form-label">Avez-vous des exigences spécifiques en termes de technologie ou d’hébergement ?</label>
+        <textarea class="form-control" id="tech_requirements" name="tech_requirements" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="status" class="form-label"></label>
+        <input type="hidden" name="status" value="en attente" id="status" required>
+    </div>
+    
+    <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
+</form>
+
 </section>
 
 

@@ -258,66 +258,86 @@
         <!-- En-tête modifiée ici -->
         <h2 class="text-center mb-4 p-3" style="background-color: #6A00B8; color: white;">Marketplace</h2>
 
-        <form action="{{ route('marketplace.save') }}" method="POST" class="bg-white p-5 rounded shadow">
-            @csrf
-            <div class="mb-3">
-                <label for="business_name" class="form-label">Nom de l'Entreprise</label>
-                <input type="text" class="form-control" id="business_name" name="business_name" required>
-            </div>
-            <div class="mb-3">
-                <label for="attraction_reason" class="form-label">Raison d'Attraction</label>
-                <textarea class="form-control" id="attraction_reason" name="attraction_reason" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="business_animal" class="form-label">Animal de l'Entreprise</label>
-                <input type="text" class="form-control" id="business_animal" name="business_animal" required>
-            </div>
-            <div class="mb-3">
-                <label for="conviction_score" class="form-label">Score de Conviction</label>
-                <input type="number" class="form-control" id="conviction_score" name="conviction_score" required>
-            </div>
-            <div class="mb-3">
-                <label for="business_motivation" class="form-label">Motivation de l'Entreprise</label>
-                <textarea class="form-control" id="business_motivation" name="business_motivation" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="entrepreneurial_approach" class="form-label">Approche Entrepreneuriale</label>
-                <textarea class="form-control" id="entrepreneurial_approach" name="entrepreneurial_approach" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="personal_strengths" class="form-label">Forces Personnelles</label>
-                <textarea class="form-control" id="personal_strengths" name="personal_strengths" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="financing_plan" class="form-label">Plan de Financement</label>
-                <textarea class="form-control" id="financing_plan" name="financing_plan" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="financing_help" class="form-label">Aide au Financement</label>
-                <select class="form-select" id="financing_help" name="financing_help" required>
-                    <option value="1">Oui</option>
-                    <option value="0">Non</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="budget" class="form-label">Budget</label>
-                <input type="text" class="form-control" id="budget" name="budget" required>
-            </div>
-            <div class="mb-3">
-                <label for="post_acquisition_action" class="form-label">Actions Post-Acquisition</label>
-                <textarea class="form-control" id="post_acquisition_action" name="post_acquisition_action" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="business_strategy" class="form-label">Stratégie d'Entreprise</label>
-                <textarea class="form-control" id="business_strategy" name="business_strategy" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="status" class="form-label"></label>
-                 <input type="hidden" name="status" value="en attente" id="status" required>
-            </div>
-            <!-- Bouton modifié ici -->
-            <button type="submit" class="py-2 px-4 rounded" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-        </form>
+       <form action="{{ route('marketplace.save') }}" method="POST" class="bg-white p-5 rounded shadow">
+    @csrf
+
+    <h2 class="text-lg font-bold mb-4">Bienvenue dans l’univers Marketplace Achat de ZeroInvestissement.com</h2>
+    <p class="mb-4">Répondez à ces questions pour que nous puissions mieux comprendre pourquoi vous avez choisi ce business et comment nous pouvons vous aider à maximiser vos chances de succès !</p>
+
+    <h3 class="text-md font-semibold mt-4">Votre Business Clé en Main</h3>
+    
+    <div class="mb-3">
+        <label for="business_name" class="form-label">Nom de l'Entreprise</label>
+        <input type="text" class="form-control" id="business_name" name="business_name" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="attraction_reason" class="form-label">Raison d'Attraction</label>
+        <textarea class="form-control" id="attraction_reason" name="attraction_reason" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="business_animal" class="form-label">Si ce business clé en main était un animal, lequel serait-il et pourquoi ?</label>
+        <input type="text" class="form-control" id="business_animal" name="business_animal" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="conviction_score" class="form-label">Score de Conviction (1-10)</label>
+        <input type="number" min="1" max="10" class="form-control" id="conviction_score" name="conviction_score" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="business_motivation" class="form-label">Motivation de l'Entreprise</label>
+        <textarea class="form-control" id="business_motivation" name="business_motivation" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="entrepreneurial_approach" class="form-label">Approche Entrepreneuriale (3 mots)</label>
+        <textarea class="form-control" id="entrepreneurial_approach" name="entrepreneurial_approach" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="personal_strengths" class="form-label">Forces Personnelles</label>
+        <textarea class="form-control" id="personal_strengths" name="personal_strengths" required></textarea>
+    </div>
+
+    <h3 class="text-md font-semibold mt-4">Financement</h3>
+    
+    <div class="mb-3">
+        <label for="financing_plan" class="form-label">Plan de Financement</label>
+        <textarea class="form-control" id="financing_plan" name="financing_plan" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="financing_help" class="form-label">Aide au Financement</label>
+        <select class="form-select" id="financing_help" name="financing_help" required>
+            <option value="1">Oui</option>
+            <option value="0">Non</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="budget" class="form-label">Budget</label>
+        <input type="text" class="form-control" id="budget" name="budget" required>
+    </div>
+
+    <h3 class="text-md font-semibold mt-4">Stratégie et Gestion</h3>
+
+    <div class="mb-3">
+        <label for="post_acquisition_action" class="form-label">Actions Post-Acquisition</label>
+        <textarea class="form-control" id="post_acquisition_action" name="post_acquisition_action" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="business_strategy" class="form-label">Stratégie d'Entreprise</label>
+        <textarea class="form-control" id="business_strategy" name="business_strategy" required></textarea>
+    </div>
+
+    <input type="hidden" name="status" value="en attente" id="status" required>
+
+    <button type="submit" class="py-2 px-4 rounded" style="background-color: #6A00B8; color: white;">Enregistrer</button>
+</form>
+
 
     </section>
 

@@ -253,114 +253,75 @@
         @endif
         <!-- En-tête modifiée ici -->
         <h2 class="text-center mb-4 p-3" style="background-color: #6A00B8; color: white;">Franchise</h2>
-         <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-5 rounded shadow mb-4">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="business_name" class="form-label">Nom de l'Entreprise</label>
-                                <input type="text" class="form-control" id="business_name" name="business_name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="character_comparison" class="form-label">Comparaison de Caractère</label>
-                                <input type="text" class="form-control" id="character_comparison" name="character_comparison" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="activity_description" class="form-label">Description de l'Activité</label>
-                                <textarea class="form-control" id="activity_description" name="activity_description" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="business_age" class="form-label">Âge de l'Entreprise</label>
-                                <input type="text" class="form-control" id="business_age" name="business_age" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="sector" class="form-label">Secteur</label>
-                                <input type="text" class="form-control" id="sector" name="sector" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="key_products" class="form-label">Produits Clés</label>
-                                <textarea class="form-control" id="key_products" name="key_products" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="proudest_achievement" class="form-label">Plus Grande Fierté</label>
-                                <textarea class="form-control" id="proudest_achievement" name="proudest_achievement" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="customer_count" class="form-label">Nombre de Clients</label>
-                                <input type="text" class="form-control" id="customer_count" name="customer_count" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="current_revenue" class="form-label">Revenu Actuel</label>
-                                <input type="text" class="form-control" id="current_revenue" name="current_revenue" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="scalability_score" class="form-label">Score de Scalabilité</label>
-                                <input type="number" class="form-control" id="scalability_score" name="scalability_score" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="franchise_motivation" class="form-label">Motivation pour la Franchise</label>
-                                <textarea class="form-control" id="franchise_motivation" name="franchise_motivation" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="current_locations" class="form-label">Localisations Actuelles</label>
-                                <textarea class="form-control" id="current_locations" name="current_locations" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="franchise_target" class="form-label">Cible de Franchise</label>
-                                <input type="number" class="form-control" id="franchise_target" name="franchise_target" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="franchise_reproducibility" class="form-label">Reproductibilité de la Franchise</label>
-                                <textarea class="form-control" id="franchise_reproducibility" name="franchise_reproducibility" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="key_resources" class="form-label">Ressources Clés</label>
-                                <textarea class="form-control" id="key_resources" name="key_resources" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="sector_growth" class="form-label">Croissance du Secteur</label>
-                                <textarea class="form-control" id="sector_growth" name="sector_growth" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="market_study" class="form-label">Étude de Marché</label>
-                                <textarea class="form-control" id="market_study" name="market_study" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="company_values" class="form-label">Valeurs de l'Entreprise</label>
-                                <textarea class="form-control" id="company_values" name="company_values" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="franchisee_requirements" class="form-label">Exigences du Franchiseur</label>
-                                <textarea class="form-control" id="franchisee_requirements" name="franchisee_requirements" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="competitors" class="form-label">Concurrents</label>
-                                <textarea class="form-control" id="competitors" name="competitors" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="location_data" class="form-label">Données de Localisation</label>
-                                <textarea class="form-control" id="location_data" name="location_data" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="franchisee_training" class="form-label">Formation des Franchiseurs</label>
-                                <textarea class="form-control" id="franchisee_training" name="franchisee_training" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tools" class="form-label">Outils</label>
-                                <textarea class="form-control" id="tools" name="tools" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="business_song" class="form-label">Chanson de l'Entreprise</label>
-                                <input type="text" class="form-control" id="business_song" name="business_song" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="success_plan" class="form-label">Plan de Réussite</label>
-                                <textarea class="form-control" id="success_plan" name="success_plan" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="status" class="form-label"></label>
-                                <input type="hidden" name="status" value="en attente" id="status" required>
-                            </div>
-                            <button type="submit" class="py-2 px-4 rounded" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-                        </form>
+       <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
+    @csrf
+    <h2 class="text-xl font-bold mb-4">Bienvenue dans notre questionnaire franchise !</h2>
+    <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre entreprise.</p>
+    
+    <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle :</h3>
+    <div class="mb-4">
+        <label for="business_name" class="form-label">Nom de l'Entreprise</label>
+        <input type="text" class="form-control" id="business_name" name="business_name" required>
+        <small class="text-gray-500">Pourquoi ce nom ?</small>
+    </div>
+    <div class="mb-4">
+        <label for="character_comparison" class="form-label">Comparaison de Caractère</label>
+        <input type="text" class="form-control" id="character_comparison" name="character_comparison" required>
+        <small class="text-gray-500">Si votre entreprise était un personnage de film, lequel serait-ce ?</small>
+    </div>
+    <div class="mb-4">
+        <label for="activity_description" class="form-label">Description de l'Activité</label>
+        <textarea class="form-control" id="activity_description" name="activity_description" required></textarea>
+        <small class="text-gray-500">Décrivez votre activité en une phrase, comme si vous deviez l'expliquer à un enfant de 5 ans.</small>
+    </div>
+    <div class="mb-4">
+        <label for="business_age" class="form-label">Âge de l'Entreprise</label>
+        <input type="text" class="form-control" id="business_age" name="business_age" required>
+        <small class="text-gray-500">Depuis combien de temps votre entreprise existe-t-elle ?</small>
+    </div>
+    <div class="mb-4">
+        <label for="sector" class="form-label">Secteur</label>
+        <input type="text" class="form-control" id="sector" name="sector" required>
+        <small class="text-gray-500">Ex : restauration, beauté, services, retail, etc.</small>
+    </div>
+
+    <h3 class="text-lg font-semibold mb-2">🎯 Le Succès :</h3>
+    <div class="mb-4">
+        <label for="proudest_achievement" class="form-label">Plus Grande Fierté</label>
+        <textarea class="form-control" id="proudest_achievement" name="proudest_achievement" required></textarea>
+        <small class="text-gray-500">Racontez-nous votre plus grande réussite (prix, gros contrat, etc.).</small>
+    </div>
+    <div class="mb-4">
+        <label for="customer_count" class="form-label">Nombre de Clients</label>
+        <input type="text" class="form-control" id="customer_count" name="customer_count" required>
+        <small class="text-gray-500">Combien de clients avez-vous servi jusqu’à aujourd’hui ?</small>
+    </div>
+    <div class="mb-4">
+        <label for="current_revenue" class="form-label">Revenu Actuel</label>
+        <input type="text" class="form-control" id="current_revenue" name="current_revenue" required>
+        <small class="text-gray-500">Quel est votre chiffre d’affaires actuel ?</small>
+    </div>
+    <div class="mb-4">
+        <label for="scalability_score" class="form-label">Score de Scalabilité</label>
+        <input type="number" class="form-control" id="scalability_score" name="scalability_score" required>
+        <small class="text-gray-500">Sur une échelle de 1 à 10, comment évaluez-vous la scalabilité de votre modèle ?</small>
+    </div>
+
+    <h3 class="text-lg font-semibold mb-2">🛠️ Le Grand Saut :</h3>
+    <div class="mb-4">
+        <label for="franchise_motivation" class="form-label">Motivation pour la Franchise</label>
+        <textarea class="form-control" id="franchise_motivation" name="franchise_motivation" required></textarea>
+        <small class="text-gray-500">Pourquoi souhaitez-vous transformer votre entreprise en franchise ?</small>
+    </div>
+    <div class="mb-4">
+        <label for="franchise_target" class="form-label">Cible de Franchise</label>
+        <input type="number" class="form-control" id="franchise_target" name="franchise_target" required>
+        <small class="text-gray-500">Avez-vous déjà une idée du nombre de franchises que vous souhaitez lancer ?</small>
+    </div>
+
+    <button type="submit" class="py-2 px-4 rounded bg-[#6A00B8] text-white">Enregistrer</button>
+</form>
+
 
 
     </section>
