@@ -31,4 +31,6 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/welcome', [ClientController::class, 'showWelcome'])->name(name: 'welcome');
+Route::get('/welcome', [ClientController::class, 'index'])->name(name: 'welcome');
+Route::get('/welcome/statistics', [ClientController::class, 'getStatistics']);
+

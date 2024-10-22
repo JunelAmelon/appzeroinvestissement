@@ -147,4 +147,75 @@ class ClientController extends Controller
         }
 
     }
+
+public function getStatistics()
+{
+    // Comptage des projets soumis (total)
+    $franchiseSubmitted = Franchise::count();
+    $siteappSubmitted = Siteapp::count();
+    $marketplaceSubmitted = Marketplacebusiness::count();
+
+    // Nombre total de projets soumis
+    $totalSubmitted = $franchiseSubmitted + $siteappSubmitted + $marketplaceSubmitted;
+
+    // Comptage des projets en attente
+    $franchisePending = Franchise::where('status', 'en attente')->count();
+    $siteappPending = Siteapp::where('status', 'en attente')->count();
+    $marketplacePending = Marketplacebusiness::where('status', 'en attente')->count();
+
+    // Comptage des projets validés
+    $franchiseValid = Franchise::where('status', 'validé')->count();
+    $siteappValid = Siteapp::where('status', 'validé')->count();
+    $marketplaceValid = Marketplacebusiness::where('status', 'validé')->count();
+
+    // Comptage des projets rejetés
+    $franchiseRejected = Franchise::where('status', 'rejeté')->count();
+    $siteappRejected = Siteapp::where('status', 'rejeté')->count();
+    $marketplaceRejected = Marketplacebusiness::where('status', 'rejeté')->count();
+
+    // Nombre total de projets validés et rejetés
+    $totalValid = $franchiseValid + $siteappValid + $marketplaceValid;
+    $totalRejected = $franchiseRejected + $siteappRejected + $marketplaceRejected;
+
+    // Retour des données au format JSON
+    return response()->json([
+        'pending' => $franchisePending + $siteappPending + $marketplacePending, // Nombre de projets en attente
+        'submitted' => $totalSubmitted, // Total projets soumis
+        'valid' => $totalValid,
+        'rejected' => $totalRejected
+    ]);
+}
+
+
+public function index()
+{
+    // Récupérer tous les projets de chaque modèle
+    $franchises = Franchise::select('id', 'business_name as nom', 'activity_description as description', 'status')->get()->map(function($item) {
+        $item->type = 'Franchise';
+        return $item;
+    });
+
+    $marketplaces = Marketplacebusiness::select('id', 'business_name as nom', 'business_motivation as description', 'status')->get()->map(function($item) {
+        $item->type = 'Marketplace';
+        return $item;
+    });
+
+    $siteapps = Siteapp::select('id', 'name as nom', 'description', 'status')->get()->map(function($item) {
+        $item->type = 'Siteapp';
+        return $item;
+    });
+
+    // Fusionner tous les projets
+    $projects = $franchises->merge($marketplaces)->merge($siteapps);
+
+    // Vérification de la fusion
+    if ($projects->isEmpty()) {
+        // Optionnel : si aucun projet n'est trouvé
+        session()->flash('info', 'Aucun projet trouvé.');
+    }
+// dd($projects);
+
+    return view('client.welcome', compact('projects'));
+}
+
 }

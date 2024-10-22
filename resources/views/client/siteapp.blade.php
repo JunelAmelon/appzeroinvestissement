@@ -354,8 +354,8 @@
                                 <textarea class="form-control" id="tech_requirements" name="tech_requirements" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="form-label">Statut</label>
-                                <input type="text" class="form-control" id="status" name="status" required>
+                                <label for="status" class="form-label"></label>
+                                <input type="hidden" name="status" value="en attente" id="status" required>
                             </div>
                             <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
                         </form>

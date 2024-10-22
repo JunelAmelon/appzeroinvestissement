@@ -235,60 +235,84 @@
                                 <h5 class=" op-7 mb-2" style=" color:#6A00B8;">Bienvenue sur votre espace client {{ Auth::user()->name }} !</h5>
                             </div>
                             <div class="ml-md-auto py-2 py-md-0">
-                                <a href="#" class="btn btn-secondary btn-round">Soumettre un projet</a>
-                            </div>
+    <a href="#" class="btn btn-secondary btn-round" data-toggle="modal" data-target="#submitProjectModal">Soumettre un projet</a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="submitProjectModal" tabindex="-1" role="dialog" aria-labelledby="submitProjectModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="submitProjectModalLabel">Choisissez votre projet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Cliquez sur le type de projet que vous souhaitez soumettre :</p>
+                <div class="d-flex flex-column">
+                    <a href="/siteapp" class="btn btn-primary mb-2">Mon site/Appli</a>
+                    <a href="/franchise" class="btn btn-primary mb-2">Ma franchise</a>
+                    <a href="/marketplace" class="btn btn-primary mb-2">Marketplace</a>
+                    <a href="static-sidebar.html" class="btn btn-primary">Incubateur</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
                         </div>
                     </div>
                 </div>
                 <div class="page-inner mt--5">
-                    <div class="row mt--2">
-                        <div class="col-md-6">
-                            <div class="card full-height">
-                                <div class="card-body">
-                                    <div class="card-title">Apercu des statistiques</div>
-                                    <div class="card-category">Daily information about statistics in system</div>
-                                    <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
-                                        <div class="px-2 pb-2 pb-md-0 text-center">
-                                            <div id="circles-1"></div>
-                                            <h6 class="fw-bold mt-3 mb-0">Total projet soumis</h6>
-                                        </div>
-                                        <div class="px-2 pb-2 pb-md-0 text-center">
-                                            <div id="circles-2"></div>
-                                            <h6 class="fw-bold mt-3 mb-0">Total projet validé</h6>
-                                        </div>
-                                        <div class="px-2 pb-2 pb-md-0 text-center">
-                                            <div id="circles-3"></div>
-                                            <h6 class="fw-bold mt-3 mb-0">Total rojet rejeté</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card full-height">
-                                <div class="card-body">
-                                    <div class="card-title">Total income & spend statistics</div>
-                                    <div class="row py-3">
-                                        <div class="col-md-4 d-flex flex-column justify-content-around">
-                                            <div>
-                                                <h6 class="fw-bold text-uppercase text-success op-8">Total Income</h6>
-                                                <h3 class="fw-bold">$9.782</h3>
-                                            </div>
-                                            <div>
-                                                <h6 class="fw-bold text-uppercase text-danger op-8">Total Spend</h6>
-                                                <h3 class="fw-bold">$1,248</h3>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div id="chart-container">
-                                                <canvas id="totalIncomeChart"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                  <div class="row mt--2">
+    <div class="col-md-6">
+        <div class="card full-height">
+            <div class="card-body">
+                <div class="card-title">Aperçu des statistiques</div>
+                <div class="card-category">Informations quotidiennes sur les statistiques du système</div>
+                <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+                    <div class="px-2 pb-2 pb-md-0 text-center">
+                        <div id="circles-1"></div>
+                        <h6 class="fw-bold mt-3 mb-0">Total projets en attente</h6>
+                    </div>
+                    <div class="px-2 pb-2 pb-md-0 text-center">
+                        <div id="circles-2"></div>
+                        <h6 class="fw-bold mt-3 mb-0">Total projets validés</h6>
+                    </div>
+                    <div class="px-2 pb-2 pb-md-0 text-center">
+                        <div id="circles-3"></div>
+                        <h6 class="fw-bold mt-3 mb-0">Total projets rejetés</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card full-height">
+            <div class="card-body">
+                <div class="card-title">Bilan global</div>
+                <div class="row py-3">
+                    <div class="col-md-4 d-flex flex-column justify-content-around">
+                        <div>
+                            <h6 class="fw-bold text-uppercase text-success op-8">Total projets soumis</h6>
+                            <h3 class="fw-bold" id="total-submitted"></h3> <!-- Ajoutez un ID ici -->
                         </div>
                     </div>
+                    <div class="col-md-8">
+                        <div id="chart-container">
+                            <canvas id="totalIncomeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                     <div class="row">
                         <!--Mettre la table-->
                         <div class="col-md-12">
@@ -308,7 +332,17 @@
                                                     <th scope="col">Statut</th>
                                                 </tr>
                                             </thead>
-                                           
+                                           <tbody>
+                                             @foreach ($projects as $project)
+                    <tr>
+                        <td>{{ $project->id }}</td>
+                        <td>{{ $project->nom }}</td>
+                        <td>{{ $project->description }}</td>
+                        <td>{{ $project->type }}</td>
+                        <td>{{ $project->status }}</td>
+                    </tr>
+                @endforeach
+                                           </tbody>
                                         </table>
 
                                     </div>
@@ -329,7 +363,8 @@
                 </div>
             </footer>
         </div>
-
+ 
+ 
         <!-- Custom template | don't include it in your project! -->
         <div class="custom-template">
             <div class="title">Settings</div>
@@ -440,106 +475,84 @@
     <!-- Atlantis DEMO methods, don't include it in your project! -->
     <script src="{{ asset('build/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('build/assets/js/demo.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
+   <script>
+    $(document).ready(function() {
+        $('#basic-datatables').DataTable({
+            // Options supplémentaires si nécessaire
+            paging: true,
+            searching: true,
+            lengthChange: true,
+            pageLength: 10,
         });
-    </script>
-    <script>
-        Circles.create({
-            id: 'circles-1',
-            radius: 45,
-            value: 60,
-            maxValue: 100,
-            width: 7,
-            text: 5,
-            colors: ['#f1f1f1', '#FF9E27'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
+    });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Utilisation d'Axios pour récupérer les statistiques via l'API
+    axios.get('/welcome/statistics')
+        .then(function (response) {
+            const data = response.data;
+            console.log(data); // Vérifiez les données
+
+            // Mise à jour des cercles avec les valeurs dynamiques
+            Circles.create({
+                id: 'circles-1',
+                radius: 45,
+                value: (data.pending / data.submitted) * 100, // Pourcentage de projets en attente
+                maxValue: 100,
+                width: 7,
+                text: data.pending,
+                colors: ['#f1f1f1', '#FF9E27'],
+                duration: 400,
+                wrpClass: 'circles-wrp',
+                textClass: 'circles-text',
+                styleWrapper: true,
+                styleText: true
+            });
+
+            Circles.create({
+                id: 'circles-2',
+                radius: 45,
+                value: (data.valid / data.submitted) * 100, // Pourcentage de projets validés
+                maxValue: 100,
+                width: 7,
+                text: data.valid,
+                colors: ['#f1f1f1', '#2BB930'],
+                duration: 400,
+                wrpClass: 'circles-wrp',
+                textClass: 'circles-text',
+                styleWrapper: true,
+                styleText: true
+            });
+
+            Circles.create({
+                id: 'circles-3',
+                radius: 45,
+                value: (data.rejected / data.submitted) * 100, // Pourcentage de projets rejetés
+                maxValue: 100,
+                width: 7,
+                text: data.rejected,
+                colors: ['#f1f1f1', '#F25961'],
+                duration: 400,
+                wrpClass: 'circles-wrp',
+                textClass: 'circles-text',
+                styleWrapper: true,
+                styleText: true
+            });
+
+            // Affiche le nombre total de projets soumis
+            document.getElementById('total-submitted').textContent = data.submitted; 
         })
-
-        Circles.create({
-            id: 'circles-2',
-            radius: 45,
-            value: 70,
-            maxValue: 100,
-            width: 7,
-            text: 36,
-            colors: ['#f1f1f1', '#2BB930'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-3',
-            radius: 45,
-            value: 40,
-            maxValue: 100,
-            width: 7,
-            text: 12,
-            colors: ['#f1f1f1', '#F25961'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
-        var mytotalIncomeChart = new Chart(totalIncomeChart, {
-            type: 'bar',
-            data: {
-                labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-                datasets: [{
-                    label: "Total Income",
-                    backgroundColor: '#ff9e27',
-                    borderColor: 'rgb(23, 125, 255)',
-                    data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    display: false,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            display: false //this will remove only the label
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }]
-                },
-            }
+        .catch(function (error) {
+            console.error('Erreur lors de la récupération des statistiques', error);
         });
+});
+</script>
 
-        $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: '#ffa534',
-            fillColor: 'rgba(255, 165, 52, .14)'
-        });
-    </script>
+
 </body>
 
 </html>
