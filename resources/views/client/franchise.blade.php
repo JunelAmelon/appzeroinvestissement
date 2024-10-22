@@ -319,7 +319,7 @@
         <small class="text-gray-500">Avez-vous déjà une idée du nombre de franchises que vous souhaitez lancer ?</small>
     </div>
 
-    <button type="submit" class="py-2 px-4 rounded bg-[#6A00B8] text-white">Enregistrer</button>
+    <button type="submit" class="py-2 px-4 rounded text-white" style="background-color:#6A00B8; color:white;">Enregistrer</button>
 </form>
 
 
