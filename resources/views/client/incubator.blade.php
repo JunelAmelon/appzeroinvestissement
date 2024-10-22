@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <title>ZeroInvestissement Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -74,8 +74,7 @@
                             </a>
                             <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
                                 <div class="quick-actions-header" style="background-color: #6A00B8; color:white;">
-                                    <span class="title mb-1">Quick Actions</span>
-                                    <span class="subtitle op-8">Shortcuts</span>
+                                    <span class="title mb-1">Actions rapide</span>
                                 </div>
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
@@ -227,7 +226,7 @@
         <div class="main-panel">
             <div class="content">
                 <div class="panel-header " style="background-color: none; ">
-                     <div class="page-inner py-5">
+                    <div class="page-inner py-5">
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
                                 <h2 class=" pb-2 fw-bold" style=" color:#6A00B8;">Soumettre un projet</h2>
@@ -238,62 +237,264 @@
                     </div>
                 </div>
 
-<section class="bg-gray-100">
-    <div class="container mx-auto mt-2">
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+                <section class="bg-gray-100">
+                    <div class="container mx-auto mt-2">
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
 
-        @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-        
-        <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Incubateur</h2>
-        <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
-            @csrf
-            <h2 class="text-xl font-bold mb-4">Bienvenue dans l’univers de l’Accélérateur Zéro !</h2>
-            <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre projet.</p>
-            
-            <h3 class="text-lg font-semibold mb-2">🚀 Votre Projet : Parlons du cœur de votre idée</h3>
-            <div class="mb-4">
-                <label for="project_name" class="form-label">Nom de votre projet ou entreprise</label>
-                <input type="text" class="form-control" id="project_name" name="project_name" required>
-                <small class="text-gray-500">Pourquoi ce nom est parfait ?</small>
-                @error('project_name')
-                    <div class="text-red-500">{{ $message }}</div>
-                @enderror
-            </div>
-            <!-- Ajoutez des blocs d'erreur pour chaque champ ici -->
-            <div class="mb-4">
-                <label for="project_description" class="form-label">Décrivez votre idée ou entreprise</label>
-                <textarea class="form-control" id="project_description" name="project_description" required></textarea>
-                <small class="text-gray-500">En une phrase qui nous fera tomber sous le charme.</small>
-                @error('project_description')
-                    <div class="text-red-500">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-4">
-                <label for="project_stage" class="form-label">À quel stade en êtes-vous avec ce projet ?</label>
-                <select class="form-control" id="project_stage" name="project_stage" required>
-                    <option value="simple_idea">Simple idée</option>
-                    <option value="development">En développement</option>
-                    <option value="existing_business">Entreprise déjà existante</option>
-                </select>
-                @error('project_stage')
-                    <div class="text-red-500">{{ $message }}</div>
-                @enderror
-            </div>
-            <!-- Répétez pour tous les champs -->
-            <div>
-                <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Soumettre le projet</button>
-            </div>
-        </form>
-    </div>
-</section>
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
+
+                        <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Incubateur</h2>
+                        <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
+                            @csrf
+                            <h2 class="text-xl font-bold mb-4">Bienvenue dans l’univers de l’Accélérateur Zéro !</h2>
+                            <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre projet.</p>
+
+                            <h3 class="text-lg font-semibold mb-2">🚀 Votre Projet : Parlons du cœur de votre idée</h3>
+                            <div class="mb-4">
+                                <label for="project_name" class="form-label">Nom de votre projet ou entreprise</label>
+                                <input type="text" class="form-control" id="project_name" name="project_name" required>
+                                <small class="text-gray-500">Pourquoi ce nom est parfait ?</small>
+                                @error('project_name')
+                                <div class="text-red-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="project_description" class="form-label">Décrivez votre idée ou entreprise</label>
+                                <textarea class="form-control" id="project_description" name="project_description" required></textarea>
+                                <small class="text-gray-500">En une phrase qui nous fera tomber sous le charme.</small>
+                                @error('project_description')
+                                <div class="text-red-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="project_stage" class="form-label">À quel stade en êtes-vous avec ce projet ?</label>
+                                <select class="form-control" id="project_stage" name="project_stage" required>
+                                    <option value="simple_idea">Simple idée</option>
+                                    <option value="development">En développement</option>
+                                    <option value="existing_business">Entreprise déjà existante</option>
+                                </select>
+                                @error('project_stage')
+                                <div class="text-red-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="project_mission" class="form-label">Quelle est la mission principale de votre projet ?</label>
+                                <input type="text" id="project_mission" name="project_mission" class="form-control" required>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">🎯Origine et Motivation : Pourquoi cette idée vous passionne-t-elle ?</h3>
+
+                            <div class="mb-4">
+                                <label for="origin_motivation" class="form-label">Comment l'idée de ce projet vous est-elle venue ?</label>
+                                <input type="text" id="origin_motivation" name="origin_motivation" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="passion_aspect" class="form-label">Qu’est-ce qui vous passionne le plus dans ce projet ?</label>
+                                <input type="text" id="passion_aspect" name="passion_aspect" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="strength" class="form-label">Si vous deviez décrire la plus grande force de votre projet en une phrase, quelle serait-elle ?</label>
+                                <input type="text" id="strength" name="strength" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="obstacle" class="form-label">Quel est le plus grand obstacle auquel vous avez fait face jusqu'à présent dans ce projet ?</label>
+                                <input type="text" id="obstacle" name="obstacle" class="form-control" required>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">🛠️L’Avenir : Quels sont vos rêves pour ce projet ?</h3>
+
+                            <div class="mb-4">
+                                <label for="objective" class="form-label">Quel est votre objectif principal avec ce projet sur les 5 prochaines années ?</label>
+                                <input type="text" id="objective" name="objective" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="time_to_profit" class="form-label">Dans combien de temps pensez-vous que votre projet pourrait être rentable ? (en mois)</label>
+                                <input type="number" id="time_to_profit" name="time_to_profit" class="form-control" min="1" max="60" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="strategy" class="form-label">Quelle est votre stratégie pour atteindre cet objectif ?</label>
+                                <input type="text" id="strategy" name="strategy" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="target_amount" class="form-label">Si vous deviez lever des fonds pour ce projet, quel serait votre montant cible ?</label>
+                                <input type="number" id="target_amount" name="target_amount" class="form-control" min="0" step="0.01">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="growth_vision" class="form-label">Comment voyez-vous la croissance de votre projet sur les 12 prochains mois ?</label>
+                                <input type="text" id="growth_vision" name="growth_vision" class="form-control" required>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">🎨Potentiel et Scalabilité</h3>
+
+                            <div class="mb-4">
+                                <label for="sector" class="form-label">Dans quel secteur opère votre projet et en quoi est-il innovant ?</label>
+                                <input type="text" id="sector" name="sector" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="market_target" class="form-label">Quel est le marché cible de votre projet ?</label>
+                                <input type="text" id="market_target" name="market_target" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="unique_features" class="form-label">Quelles sont les trois principales caractéristiques qui rendent votre projet unique et compétitif ?</label>
+                                <input type="text" id="unique_features" name="unique_features" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="growth_limitations" class="form-label">Qu’est-ce qui pourrait limiter la croissance de votre projet ?</label>
+                                <input type="text" id="growth_limitations" name="growth_limitations" class="form-control" required>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">💻 Analyse du Marché et Concurrence</h3>
+
+                            <div class="mb-4">
+                                <label for="market_analysis" class="form-label">Avez-vous déjà réalisé une analyse de marché pour ce projet ?</label>
+                                <select id="market_analysis" name="market_analysis" class="form-select border border-gray-300 p-2 rounded" required>
+                                    <option value="1">Oui</option>
+                                    <option value="0">Non</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="competitors" class="form-label">Qui sont vos principaux concurrents, et qu’est-ce qui vous différencie d’eux ?</label>
+                                <input type="text" id="competitors" name="competitors" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="clients" class="form-label">Votre projet a-t-il déjà eu des clients ou utilisateurs ?</label>
+                                <select id="clients" name="clients" class="form-select border border-gray-300 p-2 rounded" required>
+                                    <option value="1">Oui</option>
+                                    <option value="0">Non</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="market_strategy" class="form-label">Comment comptez-vous conquérir votre marché cible ?</label>
+                                <input type="text" id="market_strategy" name="market_strategy" class="form-control" required>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">📈Financement et Croissance : Parlons des chiffres !</h3>
+
+                            <div class="mb-4">
+                                <label for="funds_raised" class="form-label">Avez-vous déjà levé des fonds pour ce projet ?</label>
+                                <select id="funds_raised" name="funds_raised" class="form-select border border-gray-300 p-2 rounded" required>
+                                    <option value="1">Oui</option>
+                                    <option value="0">Non</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="initial_budget" class="form-label">Quel budget initial avez-vous prévu pour ce projet ?</label>
+                                <input type="number" id="initial_budget" name="initial_budget" class="form-control" min="0" step="0.01">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="first_step_with_unlimited_funds" class="form-label">Si vous aviez accès à un financement illimité, quelle serait la première chose que vous feriez pour faire grandir votre projet ?</label>
+                                <input type="text" id="first_step_with_unlimited_funds" name="first_step_with_unlimited_funds" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="growth_needs" class="form-label">De quoi avez-vous le plus besoin pour accélérer la croissance de votre projet ?</label>
+                                <input type="text" id="growth_needs" name="growth_needs" class="form-control" required>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">🔧Soutien Stratégique et Partenariats</h3>
+
+                            <div class="mb-4">
+                                <label for="strategic_support" class="form-label">Dans quel domaine avez-vous le plus besoin de notre soutien stratégique ?</label>
+                                <input type="text" id="strategic_support" name="strategic_support" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="co_management" class="form-label">Êtes-vous ouvert(e) à la co-gestion de votre projet avec notre équipe d’experts pour maximiser son potentiel ?</label>
+                                <select id="co_management" name="co_management" class="form-select border border-gray-300 p-2 rounded" required>
+                                    <option value="1">Oui</option>
+                                    <option value="0">Non</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="desired_connections" class="form-label">Quelles connexions ou partenaires aimeriez-vous avoir dans votre réseau ?</label>
+                                <input type="text" id="desired_connections" name="desired_connections" class="form-control" required>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">🔧Impact et Valeurs</h3>
+
+                            <div class="mb-4">
+                                <label for="impact" class="form-label">En quoi votre projet a-t-il un impact positif (social, environnemental, économique) ?
+                                </label>
+                                <input type="text" id="impact" name="impact" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="core_values" class="form-label">Quelles sont les valeurs fondamentales de votre projet ou entreprise ?</label>
+                                <input type="text" id="core_values" name="core_values" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="value_translation" class="form-label">Comment ces valeurs se traduisent-elles dans votre quotidien professionnel ?</label>
+                                <input type="text" id="value_translation" name="value_translation" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="global_impact" class="form-label">Si votre projet devenait une référence mondiale, quel impact aimeriez-vous qu'il ait sur la société ?</label>
+                                <input type="text" id="global_impact" name="global_impact" class="form-control" required>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">🔧Petites dernières pour le Fun</h3>
+
+                            <div class="mb-4">
+                                <label for="cartoon_character" class="form-label">Si votre projet était un personnage de dessin animé, qui serait-il et pourquoi ?
+                                </label>
+                                <input type="text" id="cartoon_character" name="cartoon_character" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="tv_synopsis" class="form-label">Imaginez que votre projet soit transformé en série TV. Quel en serait le synopsis ?</label>
+                                <input type="text" id="tv_synopsis" name="tv_synopsis" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="documentary_title" class="form-label">Quel serait le titre du documentaire Netflix sur la réussite de votre projet ?</label>
+                                <input type="text" id="documentary_title" name="documentary_title" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="celebration_details" class="form-label">Si vous pouviez organiser une fête pour célébrer le succès de votre projet, où et comment se déroulerait-elle ?
+                                </label>
+                                <input type="text" id="celebration_details" name="celebration_details" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="client_slogan" class="form-label">Si votre projet pouvait parler, que dirait-il à ses futurs clients en un seul slogan ?</label>
+                                <input type="text" id="client_slogan" name="client_slogan" class="form-control" required>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Soumettre le projet</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
 
 
 
@@ -333,7 +534,7 @@
             </footer>
         </div>
 
-       
+
     </div>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
@@ -360,7 +561,7 @@
     <script src="{{ asset('build/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <!-- <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script> -->
 
     <!-- jQuery Vector Maps -->
     <script src="{{ asset('build/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
@@ -376,101 +577,6 @@
     <script src="{{ asset('build/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('build/assets/js/demo.js') }}"></script>
 
-    <script>
-        Circles.create({
-            id: 'circles-1',
-            radius: 45,
-            value: 60,
-            maxValue: 100,
-            width: 7,
-            text: 5,
-            colors: ['#f1f1f1', '#FF9E27'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-2',
-            radius: 45,
-            value: 70,
-            maxValue: 100,
-            width: 7,
-            text: 36,
-            colors: ['#f1f1f1', '#2BB930'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-3',
-            radius: 45,
-            value: 40,
-            maxValue: 100,
-            width: 7,
-            text: 12,
-            colors: ['#f1f1f1', '#F25961'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
-        var mytotalIncomeChart = new Chart(totalIncomeChart, {
-            type: 'bar',
-            data: {
-                labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-                datasets: [{
-                    label: "Total Income",
-                    backgroundColor: '#ff9e27',
-                    borderColor: 'rgb(23, 125, 255)',
-                    data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    display: false,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            display: false //this will remove only the label
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }]
-                },
-            }
-        });
-
-        $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: '#ffa534',
-            fillColor: 'rgba(255, 165, 52, .14)'
-        });
-    </script>
 </body>
 
 </html>
-

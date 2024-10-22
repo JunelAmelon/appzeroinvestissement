@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <title>ZeroInvestissement Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -74,8 +74,7 @@
                             </a>
                             <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
                                 <div class="quick-actions-header" style="background-color: #6A00B8; color:white;">
-                                    <span class="title mb-1">Quick Actions</span>
-                                    <span class="subtitle op-8">Shortcuts</span>
+                                    <span class="title mb-1">Actions rapide</span>
                                 </div>
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
@@ -236,110 +235,109 @@
 
                         </div>
                     </div>
-        </div>
+                </div>
 
 
 
 
 
-<section class="bg-gray-100 mb-4">
-    <div class="container mx-auto mt-2">
-        @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
+                <section class="bg-gray-100 mb-4">
+                    <div class="container mx-auto mt-2">
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
 
-        @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-        @endif
-        <!-- En-tête modifiée ici -->
-        <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Marketplace</h2>
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
+                        <!-- En-tête modifiée ici -->
+                        <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Marketplace</h2>
 
-       <form action="{{ route('marketplace.save') }}" method="POST" class="bg-white p-5 rounded shadow">
-    @csrf
+                        <form action="{{ route('marketplace.save') }}" method="POST" class="bg-white p-5 rounded shadow">
+                            @csrf
 
-    <h2 class="text-lg font-bold mb-4">Bienvenue dans l’univers Marketplace Achat de ZeroInvestissement.com</h2>
-    <p class="mb-4">Répondez à ces questions pour que nous puissions mieux comprendre pourquoi vous avez choisi ce business et comment nous pouvons vous aider à maximiser vos chances de succès !</p>
+                            <h2 class="text-lg font-bold mb-4">Bienvenue dans l’univers Marketplace Achat de ZeroInvestissement.com</h2>
+                            <p class="mb-4">Répondez à ces questions pour que nous puissions mieux comprendre pourquoi vous avez choisi ce business et comment nous pouvons vous aider à maximiser vos chances de succès !</p>
 
-    <h3 class="text-md font-semibold mt-4">Votre Business Clé en Main</h3>
-    
-    <div class="mb-3">
-        <label for="business_name" class="form-label">Nom de l'Entreprise</label>
-        <input type="text" class="form-control" id="business_name" name="business_name" required>
-    </div>
+                            <h3 class="text-md font-semibold mt-4">Votre Business Clé en Main</h3>
 
-    <div class="mb-3">
-        <label for="attraction_reason" class="form-label">Raison d'Attraction</label>
-        <textarea class="form-control" id="attraction_reason" name="attraction_reason" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="business_name" class="form-label">Nom de l'Entreprise</label>
+                                <input type="text" class="form-control" id="business_name" name="business_name" required>
+                            </div>
 
-    <div class="mb-3">
-        <label for="business_animal" class="form-label">Si ce business clé en main était un animal, lequel serait-il et pourquoi ?</label>
-        <input type="text" class="form-control" id="business_animal" name="business_animal" required>
-    </div>
+                            <div class="mb-3">
+                                <label for="attraction_reason" class="form-label">Raison d'Attraction</label>
+                                <textarea class="form-control" id="attraction_reason" name="attraction_reason" required></textarea>
+                            </div>
 
-    <div class="mb-3">
-        <label for="conviction_score" class="form-label">Score de Conviction (1-10)</label>
-        <input type="number" min="1" max="10" class="form-control" id="conviction_score" name="conviction_score" required>
-    </div>
+                            <div class="mb-3">
+                                <label for="business_animal" class="form-label">Si ce business clé en main était un animal, lequel serait-il et pourquoi ?</label>
+                                <input type="text" class="form-control" id="business_animal" name="business_animal" required>
+                            </div>
 
-    <div class="mb-3">
-        <label for="business_motivation" class="form-label">Motivation de l'Entreprise</label>
-        <textarea class="form-control" id="business_motivation" name="business_motivation" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="conviction_score" class="form-label">Score de Conviction (1-10)</label>
+                                <input type="number" min="1" max="10" class="form-control" id="conviction_score" name="conviction_score" required>
+                            </div>
 
-    <div class="mb-3">
-        <label for="entrepreneurial_approach" class="form-label">Approche Entrepreneuriale (3 mots)</label>
-        <textarea class="form-control" id="entrepreneurial_approach" name="entrepreneurial_approach" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="business_motivation" class="form-label">Motivation de l'Entreprise</label>
+                                <textarea class="form-control" id="business_motivation" name="business_motivation" required></textarea>
+                            </div>
 
-    <div class="mb-3">
-        <label for="personal_strengths" class="form-label">Forces Personnelles</label>
-        <textarea class="form-control" id="personal_strengths" name="personal_strengths" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="entrepreneurial_approach" class="form-label">Approche Entrepreneuriale (3 mots)</label>
+                                <textarea class="form-control" id="entrepreneurial_approach" name="entrepreneurial_approach" required></textarea>
+                            </div>
 
-    <h3 class="text-md font-semibold mt-4">Financement</h3>
-    
-    <div class="mb-3">
-        <label for="financing_plan" class="form-label">Plan de Financement</label>
-        <textarea class="form-control" id="financing_plan" name="financing_plan" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="personal_strengths" class="form-label">Forces Personnelles</label>
+                                <textarea class="form-control" id="personal_strengths" name="personal_strengths" required></textarea>
+                            </div>
 
-    <div class="mb-3">
-        <label for="financing_help" class="form-label">Aide au Financement</label>
-        <select class="form-select" id="financing_help" name="financing_help" required>
-            <option value="1">Oui</option>
-            <option value="0">Non</option>
-        </select>
-    </div>
+                            <h3 class="text-md font-semibold mt-4">Financement</h3>
 
-    <div class="mb-3">
-        <label for="budget" class="form-label">Budget</label>
-        <input type="text" class="form-control" id="budget" name="budget" required>
-    </div>
+                            <div class="mb-3">
+                                <label for="financing_plan" class="form-label">Plan de Financement</label>
+                                <textarea class="form-control" id="financing_plan" name="financing_plan" required></textarea>
+                            </div>
 
-    <h3 class="text-md font-semibold mt-4">Stratégie et Gestion</h3>
+                            <div class="mb-3">
+                                <label for="financing_help" class="form-label">Aide au Financement</label>
+                                <select class="form-select" id="financing_help" name="financing_help" required>
+                                    <option value="1">Oui</option>
+                                    <option value="0">Non</option>
+                                </select>
+                            </div>
 
-    <div class="mb-3">
-        <label for="post_acquisition_action" class="form-label">Actions Post-Acquisition</label>
-        <textarea class="form-control" id="post_acquisition_action" name="post_acquisition_action" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="budget" class="form-label">Budget</label>
+                                <input type="number" class="form-control" id="budget" name="budget" required>
+                            </div>
 
-    <div class="mb-3">
-        <label for="business_strategy" class="form-label">Stratégie d'Entreprise</label>
-        <textarea class="form-control" id="business_strategy" name="business_strategy" required></textarea>
-    </div>
+                            <h3 class="text-md font-semibold mt-4">Stratégie et Gestion</h3>
 
-    <input type="hidden" name="status" value="en attente" id="status" required>
+                            <div class="mb-3">
+                                <label for="post_acquisition_action" class="form-label">Actions Post-Acquisition</label>
+                                <textarea class="form-control" id="post_acquisition_action" name="post_acquisition_action" required></textarea>
+                            </div>
 
-    <button type="submit" class="py-2 px-4 rounded" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-</form>
+                            <div class="mb-3">
+                                <label for="business_strategy" class="form-label">Stratégie d'Entreprise</label>
+                                <textarea class="form-control" id="business_strategy" name="business_strategy" required></textarea>
+                            </div>
 
 
-    </section>
+                            <button type="submit" class="py-2 px-4 rounded" style="background-color: #6A00B8; color: white;">Enregistrer</button>
+                        </form>
+
+
+                </section>
 
 
 
@@ -359,7 +357,7 @@
             </footer>
         </div>
 
-        
+
     </div>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
@@ -386,7 +384,7 @@
     <script src="{{ asset('build/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <!-- <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script> -->
 
     <!-- jQuery Vector Maps -->
     <script src="{{ asset('build/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
@@ -402,101 +400,6 @@
     <script src="{{ asset('build/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('build/assets/js/demo.js') }}"></script>
 
-    <script>
-        Circles.create({
-            id: 'circles-1',
-            radius: 45,
-            value: 60,
-            maxValue: 100,
-            width: 7,
-            text: 5,
-            colors: ['#f1f1f1', '#FF9E27'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-2',
-            radius: 45,
-            value: 70,
-            maxValue: 100,
-            width: 7,
-            text: 36,
-            colors: ['#f1f1f1', '#2BB930'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-3',
-            radius: 45,
-            value: 40,
-            maxValue: 100,
-            width: 7,
-            text: 12,
-            colors: ['#f1f1f1', '#F25961'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
-        var mytotalIncomeChart = new Chart(totalIncomeChart, {
-            type: 'bar',
-            data: {
-                labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-                datasets: [{
-                    label: "Total Income",
-                    backgroundColor: '#ff9e27',
-                    borderColor: 'rgb(23, 125, 255)',
-                    data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    display: false,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            display: false //this will remove only the label
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }]
-                },
-            }
-        });
-
-        $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: '#ffa534',
-            fillColor: 'rgba(255, 165, 52, .14)'
-        });
-    </script>
 </body>
 
 </html>
-

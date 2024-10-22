@@ -17,15 +17,24 @@ use App\Models\Projectdetailsmarketplacebusiness;
 class ClientController extends Controller
 {
     //
-     public function showWelcome()
+    public function showWelcome()
     {
-        // Retourner la vue située dans resources/views/client/welcome.blade.php
-        return view('client.welcome');
+        if (Auth::check()) {
+            return view('client.welcome');
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
     }
 
     public function showsiteapp()
     {
-        return view('client.siteapp');
+        if (Auth::check()) {
+            return view('client.siteapp');
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
     }
 
     public function regsiteapp(Request $request)
@@ -36,7 +45,6 @@ class ClientController extends Controller
             'animal' => 'required|string|max:255',
             'problem' => 'required|string',
             'main_feature' => 'required|string|max:255',
-            'secondary_feature' => 'nullable|string|max:255',
             'why_good' => 'required|string',
             'idea_origin' => 'required|string',
             'competition' => 'required|string',
@@ -54,23 +62,26 @@ class ClientController extends Controller
             'support_type' => 'required|string|max:255',
             'platforms' => 'required|string|max:255',
             'tech_requirements' => 'required|string',
-            'status' => 'required|string|max:255',
         ]);
 
         $validatedData['user_id'] = Auth::id();
 
-        try{
+        try {
             Siteapp::create($validatedData);
             return redirect()->route('siteapp')->with('success', 'Détails du projet enregistrés avec succès.');
-        }catch(Exception $e){
-            return redirect()->route('siteapp')->with('error', 'Erreur. '.$e);
+        } catch (Exception $e) {
+            return redirect()->route('siteapp')->with('error', 'Erreur. ' . $e);
         }
-
     }
 
     public function showfranchise()
     {
-        return view('client.franchise');
+        if (Auth::check()) {
+            return view('client.franchise');
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
     }
 
     public function regfranchise(Request $request)
@@ -101,23 +112,26 @@ class ClientController extends Controller
             'tools' => 'required|string',
             'business_song' => 'required|string|max:255',
             'success_plan' => 'required|string',
-            'status' => 'required|string|max:255',
         ]);
 
         $validatedData['user_id'] = Auth::id();
 
-        try{
+        try {
             Franchise::create($validatedData);
             return redirect()->route('franchise')->with('success', 'Détails de la franchise enregistrés avec succès.');
-        }catch(Exception $e){
-            return redirect()->route('franchise')->with('error', 'Erreur. '.$e);
+        } catch (Exception $e) {
+            return redirect()->route('franchise')->with('error', 'Erreur. ' . $e);
         }
-
     }
 
     public function showmarketplace()
     {
-        return view('client.marketplace');
+        if (Auth::check()) {
+            return view('client.marketplace');
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
     }
 
     public function regmarketplace(Request $request)
@@ -135,151 +149,156 @@ class ClientController extends Controller
             'budget' => 'required|decimal:0,2',
             'post_acquisition_action' => 'required|string',
             'business_strategy' => 'required|string',
-            'status' => 'required|string|max:255',
         ]);
 
 
         $validatedData['user_id'] = Auth::id();
-        try{
+        try {
             Marketplacebusiness::create($validatedData);
             return redirect()->route('marketplace')->with('success', 'Détails du projet enregistrés avec succès.');
-        }catch(Exception $e){
-            return redirect()->route('marketplace')->with('error', 'Erreur. '.$e);
+        } catch (Exception $e) {
+            return redirect()->route('marketplace')->with('error', 'Erreur. ' . $e);
         }
-
     }
 
-public function getStatistics()
-{
-    // Comptage des projets soumis (total)
-    $franchiseSubmitted = Franchise::count();
-    $siteappSubmitted = Siteapp::count();
-    $marketplaceSubmitted = Marketplacebusiness::count();
-
-    // Nombre total de projets soumis
-    $totalSubmitted = $franchiseSubmitted + $siteappSubmitted + $marketplaceSubmitted;
-
-    // Comptage des projets en attente
-    $franchisePending = Franchise::where('status', 'en attente')->count();
-    $siteappPending = Siteapp::where('status', 'en attente')->count();
-    $marketplacePending = Marketplacebusiness::where('status', 'en attente')->count();
-
-    // Comptage des projets validés
-    $franchiseValid = Franchise::where('status', 'validé')->count();
-    $siteappValid = Siteapp::where('status', 'validé')->count();
-    $marketplaceValid = Marketplacebusiness::where('status', 'validé')->count();
-
-    // Comptage des projets rejetés
-    $franchiseRejected = Franchise::where('status', 'rejeté')->count();
-    $siteappRejected = Siteapp::where('status', 'rejeté')->count();
-    $marketplaceRejected = Marketplacebusiness::where('status', 'rejeté')->count();
-
-    // Nombre total de projets validés et rejetés
-    $totalValid = $franchiseValid + $siteappValid + $marketplaceValid;
-    $totalRejected = $franchiseRejected + $siteappRejected + $marketplaceRejected;
-
-    // Retour des données au format JSON
-    return response()->json([
-        'pending' => $franchisePending + $siteappPending + $marketplacePending, // Nombre de projets en attente
-        'submitted' => $totalSubmitted, // Total projets soumis
-        'valid' => $totalValid,
-        'rejected' => $totalRejected
-    ]);
-}
-
-
-public function index()
-{
-    // Récupérer tous les projets de chaque modèle
-    $franchises = Franchise::select('id', 'business_name as nom', 'activity_description as description', 'status')->get()->map(function($item) {
-        $item->type = 'Franchise';
-        return $item;
-    });
-
-    $marketplaces = Marketplacebusiness::select('id', 'business_name as nom', 'business_motivation as description', 'status')->get()->map(function($item) {
-        $item->type = 'Marketplace';
-        return $item;
-    });
-
-    $siteapps = Siteapp::select('id', 'name as nom', 'description', 'status')->get()->map(function($item) {
-        $item->type = 'Siteapp';
-        return $item;
-    });
-
-    // Fusionner tous les projets
-    $projects = $franchises->merge($marketplaces)->merge($siteapps);
-
-    // Vérification de la fusion
-    if ($projects->isEmpty()) {
-        // Optionnel : si aucun projet n'est trouvé
-        session()->flash('info', 'Aucun projet trouvé.');
-    }
-// dd($projects);
-
-    return view('client.welcome', compact('projects'));
-}
-
-public function showincubator()
+    public function getStatistics()
     {
-        return view('client.incubator'); // Créez cette vue
+        // Comptage des projets soumis (total)
+        $franchiseSubmitted = Franchise::count();
+        $siteappSubmitted = Siteapp::count();
+        $marketplaceSubmitted = Marketplacebusiness::count();
+
+        // Nombre total de projets soumis
+        $totalSubmitted = $franchiseSubmitted + $siteappSubmitted + $marketplaceSubmitted;
+
+        // Comptage des projets en attente
+        $franchisePending = Franchise::where('status', 'en attente')->count();
+        $siteappPending = Siteapp::where('status', 'en attente')->count();
+        $marketplacePending = Marketplacebusiness::where('status', 'en attente')->count();
+
+        // Comptage des projets validés
+        $franchiseValid = Franchise::where('status', 'validé')->count();
+        $siteappValid = Siteapp::where('status', 'validé')->count();
+        $marketplaceValid = Marketplacebusiness::where('status', 'validé')->count();
+
+        // Comptage des projets rejetés
+        $franchiseRejected = Franchise::where('status', 'rejeté')->count();
+        $siteappRejected = Siteapp::where('status', 'rejeté')->count();
+        $marketplaceRejected = Marketplacebusiness::where('status', 'rejeté')->count();
+
+        // Nombre total de projets validés et rejetés
+        $totalValid = $franchiseValid + $siteappValid + $marketplaceValid;
+        $totalRejected = $franchiseRejected + $siteappRejected + $marketplaceRejected;
+
+        // Retour des données au format JSON
+        return response()->json([
+            'pending' => $franchisePending + $siteappPending + $marketplacePending, // Nombre de projets en attente
+            'submitted' => $totalSubmitted, // Total projets soumis
+            'valid' => $totalValid,
+            'rejected' => $totalRejected
+        ]);
     }
 
-public function regincubator(Request $request)
-{
-    // Validation des données du formulaire
-    $validatedData = $request->validate([
-        'project_name' => 'required|string|max:255',
-        'project_description' => 'required|string',
-        'project_stage' => 'required|string',
-        'project_mission' => 'required|string',
-        'origin_motivation' => 'required|string',
-        'passion_aspect' => 'required|string',
-        'strength' => 'required|string',
-        'obstacle' => 'required|string',
-        'objective' => 'required|string',
-        'time_to_profit' => 'required|integer|between:1,60',
-        'strategy' => 'required|string',
-        'target_amount' => 'nullable|numeric|min:0',
-        'growth_vision' => 'required|string',
-        'sector' => 'required|string',
-        'market_target' => 'required|string',
-        'unique_features' => 'required|string',
-        'growth_limitations' => 'required|string',
-        'market_analysis' => 'required|boolean',
-        'competitors' => 'required|string',
-        'clients' => 'required|boolean',
-        'market_strategy' => 'required|string',
-        'funds_raised' => 'required|boolean',
-        'initial_budget' => 'nullable|numeric|min:0',
-        'first_step_with_unlimited_funds' => 'required|string',
-        'growth_needs' => 'required|string',
-        'strategic_support' => 'required|string',
-        'co_management' => 'required|boolean',
-        'desired_connections' => 'required|string',
-        'impact' => 'required|string',
-        'core_values' => 'required|string',
-        'value_translation' => 'required|string',
-        'global_impact' => 'required|string',
-        'cartoon_character' => 'required|string',
-        'tv_synopsis' => 'required|string',
-        'documentary_title' => 'required|string',
-        'celebration_details' => 'required|string',
-        'client_slogan' => 'required|string',
-    ]);
 
-    // Ajouter l'ID de l'utilisateur
-    $validatedData['user_id'] = Auth::id(); 
+    public function index()
+    {
+        if (Auth::check()) {
+            // Récupérer tous les projets de chaque modèle
+            $franchises = Franchise::select('id', 'business_name as nom', 'activity_description as description', 'status')->get()->map(function ($item) {
+                $item->type = 'Franchise';
+                return $item;
+            });
 
-    try {
-        // Créer un nouvel enregistrement dans la base de données
-        IncubatorProject::create($validatedData);
-        return redirect()->route('incubator')->with('success', 'Votre projet a été enregistré avec succès!');
-    } catch (\Exception $e) {
-        // En cas d'erreur, rediriger avec un message d'erreur
-        return redirect()->route('incubator')->with('error', 'Erreur : ' . $e->getMessage());
+            $marketplaces = Marketplacebusiness::select('id', 'business_name as nom', 'business_motivation as description', 'status')->get()->map(function ($item) {
+                $item->type = 'Marketplace';
+                return $item;
+            });
+
+            $siteapps = Siteapp::select('id', 'name as nom', 'description', 'status')->get()->map(function ($item) {
+                $item->type = 'Siteapp';
+                return $item;
+            });
+
+            // Fusionner tous les projets
+            $projects = $franchises->merge($marketplaces)->merge($siteapps);
+
+            // Vérification de la fusion
+            if ($projects->isEmpty()) {
+                // Optionnel : si aucun projet n'est trouvé
+                session()->flash('info', 'Aucun projet trouvé.');
+            }
+            // dd($projects);
+
+            return view('client.welcome', compact('projects'));
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
     }
-}
 
+    public function showincubator()
+    {
+        if (Auth::check()) {
+            return view('client.incubator');
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
+    }
 
+    public function regincubator(Request $request)
+    {
+        // Validation des données du formulaire
+        $validatedData = $request->validate([
+            'project_name' => 'required|string|max:255',
+            'project_description' => 'required|string',
+            'project_stage' => 'required|string',
+            'project_mission' => 'required|string',
+            'origin_motivation' => 'required|string',
+            'passion_aspect' => 'required|string',
+            'strength' => 'required|string',
+            'obstacle' => 'required|string',
+            'objective' => 'required|string',
+            'time_to_profit' => 'required|integer|between:1,60',
+            'strategy' => 'required|string',
+            'target_amount' => 'nullable|numeric|min:0',
+            'growth_vision' => 'required|string',
+            'sector' => 'required|string',
+            'market_target' => 'required|string',
+            'unique_features' => 'required|string',
+            'growth_limitations' => 'required|string',
+            'market_analysis' => 'required|boolean',
+            'competitors' => 'required|string',
+            'clients' => 'required|boolean',
+            'market_strategy' => 'required|string',
+            'funds_raised' => 'required|boolean',
+            'initial_budget' => 'nullable|numeric|min:0',
+            'first_step_with_unlimited_funds' => 'required|string',
+            'growth_needs' => 'required|string',
+            'strategic_support' => 'required|string',
+            'co_management' => 'required|boolean',
+            'desired_connections' => 'required|string',
+            'impact' => 'required|string',
+            'core_values' => 'required|string',
+            'value_translation' => 'required|string',
+            'global_impact' => 'required|string',
+            'cartoon_character' => 'required|string',
+            'tv_synopsis' => 'required|string',
+            'documentary_title' => 'required|string',
+            'celebration_details' => 'required|string',
+            'client_slogan' => 'required|string',
+        ]);
 
+        // Ajouter l'ID de l'utilisateur
+        $validatedData['user_id'] = Auth::id();
+
+        try {
+            // Créer un nouvel enregistrement dans la base de données
+            IncubatorProject::create($validatedData);
+            return redirect()->route('incubator')->with('success', 'Votre projet a été enregistré avec succès!');
+        } catch (\Exception $e) {
+            // En cas d'erreur, rediriger avec un message d'erreur
+            return redirect()->route('incubator')->with('error', 'Erreur : ' . $e->getMessage());
+        }
+    }
 }

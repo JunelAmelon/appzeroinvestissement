@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('animal');
             $table->text('problem');
             $table->string('main_feature');
-            $table->string('secondary_feature')->nullable();
             $table->text('why_good');
             $table->text('idea_origin');
             $table->text('competition');
@@ -38,7 +37,7 @@ return new class extends Migration
             $table->string('support_type');
             $table->string('platforms');
             $table->text('tech_requirements');
-            $table->string('status');
+            $table->string('status')->default('en attente');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

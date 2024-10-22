@@ -15,7 +15,6 @@ class Siteapp extends Model
         'animal',
         'problem',
         'main_feature',
-        'secondary_feature',
         'why_good',
         'idea_origin',
         'competition',

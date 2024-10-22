@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <title>ZeroInvestissement Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="{{ asset('build/assets/img/icon.ico') }}" type="image/x-icon" />
 
@@ -75,8 +75,7 @@
                             </a>
                             <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
                                 <div class="quick-actions-header" style="background-color: #6A00B8; color:white;">
-                                    <span class="title mb-1">Quick Actions</span>
-                                    <span class="subtitle op-8">Shortcuts</span>
+                                    <span class="title mb-1">Actions rapide</span>
                                 </div>
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
@@ -363,9 +362,9 @@
                 </div>
             </footer>
         </div>
- 
- 
-      
+
+
+
     </div>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
@@ -476,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             // Affiche le nombre total de projets soumis
-            document.getElementById('total-submitted').textContent = data.submitted; 
+            document.getElementById('total-submitted').textContent = data.submitted;
         })
         .catch(function (error) {
             console.error('Erreur lors de la récupération des statistiques', error);

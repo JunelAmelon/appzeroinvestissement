@@ -27,7 +27,7 @@ return new class extends Migration
     $table->decimal('budget', 10, 2);
     $table->text('post_acquisition_action');
     $table->text('business_strategy');
-    $table->string('status');
+    $table->string('status')->default('en attente');
     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
     $table->timestamps();
 });

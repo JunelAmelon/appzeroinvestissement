@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('incubator_projects', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('project_name');
             $table->text('project_description');
             $table->string('project_stage');

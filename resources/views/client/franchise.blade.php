@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <title>ZeroInvestissement Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -74,8 +74,7 @@
                             </a>
                             <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
                                 <div class="quick-actions-header" style="background-color: #6A00B8; color:white;">
-                                    <span class="title mb-1">Quick Actions</span>
-                                    <span class="subtitle op-8">Shortcuts</span>
+                                    <span class="title mb-1">Actions rapide</span>
                                 </div>
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
@@ -227,7 +226,7 @@
         <div class="main-panel">
             <div class="content">
                 <div class="panel-header " style="background-color: none; ">
-                     <div class="page-inner py-5">
+                    <div class="page-inner py-5">
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
                                 <h2 class=" pb-2 fw-bold" style=" color:#6A00B8;">Soumettre un projet</h2>
@@ -238,93 +237,159 @@
                     </div>
                 </div>
 
-<section class="bg-gray-100">
-    <div class="container mx-auto mt-2 ">
-        @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
+                <section class="bg-gray-100">
+                    <div class="container mx-auto mt-2 ">
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
 
-        @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-        @endif
-        <!-- En-tête modifiée ici -->
-        <h2 class="text-center card-header mb-0 p-3" style="background-color: #6A00B8; color: white;">Franchise</h2>
-       <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
-    @csrf
-    <h2 class="text-xl font-bold mb-4">Bienvenue dans notre questionnaire franchise !</h2>
-    <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre entreprise.</p>
-    
-    <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle :</h3>
-    <div class="mb-4">
-        <label for="business_name" class="form-label">Nom de l'Entreprise</label>
-        <input type="text" class="form-control" id="business_name" name="business_name" required>
-        <small class="text-gray-500">Pourquoi ce nom ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="character_comparison" class="form-label">Comparaison de Caractère</label>
-        <input type="text" class="form-control" id="character_comparison" name="character_comparison" required>
-        <small class="text-gray-500">Si votre entreprise était un personnage de film, lequel serait-ce ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="activity_description" class="form-label">Description de l'Activité</label>
-        <textarea class="form-control" id="activity_description" name="activity_description" required></textarea>
-        <small class="text-gray-500">Décrivez votre activité en une phrase, comme si vous deviez l'expliquer à un enfant de 5 ans.</small>
-    </div>
-    <div class="mb-4">
-        <label for="business_age" class="form-label">Âge de l'Entreprise</label>
-        <input type="text" class="form-control" id="business_age" name="business_age" required>
-        <small class="text-gray-500">Depuis combien de temps votre entreprise existe-t-elle ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="sector" class="form-label">Secteur</label>
-        <input type="text" class="form-control" id="sector" name="sector" required>
-        <small class="text-gray-500">Ex : restauration, beauté, services, retail, etc.</small>
-    </div>
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
+                        <!-- En-tête modifiée ici -->
+                        <h2 class="text-center card-header mb-0 p-3" style="background-color: #6A00B8; color: white;">Franchise</h2>
+                        <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
+                            @csrf
+                            <h2 class="text-xl font-bold mb-4">Bienvenue dans notre questionnaire franchise !</h2>
+                            <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre entreprise.</p>
 
-    <h3 class="text-lg font-semibold mb-2">🎯 Le Succès :</h3>
-    <div class="mb-4">
-        <label for="proudest_achievement" class="form-label">Plus Grande Fierté</label>
-        <textarea class="form-control" id="proudest_achievement" name="proudest_achievement" required></textarea>
-        <small class="text-gray-500">Racontez-nous votre plus grande réussite (prix, gros contrat, etc.).</small>
-    </div>
-    <div class="mb-4">
-        <label for="customer_count" class="form-label">Nombre de Clients</label>
-        <input type="text" class="form-control" id="customer_count" name="customer_count" required>
-        <small class="text-gray-500">Combien de clients avez-vous servi jusqu’à aujourd’hui ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="current_revenue" class="form-label">Revenu Actuel</label>
-        <input type="text" class="form-control" id="current_revenue" name="current_revenue" required>
-        <small class="text-gray-500">Quel est votre chiffre d’affaires actuel ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="scalability_score" class="form-label">Score de Scalabilité</label>
-        <input type="number" class="form-control" id="scalability_score" name="scalability_score" required>
-        <small class="text-gray-500">Sur une échelle de 1 à 10, comment évaluez-vous la scalabilité de votre modèle ?</small>
-    </div>
+                            <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle :</h3>
+                            <div class="mb-4">
+                                <label for="business_name" class="form-label">Nom de l'Entreprise</label>
+                                <input type="text" class="form-control" id="business_name" name="business_name" required>
+                                <small class="text-gray-500">Pourquoi ce nom ?</small>
+                            </div>
+                            <div class="mb-4">
+                                <label for="character_comparison" class="form-label">Comparaison de Caractère</label>
+                                <input type="text" class="form-control" id="character_comparison" name="character_comparison" required>
+                                <small class="text-gray-500">Si votre entreprise était un personnage de film, lequel serait-ce ?</small>
+                            </div>
+                            <div class="mb-4">
+                                <label for="activity_description" class="form-label">Description de l'Activité</label>
+                                <textarea class="form-control" id="activity_description" name="activity_description" required></textarea>
+                                <small class="text-gray-500">Décrivez votre activité en une phrase, comme si vous deviez l'expliquer à un enfant de 5 ans.</small>
+                            </div>
+                            <div class="mb-4">
+                                <label for="business_age" class="form-label">Âge de l'Entreprise</label>
+                                <input type="number" class="form-control" id="business_age" name="business_age" required>
+                                <small class="text-gray-500">Depuis combien de temps votre entreprise existe-t-elle ?</small>
+                            </div>
+                            <div class="mb-4">
+                                <label for="sector" class="form-label">Secteur</label>
+                                <input type="text" class="form-control" id="sector" name="sector" required>
+                                <small class="text-gray-500">Ex : restauration, beauté, services, retail, etc.</small>
+                            </div>
 
-    <h3 class="text-lg font-semibold mb-2">🛠️ Le Grand Saut :</h3>
-    <div class="mb-4">
-        <label for="franchise_motivation" class="form-label">Motivation pour la Franchise</label>
-        <textarea class="form-control" id="franchise_motivation" name="franchise_motivation" required></textarea>
-        <small class="text-gray-500">Pourquoi souhaitez-vous transformer votre entreprise en franchise ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="franchise_target" class="form-label">Cible de Franchise</label>
-        <input type="number" class="form-control" id="franchise_target" name="franchise_target" required>
-        <small class="text-gray-500">Avez-vous déjà une idée du nombre de franchises que vous souhaitez lancer ?</small>
-    </div>
+                            <h3 class="text-lg font-semibold mb-2">🎯 Le Succès :</h3>
+                            <div class="mb-4">
+                                <label for="proudest_achievement" class="form-label">Plus Grande Fierté</label>
+                                <textarea class="form-control" id="proudest_achievement" name="proudest_achievement" required></textarea>
+                                <small class="text-gray-500">Racontez-nous votre plus grande réussite (prix, gros contrat, etc.).</small>
+                            </div>
+                            <div class="mb-4">
+                                <label for="customer_count" class="form-label">Nombre de Clients</label>
+                                <input type="text" class="form-control" id="customer_count" name="customer_count" required>
+                                <small class="text-gray-500">Combien de clients avez-vous servi jusqu’à aujourd’hui ?</small>
+                            </div>
+                            <div class="mb-4">
+                                <label for="current_revenue" class="form-label">Revenu Actuel</label>
+                                <input type="text" class="form-control" id="current_revenue" name="current_revenue" required>
+                                <small class="text-gray-500">Quel est votre chiffre d’affaires actuel ?</small>
+                            </div>
+                            <div class="mb-4">
+                                <label for="scalability_score" class="form-label">Score de Scalabilité</label>
+                                <input type="number" class="form-control" id="scalability_score" name="scalability_score" required>
+                                <small class="text-gray-500">Sur une échelle de 1 à 10, comment évaluez-vous la scalabilité de votre modèle ?</small>
+                            </div>
 
-    <button type="submit" class="py-2 px-4 rounded text-white" style="background-color:#6A00B8; color:white;">Enregistrer</button>
-</form>
+                            <h3 class="text-lg font-semibold mb-2">🛠️ Le Grand Saut :</h3>
+                            <div class="mb-4">
+                                <label for="franchise_motivation" class="form-label">Motivation pour la Franchise</label>
+                                <textarea class="form-control" id="franchise_motivation" name="franchise_motivation" required></textarea>
+                                <small class="text-gray-500">Pourquoi souhaitez-vous transformer votre entreprise en franchise ?</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="current_locations" class="form-label">Votre entreprise est-elle déjà implantée dans plusieurs villes/régions ?</label>
+                                <textarea class="form-control" id="current_locations" name="current_locations" required></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="franchise_target" class="form-label">Cible de Franchise</label>
+                                <input type="number" class="form-control" id="franchise_target" name="franchise_target" required>
+                                <small class="text-gray-500">Avez-vous déjà une idée du nombre de franchises que vous souhaitez lancer ?</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="franchise_reproducibility" class="form-label">Comment votre entreprise peut-elle être reproduite facilement dans d’autres villes ou pays ?</label>
+                                <textarea class="form-control" id="franchise_reproducibility" name="franchise_reproducibility" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="key_resources" class="form-label">Quelles sont les ressources clés nécessaires pour lancer une franchise de votre entreprise ?</label>
+                                <textarea class="form-control" id="key_resources" name="key_resources" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="sector_growth" class="form-label">Votre secteur est-il en pleine croissance ?</label>
+                                <textarea class="form-control" id="sector_growth" name="sector_growth" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="market_study" class="form-label">Avez-vous déjà envisagé des données géographiques ou des études de marché pour vos futures implantations ?</label>
+                                <textarea class="form-control" id="market_study" name="market_study" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="company_values" class="form-label">Quelles sont les valeurs clés de votre entreprise ?</label>
+                                <textarea class="form-control" id="company_values" name="company_values" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="franchisee_requirements" class="form-label">En quoi ces valeurs seront-elles essentielles pour vos futurs franchisés ?</label>
+                                <textarea class="form-control" id="franchisee_requirements" name="franchisee_requirements" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="competitors" class="form-label">Connaissez-vous les principaux concurrents dans les zones où vous souhaitez vous implanter ?</label>
+                                <textarea class="form-control" id="competitors" name="competitors" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="location_data" class="form-label">Disposez-vous déjà de données d’analyse pour identifier les meilleures zones d’implantation ?</label>
+                                <textarea class="form-control" id="location_data" name="location_data" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="franchisee_training" class="form-label">Comment imaginez-vous la formation de vos futurs franchisés ?</label>
+                                <textarea class="form-control" id="franchisee_training" name="franchisee_training" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tools" class="form-label">Quels sont les outils essentiels que vous pensez devoir fournir à vos franchisés ?
+                                </label>
+                                <textarea class="form-control" id="tools" name="tools" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="business_song" class="form-label">Si votre entreprise était une chanson, laquelle serait-ce et pourquoi ? ?</label>
+                                <input type="text" class="form-control" id="business_song" name="business_song" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="success_plan" class="form-label">Si vous deviez déjeuner avec une autre grande marque franchisée pour obtenir des conseils, laquelle choisiriez-vous et pourquoi ?</label>
+                                <textarea class="form-control" id="success_plan" name="success_plan" required></textarea>
+                            </div>
+
+                            <button type="submit" class="py-2 px-4 rounded text-white" style="background-color:#6A00B8; color:white;">Enregistrer</button>
+                        </form>
 
 
 
-    </section>
+                </section>
 
 
 
@@ -362,7 +427,7 @@
             </footer>
         </div>
 
-       
+
     </div>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
@@ -389,7 +454,7 @@
     <script src="{{ asset('build/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <!-- <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script> -->
 
     <!-- jQuery Vector Maps -->
     <script src="{{ asset('build/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
@@ -405,101 +470,6 @@
     <script src="{{ asset('build/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('build/assets/js/demo.js') }}"></script>
 
-    <script>
-        Circles.create({
-            id: 'circles-1',
-            radius: 45,
-            value: 60,
-            maxValue: 100,
-            width: 7,
-            text: 5,
-            colors: ['#f1f1f1', '#FF9E27'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-2',
-            radius: 45,
-            value: 70,
-            maxValue: 100,
-            width: 7,
-            text: 36,
-            colors: ['#f1f1f1', '#2BB930'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-3',
-            radius: 45,
-            value: 40,
-            maxValue: 100,
-            width: 7,
-            text: 12,
-            colors: ['#f1f1f1', '#F25961'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
-        var mytotalIncomeChart = new Chart(totalIncomeChart, {
-            type: 'bar',
-            data: {
-                labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-                datasets: [{
-                    label: "Total Income",
-                    backgroundColor: '#ff9e27',
-                    borderColor: 'rgb(23, 125, 255)',
-                    data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    display: false,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            display: false //this will remove only the label
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }]
-                },
-            }
-        });
-
-        $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: '#ffa534',
-            fillColor: 'rgba(255, 165, 52, .14)'
-        });
-    </script>
 </body>
 
 </html>
-

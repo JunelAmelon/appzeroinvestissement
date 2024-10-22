@@ -40,7 +40,7 @@ return new class extends Migration
     $table->text('tools');
     $table->string('business_song');
     $table->text('success_plan');
-    $table->string('status');
+    $table->string('status')->default('en attente');
     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
     $table->timestamps();
 });

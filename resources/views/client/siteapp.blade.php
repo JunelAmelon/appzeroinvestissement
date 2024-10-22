@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <title>ZeroInvestissement Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -74,8 +74,7 @@
                             </a>
                             <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
                                 <div class="quick-actions-header" style="background-color: #6A00B8; color:white;">
-                                    <span class="title mb-1">Quick Actions</span>
-                                    <span class="subtitle op-8">Shortcuts</span>
+                                    <span class="title mb-1">Actions rapide</span>
                                 </div>
                                 <div class="quick-actions-scroll scrollbar-outer">
                                     <div class="quick-actions-items">
@@ -227,7 +226,7 @@
         <div class="main-panel">
             <div class="content">
                 <div class="panel-header " style="background-color: none; ">
-                      <div class="page-inner py-5">
+                    <div class="page-inner py-5">
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
                                 <h2 class=" pb-2 fw-bold" style=" color:#6A00B8;">Soumettre un projet</h2>
@@ -239,108 +238,163 @@
                 </div>
 
 
-<section class="bg-gray-100 mb-4">
-    <div class="container mx-auto mt-2 ">
-        @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
+                <section class="bg-gray-100 mb-4">
+                    <div class="container mx-auto mt-2 ">
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
 
-        @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-        @endif
-        <!-- En-tête modifiée ici -->
-         <h2 class="text-center mb-0  card-header" style="background-color: #6A00B8; color: white;">Site/app</h2>
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
+                        <!-- En-tête modifiée ici -->
+                        <h2 class="text-center mb-0  card-header" style="background-color: #6A00B8; color: white;">Site/app</h2>
 
 
                         <form method="POST" action="{{ route('siteapp.save') }}" class="bg-white p-5 rounded shadow">
-    @csrf
-   
-    <h2 class="text-center mb-4">Bienvenue dans notre questionnaire interactif ! 🚀</h2>
-    <p class="text-center mb-4">Pour que nous puissions bien comprendre votre projet et votre motivation, répondez à ces quelques questions. Amusez-vous et soyez créatif, nous vous attendons avec impatience !</p>
-    
-    <div class="mb-3">
-        <label for="name" class="form-label">Nom de votre projet (soyez créatif !)</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-    </div>
-    
-    <div class="mb-3">
-        <label for="description" class="form-label">En une phrase, décrivez votre idée comme si vous la pitchiez à un alien (oui, un alien) :</label>
-        <textarea class="form-control" id="description" name="description" required></textarea>
-    </div>
-    
-    <div class="mb-3">
-        <label for="animal" class="form-label">Si votre projet était un animal, lequel serait-il et pourquoi ?</label>
-        <input type="text" class="form-control" id="animal" name="animal" required>
-    </div>
-    
-    <div class="mb-3">
-        <label for="problem" class="form-label">Quel est le problème majeur que votre idée va résoudre ?</label>
-        <textarea class="form-control" id="problem" name="problem" required></textarea>
-    </div>
-    
-    <div class="mb-3">
-        <label for="main_feature" class="form-label">Fonctionnalité phare : Quelle est la fonctionnalité qui rendra votre site ou appli indispensable ?</label>
-        <input type="text" class="form-control" id="main_feature" name="main_feature" required>
-    </div>
+                            @csrf
 
-    <div class="mb-3">
-        <label for="why_good" class="form-label">Pourquoi pensez-vous que votre idée est meilleure que ce qui existe déjà ?</label>
-        <textarea class="form-control" id="why_good" name="why_good" required></textarea>
-    </div>
+                            <h2 class="text-center mb-4">Bienvenue dans notre questionnaire interactif ! 🚀</h2>
+                            <p class="text-center mb-4">Pour que nous puissions bien comprendre votre projet et votre motivation, répondez à ces quelques questions. Amusez-vous et soyez créatif, nous vous attendons avec impatience !</p>
 
-    <div class="mb-3">
-        <label for="idea_origin" class="form-label">Comment vous est venue cette idée ?</label>
-        <textarea class="form-control" id="idea_origin" name="idea_origin" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nom de votre projet (soyez créatif !)</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
 
-    <div class="mb-3">
-        <label for="competition" class="form-label">Avez-vous déjà pensé à une stratégie pour atteindre vos clients cibles ? Si oui, laquelle ?</label>
-        <textarea class="form-control" id="competition" name="competition" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">En une phrase, décrivez votre idée comme si vous la pitchiez à un alien (oui, un alien) :</label>
+                                <textarea class="form-control" id="description" name="description" required></textarea>
+                            </div>
 
-    <div class="mb-3">
-        <label for="target_customers" class="form-label">Votre cible idéale : Décrivez votre client idéal.</label>
-        <textarea class="form-control" id="target_customers" name="target_customers" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="animal" class="form-label">Si votre projet était un animal, lequel serait-il et pourquoi ?</label>
+                                <input type="text" class="form-control" id="animal" name="animal" required>
+                            </div>
 
-    <div class="mb-3">
-        <label for="revenue_model" class="form-label">Comment votre projet va-t-il rapporter des sous ?</label>
-        <textarea class="form-control" id="revenue_model" name="revenue_model" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="problem" class="form-label">Quel est le problème majeur que votre idée va résoudre ?</label>
+                                <textarea class="form-control" id="problem" name="problem" required></textarea>
+                            </div>
 
-    <div class="mb-3">
-        <label for="dominant_color" class="form-label">Si votre site/appli avait une couleur dominante, ce serait…</label>
-        <input type="text" class="form-control" id="dominant_color" name="dominant_color" required>
-    </div>
+                            <div class="mb-3">
+                                <label for="main_feature" class="form-label">Fonctionnalité phare : Quelle est la fonctionnalité qui rendra votre site ou appli indispensable ?</label>
+                                <input type="text" class="form-control" id="main_feature" name="main_feature" required>
+                            </div>
 
-    <div class="mb-3">
-        <label for="design_style" class="form-label">Quel est le style de design qui vous attire le plus ?</label>
-        <textarea class="form-control" id="design_style" name="design_style" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="why_good" class="form-label">Pourquoi pensez-vous que votre idée est meilleure que ce qui existe déjà ?</label>
+                                <textarea class="form-control" id="why_good" name="why_good" required></textarea>
+                            </div>
 
-    <div class="mb-3">
-        <label for="platforms" class="form-label">Sur quelle(s) plateforme(s) souhaitez-vous que votre appli soit disponible ?</label>
-        <input type="text" class="form-control" id="platforms" name="platforms" required>
-    </div>
+                            <div class="mb-3">
+                                <label for="idea_origin" class="form-label">Comment vous est venue cette idée ?</label>
+                                <textarea class="form-control" id="idea_origin" name="idea_origin" required></textarea>
+                            </div>
 
-    <div class="mb-3">
-        <label for="tech_requirements" class="form-label">Avez-vous des exigences spécifiques en termes de technologie ou d’hébergement ?</label>
-        <textarea class="form-control" id="tech_requirements" name="tech_requirements" required></textarea>
-    </div>
+                            <div class="mb-3">
+                                <label for="competition" class="form-label">Avez-vous déjà pensé à une stratégie pour atteindre vos clients cibles ? Si oui, laquelle ?</label>
+                                <textarea class="form-control" id="competition" name="competition" required></textarea>
+                            </div>
 
-    <div class="mb-3">
-        <label for="status" class="form-label"></label>
-        <input type="hidden" name="status" value="en attente" id="status" required>
-    </div>
-    
-    <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-</form>
+                            <div class="mb-3">
+                                <label for="excitement" class="form-label">Qu’est-ce qui vous rend super excité à l’idée de lancer ce projet ?</label>
+                                <textarea class="form-control" id="excitement" name="excitement" required></textarea>
+                            </div>
 
-</section>
+                            <div class="mb-3">
+                                <label for="fallback_plan" class="form-label">Quel est votre plan B si tout ne se passe pas comme prévu ?</label>
+                                <textarea class="form-control" id="fallback_plan" name="fallback_plan" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="target_customers" class="form-label">Votre cible idéale : Décrivez votre client idéal.</label>
+                                <textarea class="form-control" id="target_customers" name="target_customers" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="revenue_model" class="form-label">Comment votre projet va-t-il rapporter des sous ?</label>
+                                <textarea class="form-control" id="revenue_model" name="revenue_model" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="target_customers" class="form-label">Combien de personnes pensez-vous que votre projet touchera dans sa première année ? (Soyez ambitieux, mais réaliste.)</label>
+                                <input type="number" class="form-control" id="target_customers" name="target_customers" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="social_platform" class="form-label">Si vous deviez choisir une plateforme de réseaux sociaux pour promouvoir votre projet, laquelle serait-elle ?</label>
+                                <input type="text" class="form-control" id="social_platform" name="social_platform" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="availability" class="form-label">Quelles sont vos disponibilités ?</label>
+                                <input type="text" class="form-control" id="availability" name="availability" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="funding_status" class="form-label">Avez-vous des fonds, investisseurs ou partenaires prêts à vous soutenir ?</label>
+                                <select class="form-select" id="funding_status" name="funding_status" required>
+                                    <option value="Oui, j’ai déjà des investisseurs">Oui, j’ai déjà des investisseurs</option>
+                                    <option value="Pas encore, mais je suis prêt à en chercher">Pas encore, mais je suis prêt à en chercher</option>
+                                    <option value="Non, je compte sur ZeroInvestissement.com !">Non, je compte sur ZeroInvestissement.com !</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="project_pitch" class="form-label">Si vous deviez vendre votre idée à un investisseur en une phrase, que diriez-vous ?</label>
+                                <textarea class="form-control" id="project_pitch" name="project_pitch" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="dominant_color" class="form-label">Si votre site/appli avait une couleur dominante, ce serait…</label>
+                                <input type="text" class="form-control" id="dominant_color" name="dominant_color" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="design_style" class="form-label">Quel est le style de design qui vous attire le plus ?</label>
+                                <textarea class="form-control" id="design_style" name="design_style" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="graphic_elements" class="form-label">Avez-vous déjà des éléments graphiques comme un logo ou une charte graphique ?</label>
+                                <select class="form-select" id="graphic_elements" name="graphic_elements" required>
+                                    <option value="1">Oui</option>
+                                    <option value="0">Non</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="support_type" class="form-label">Pour quel support souhaitez-vous développer votre projet ?</label>
+                                <select class="form-select" id="support_type" name="support_type" required>
+                                    <option value="Site web">Site web</option>
+                                    <option value="Application mobile">Application mobile</option>
+                                    <option value="Site web & Application mobile">Les deux</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="platforms" class="form-label">Sur quelle(s) plateforme(s) souhaitez-vous que votre appli soit disponible ?</label>
+                                <select class="form-select" id="platforms" name="platforms" required>
+                                    <option value="iOS">iOS</option>
+                                    <option value="Android">Android</option>
+                                    <option value="iOS & Android">Les deux</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tech_requirements" class="form-label">Avez-vous des exigences spécifiques en termes de technologie ou d’hébergement ?</label>
+                                <textarea class="form-control" id="tech_requirements" name="tech_requirements" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
+                        </form>
+
+                </section>
 
 
 
@@ -357,7 +411,7 @@
             </footer>
         </div>
 
-        
+
     </div>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
@@ -384,7 +438,7 @@
     <script src="{{ asset('build/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <!-- <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script> -->
 
     <!-- jQuery Vector Maps -->
     <script src="{{ asset('build/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
@@ -399,102 +453,6 @@
     <!-- Atlantis DEMO methods, don't include it in your project! -->
     <script src="{{ asset('build/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('build/assets/js/demo.js') }}"></script>
-
-    <script>
-        Circles.create({
-            id: 'circles-1',
-            radius: 45,
-            value: 60,
-            maxValue: 100,
-            width: 7,
-            text: 5,
-            colors: ['#f1f1f1', '#FF9E27'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-2',
-            radius: 45,
-            value: 70,
-            maxValue: 100,
-            width: 7,
-            text: 36,
-            colors: ['#f1f1f1', '#2BB930'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        Circles.create({
-            id: 'circles-3',
-            radius: 45,
-            value: 40,
-            maxValue: 100,
-            width: 7,
-            text: 12,
-            colors: ['#f1f1f1', '#F25961'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
-
-        var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
-        var mytotalIncomeChart = new Chart(totalIncomeChart, {
-            type: 'bar',
-            data: {
-                labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-                datasets: [{
-                    label: "Total Income",
-                    backgroundColor: '#ff9e27',
-                    borderColor: 'rgb(23, 125, 255)',
-                    data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    display: false,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            display: false //this will remove only the label
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }]
-                },
-            }
-        });
-
-        $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: '#ffa534',
-            fillColor: 'rgba(255, 165, 52, .14)'
-        });
-    </script>
 </body>
 
 </html>
-
