@@ -239,92 +239,63 @@
                 </div>
 
 <section class="bg-gray-100">
-    <div class="container mx-auto mt-2 ">
+    <div class="container mx-auto mt-2">
         @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
         @endif
 
         @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
         @endif
-        <!-- En-tête modifiée ici -->
-        <h2 class="text-center mb-4 p-3" style="background-color: #6A00B8; color: white;">Franchise</h2>
-       <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
-    @csrf
-    <h2 class="text-xl font-bold mb-4">Bienvenue dans notre questionnaire franchise !</h2>
-    <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre entreprise.</p>
-    
-    <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle :</h3>
-    <div class="mb-4">
-        <label for="business_name" class="form-label">Nom de l'Entreprise</label>
-        <input type="text" class="form-control" id="business_name" name="business_name" required>
-        <small class="text-gray-500">Pourquoi ce nom ?</small>
+        
+        <h2 class="text-center mb-4 p-3" style="background-color: #6A00B8; color: white;">Soumission de Projet - Accélérateur Zéro</h2>
+        <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
+            @csrf
+            <h2 class="text-xl font-bold mb-4">Bienvenue dans l’univers de l’Accélérateur Zéro !</h2>
+            <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre projet.</p>
+            
+            <h3 class="text-lg font-semibold mb-2">🚀 Votre Projet : Parlons du cœur de votre idée</h3>
+            <div class="mb-4">
+                <label for="project_name" class="form-label">Nom de votre projet ou entreprise</label>
+                <input type="text" class="form-control" id="project_name" name="project_name" required>
+                <small class="text-gray-500">Pourquoi ce nom est parfait ?</small>
+                @error('project_name')
+                    <div class="text-red-500">{{ $message }}</div>
+                @enderror
+            </div>
+            <!-- Ajoutez des blocs d'erreur pour chaque champ ici -->
+            <div class="mb-4">
+                <label for="project_description" class="form-label">Décrivez votre idée ou entreprise</label>
+                <textarea class="form-control" id="project_description" name="project_description" required></textarea>
+                <small class="text-gray-500">En une phrase qui nous fera tomber sous le charme.</small>
+                @error('project_description')
+                    <div class="text-red-500">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <label for="project_stage" class="form-label">À quel stade en êtes-vous avec ce projet ?</label>
+                <select class="form-control" id="project_stage" name="project_stage" required>
+                    <option value="simple_idea">Simple idée</option>
+                    <option value="development">En développement</option>
+                    <option value="existing_business">Entreprise déjà existante</option>
+                </select>
+                @error('project_stage')
+                    <div class="text-red-500">{{ $message }}</div>
+                @enderror
+            </div>
+            <!-- Répétez pour tous les champs -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" style="background-color: #6A00B8; color: white;">Soumettre le projet</button>
+            </div>
+        </form>
     </div>
-    <div class="mb-4">
-        <label for="character_comparison" class="form-label">Comparaison de Caractère</label>
-        <input type="text" class="form-control" id="character_comparison" name="character_comparison" required>
-        <small class="text-gray-500">Si votre entreprise était un personnage de film, lequel serait-ce ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="activity_description" class="form-label">Description de l'Activité</label>
-        <textarea class="form-control" id="activity_description" name="activity_description" required></textarea>
-        <small class="text-gray-500">Décrivez votre activité en une phrase, comme si vous deviez l'expliquer à un enfant de 5 ans.</small>
-    </div>
-    <div class="mb-4">
-        <label for="business_age" class="form-label">Âge de l'Entreprise</label>
-        <input type="text" class="form-control" id="business_age" name="business_age" required>
-        <small class="text-gray-500">Depuis combien de temps votre entreprise existe-t-elle ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="sector" class="form-label">Secteur</label>
-        <input type="text" class="form-control" id="sector" name="sector" required>
-        <small class="text-gray-500">Ex : restauration, beauté, services, retail, etc.</small>
-    </div>
-
-    <h3 class="text-lg font-semibold mb-2">🎯 Le Succès :</h3>
-    <div class="mb-4">
-        <label for="proudest_achievement" class="form-label">Plus Grande Fierté</label>
-        <textarea class="form-control" id="proudest_achievement" name="proudest_achievement" required></textarea>
-        <small class="text-gray-500">Racontez-nous votre plus grande réussite (prix, gros contrat, etc.).</small>
-    </div>
-    <div class="mb-4">
-        <label for="customer_count" class="form-label">Nombre de Clients</label>
-        <input type="text" class="form-control" id="customer_count" name="customer_count" required>
-        <small class="text-gray-500">Combien de clients avez-vous servi jusqu’à aujourd’hui ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="current_revenue" class="form-label">Revenu Actuel</label>
-        <input type="text" class="form-control" id="current_revenue" name="current_revenue" required>
-        <small class="text-gray-500">Quel est votre chiffre d’affaires actuel ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="scalability_score" class="form-label">Score de Scalabilité</label>
-        <input type="number" class="form-control" id="scalability_score" name="scalability_score" required>
-        <small class="text-gray-500">Sur une échelle de 1 à 10, comment évaluez-vous la scalabilité de votre modèle ?</small>
-    </div>
-
-    <h3 class="text-lg font-semibold mb-2">🛠️ Le Grand Saut :</h3>
-    <div class="mb-4">
-        <label for="franchise_motivation" class="form-label">Motivation pour la Franchise</label>
-        <textarea class="form-control" id="franchise_motivation" name="franchise_motivation" required></textarea>
-        <small class="text-gray-500">Pourquoi souhaitez-vous transformer votre entreprise en franchise ?</small>
-    </div>
-    <div class="mb-4">
-        <label for="franchise_target" class="form-label">Cible de Franchise</label>
-        <input type="number" class="form-control" id="franchise_target" name="franchise_target" required>
-        <small class="text-gray-500">Avez-vous déjà une idée du nombre de franchises que vous souhaitez lancer ?</small>
-    </div>
-
-    <button type="submit" class="py-2 px-4 rounded bg-[#6A00B8] text-white">Enregistrer</button>
-</form>
+</section>
 
 
-
-    </section>
 
 
 

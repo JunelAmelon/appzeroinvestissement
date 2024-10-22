@@ -27,6 +27,9 @@ Route::post('/franchisesave', [ClientController::class, 'regfranchise'])->name('
 Route::get('/marketplace', [ClientController::class, 'showmarketplace'])->name('marketplace');
 Route::post('/marketplacesave', [ClientController::class, 'regmarketplace'])->name('marketplace.save');
 
+Route::get('/incubator', [ClientController::class, 'showincubator'])->name('incubator');
+Route::post('/incubatorsave', [ClientController::class, 'regincubator'])->name('incubator.save');
+
 require __DIR__.'/auth.php';
 
 

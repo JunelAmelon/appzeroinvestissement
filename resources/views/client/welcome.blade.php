@@ -202,7 +202,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="static-sidebar.html">
+                                        <a href="/incubator">
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>

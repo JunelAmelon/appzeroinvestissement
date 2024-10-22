@@ -8,6 +8,7 @@ use App\Models\Siteapp;
 use App\Models\Franchise;
 use Illuminate\Http\Request;
 use App\Models\FranchiseDetail;
+use App\Models\IncubatorProject;
 use App\Models\Marketplacebusiness;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -217,5 +218,68 @@ public function index()
 
     return view('client.welcome', compact('projects'));
 }
+
+public function showincubator()
+    {
+        return view('client.incubator'); // Créez cette vue
+    }
+
+public function regincubator(Request $request)
+{
+    // Validation des données du formulaire
+    $validatedData = $request->validate([
+        'project_name' => 'required|string|max:255',
+        'project_description' => 'required|string',
+        'project_stage' => 'required|string',
+        'project_mission' => 'required|string',
+        'origin_motivation' => 'required|string',
+        'passion_aspect' => 'required|string',
+        'strength' => 'required|string',
+        'obstacle' => 'required|string',
+        'objective' => 'required|string',
+        'time_to_profit' => 'required|integer|between:1,60',
+        'strategy' => 'required|string',
+        'target_amount' => 'nullable|numeric|min:0',
+        'growth_vision' => 'required|string',
+        'sector' => 'required|string',
+        'market_target' => 'required|string',
+        'unique_features' => 'required|string',
+        'growth_limitations' => 'required|string',
+        'market_analysis' => 'required|boolean',
+        'competitors' => 'required|string',
+        'clients' => 'required|boolean',
+        'market_strategy' => 'required|string',
+        'funds_raised' => 'required|boolean',
+        'initial_budget' => 'nullable|numeric|min:0',
+        'first_step_with_unlimited_funds' => 'required|string',
+        'growth_needs' => 'required|string',
+        'strategic_support' => 'required|string',
+        'co_management' => 'required|boolean',
+        'desired_connections' => 'required|string',
+        'impact' => 'required|string',
+        'core_values' => 'required|string',
+        'value_translation' => 'required|string',
+        'global_impact' => 'required|string',
+        'cartoon_character' => 'required|string',
+        'tv_synopsis' => 'required|string',
+        'documentary_title' => 'required|string',
+        'celebration_details' => 'required|string',
+        'client_slogan' => 'required|string',
+    ]);
+
+    // Ajouter l'ID de l'utilisateur
+    $validatedData['user_id'] = Auth::id(); 
+
+    try {
+        // Créer un nouvel enregistrement dans la base de données
+        IncubatorProject::create($validatedData);
+        return redirect()->route('incubator')->with('success', 'Votre projet a été enregistré avec succès!');
+    } catch (\Exception $e) {
+        // En cas d'erreur, rediriger avec un message d'erreur
+        return redirect()->route('incubator')->with('error', 'Erreur : ' . $e->getMessage());
+    }
+}
+
+
 
 }
