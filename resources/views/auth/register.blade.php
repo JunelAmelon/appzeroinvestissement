@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -139,12 +140,13 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Section Gauche (Logo + Texte) -->
         <div class="left-section">
-            <img src="{{ asset('build/assets/img/zero.png') }}"  style="width: 70%;"  alt="Zéro Investissement">
-           
+            <img src="{{ asset('build/assets/img/zero.png') }}" style="width: 70%;" alt="Zéro Investissement">
+
             <p>Transformez vos idées en réalités.</p>
         </div>
 
@@ -160,11 +162,54 @@
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
+                <!-- Nom -->
+                <div class="form-group">
+                    <label for="firstname">Nom</label>
+                    <input id="firstname" type="text" name="firstname" value="{{ old('name') }}" required autofocus>
+                    <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
+                </div>
+
                 <!-- Adresse Email -->
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required>
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+
+                <!-- Téléphone -->
+                <div class="form-group">
+                    <label for="phone">Téléphone (Indicatif + Numéro)</label>
+                    <input id="phone" type="text" name="phone" value="{{ old('phone') }}" pattern="\d{1,3} \d{1,15}" required placeholder="ex: 33 789898989">
+                    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                </div>
+
+                <!-- Pays -->
+                <div class="form-group">
+                    <label for="country">Pays</label>
+                    <select id="country" name="country" required>
+                        <option value="">Sélectionnez votre pays</option>
+                        <option value="FR">France</option>
+                        <option value="US">États-Unis</option>
+                        <option value="BJ">Bénin</option>
+                        <option value="CI">Côte d'ivoire</option>
+                        <option value="UK">Angletterre</option>
+                        <!-- Juju faut ajouter d'autres pays ici -->
+                    </select>
+                    <x-input-error :messages="$errors->get('country')" class="mt-2" />
+                </div>
+
+                <!-- Code Postal -->
+                <div class="form-group">
+                    <label for="postal_code">Code Postal</label>
+                    <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code') }}" required>
+                    <x-input-error :messages="$errors->get('postal_code')" class="mt-2" />
+                </div>
+
+                <!-- Ville -->
+                <div class="form-group">
+                    <label for="city">Ville</label>
+                    <input id="city" type="text" name="city" value="{{ old('city') }}" required>
+                    <x-input-error :messages="$errors->get('city')" class="mt-2" />
                 </div>
 
                 <!-- Mot de passe -->
@@ -200,7 +245,7 @@
         const togglePassword = document.querySelector("#togglePassword");
         const password = document.querySelector("#password");
 
-        togglePassword.addEventListener("click", function () {
+        togglePassword.addEventListener("click", function() {
             const type = password.getAttribute("type") === "password" ? "text" : "password";
             password.setAttribute("type", type);
         });
@@ -208,10 +253,11 @@
         const togglePasswordConfirm = document.querySelector("#togglePasswordConfirm");
         const passwordConfirm = document.querySelector("#password_confirmation");
 
-        togglePasswordConfirm.addEventListener("click", function () {
+        togglePasswordConfirm.addEventListener("click", function() {
             const type = passwordConfirm.getAttribute("type") === "password" ? "text" : "password";
             passwordConfirm.setAttribute("type", type);
         });
     </script>
 </body>
+
 </html>
