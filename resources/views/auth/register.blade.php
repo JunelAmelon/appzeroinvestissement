@@ -164,29 +164,29 @@
 
                 <!-- Nom -->
                 <div class="form-group">
-                    <label for="firstname">Nom</label>
-                    <input id="firstname" type="text" name="firstname" value="{{ old('name') }}" required autofocus>
+                    <label for="firstname">Prenom</label>
+                    <input id="firstname" type="text" name="firstname" value="{{ old('firstname') }}" required autofocus>
                     <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
                 </div>
 
                 <!-- Adresse Email -->
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <!-- Téléphone -->
                 <div class="form-group">
                     <label for="phone">Téléphone (Indicatif + Numéro)</label>
-                    <input id="phone" type="text" name="phone" value="{{ old('phone') }}" pattern="\d{1,3} \d{1,15}" required placeholder="ex: 33 789898989">
+                    <input id="phone" type="text" name="phone" value="{{ old('phone') }}" pattern="\d{1,3} \d{1,15}" required autofocus placeholder="ex: 33 789898989">
                     <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                 </div>
 
                 <!-- Pays -->
                 <div class="form-group">
                     <label for="country">Pays</label>
-                    <select id="country" name="country" required>
+                    <select id="country" name="country" required autofocus>
                         <option value="">Sélectionnez votre pays</option>
                         <option value="FR">France</option>
                         <option value="US">États-Unis</option>
@@ -201,14 +201,14 @@
                 <!-- Code Postal -->
                 <div class="form-group">
                     <label for="postal_code">Code Postal</label>
-                    <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code') }}" required>
+                    <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code') }}" required autofocus>
                     <x-input-error :messages="$errors->get('postal_code')" class="mt-2" />
                 </div>
 
                 <!-- Ville -->
                 <div class="form-group">
                     <label for="city">Ville</label>
-                    <input id="city" type="text" name="city" value="{{ old('city') }}" required>
+                    <input id="city" type="text" name="city" value="{{ old('city') }}" required autofocus>
                     <x-input-error :messages="$errors->get('city')" class="mt-2" />
                 </div>
 

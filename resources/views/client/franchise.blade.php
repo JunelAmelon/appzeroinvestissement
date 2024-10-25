@@ -254,134 +254,296 @@
                         <h2 class="text-center card-header mb-0 p-3" style="background-color: #6A00B8; color: white;">Franchise</h2>
                         <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
                             @csrf
-                            <h2 class="text-xl font-bold mb-4">Bienvenue dans notre questionnaire franchise !</h2>
-                            <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre entreprise.</p>
+                            <h2 class="text-center mb-4">Bienvenue dans notre questionnaire franchise !</h2>
+                            <p class="text-center mb-4">Si vous avez une entreprise qui cartonne déjà et que vous voulez la voir grandir et conquérir de nouveaux territoires, vous êtes au bon endroit!<br>Répondez aux questions ci-dessous pour nous aider à comprendre votre entreprise.</p>
 
-                            <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle :</h3>
+                            <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle : Montrez-nous ce que vous avez !</h3>
                             <div class="mb-4">
                                 <label for="business_name" class="form-label">Nom de l'Entreprise</label>
                                 <input type="text" class="form-control" id="business_name" name="business_name" required>
                                 <small class="text-gray-500">Pourquoi ce nom ?</small>
                             </div>
                             <div class="mb-4">
-                                <label for="character_comparison" class="form-label">Comparaison de Caractère</label>
-                                <input type="text" class="form-control" id="character_comparison" name="character_comparison" required>
-                                <small class="text-gray-500">Si votre entreprise était un personnage de film, lequel serait-ce ?</small>
+                                <label for="character_comparison" class="form-label">Si votre entreprise était un personnage de film, lequel serait-ce ?</label>
+                                <textarea class="form-control" id="character_comparison" name="character_comparison" required></textarea>
                             </div>
                             <div class="mb-4">
-                                <label for="activity_description" class="form-label">Description de l'Activité</label>
+                                <label for="activity_description" class="form-label">Décrivez votre activité en une phrase, comme si vous deviez l'expliquer à un enfant de 5 ans.</label>
                                 <textarea class="form-control" id="activity_description" name="activity_description" required></textarea>
-                                <small class="text-gray-500">Décrivez votre activité en une phrase, comme si vous deviez l'expliquer à un enfant de 5 ans.</small>
                             </div>
                             <div class="mb-4">
-                                <label for="business_age" class="form-label">Âge de l'Entreprise</label>
-                                <input type="number" class="form-control" id="business_age" name="business_age" required>
-                                <small class="text-gray-500">Depuis combien de temps votre entreprise existe-t-elle ?</small>
+                                <label for="business_age" class="form-label">Depuis combien de temps votre entreprise existe-t-elle ?</label>
+                                <div>
+                                    <input type="radio" id="un_an" name="business_age" value="Moins d’un an">
+                                    <label for="un_an">Moins d’un an</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="un_trois" name="business_age" value="1 à 3 ans">
+                                    <label for="un_trois">1 à 3 ans</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="plus_trois" name="business_age" value="Plus de 3 ans">
+                                    <label for="plus_trois">Plus de 3 ans</label>
+                                </div>
                             </div>
+
                             <div class="mb-4">
-                                <label for="sector" class="form-label">Secteur</label>
+                                <label for="sector" class="form-label">Quel est votre secteur d’activité ?</label>
                                 <input type="text" class="form-control" id="sector" name="sector" required>
                                 <small class="text-gray-500">Ex : restauration, beauté, services, retail, etc.</small>
                             </div>
 
-                            <h3 class="text-lg font-semibold mb-2">🎯 Le Succès :</h3>
                             <div class="mb-4">
-                                <label for="proudest_achievement" class="form-label">Plus Grande Fierté</label>
-                                <textarea class="form-control" id="proudest_achievement" name="proudest_achievement" required></textarea>
-                                <small class="text-gray-500">Racontez-nous votre plus grande réussite (prix, gros contrat, etc.).</small>
-                            </div>
-                            <div class="mb-4">
-                                <label for="customer_count" class="form-label">Nombre de Clients</label>
-                                <input type="text" class="form-control" id="customer_count" name="customer_count" required>
-                                <small class="text-gray-500">Combien de clients avez-vous servi jusqu’à aujourd’hui ?</small>
-                            </div>
-                            <div class="mb-4">
-                                <label for="current_revenue" class="form-label">Revenu Actuel</label>
-                                <input type="text" class="form-control" id="current_revenue" name="current_revenue" required>
-                                <small class="text-gray-500">Quel est votre chiffre d’affaires actuel ?</small>
-                            </div>
-                            <div class="mb-4">
-                                <label for="scalability_score" class="form-label">Score de Scalabilité</label>
-                                <input type="number" class="form-control" id="scalability_score" name="scalability_score" required>
-                                <small class="text-gray-500">Sur une échelle de 1 à 10, comment évaluez-vous la scalabilité de votre modèle ?</small>
+                                <label for="sucess_product" class="form-label">Quels sont les 3 produits/services phares de votre entreprise qui la rendent unique ?</label>
+                                <input type="text" class="form-control" id="sucess_product" name="sucess_product" required>
                             </div>
 
-                            <h3 class="text-lg font-semibold mb-2">🛠️ Le Grand Saut :</h3>
+                            <h3 class="text-lg font-semibold mb-2">🎯 Le Succès : Racontez-nous votre aventure !</h3>
                             <div class="mb-4">
-                                <label for="franchise_motivation" class="form-label">Motivation pour la Franchise</label>
-                                <textarea class="form-control" id="franchise_motivation" name="franchise_motivation" required></textarea>
-                                <small class="text-gray-500">Pourquoi souhaitez-vous transformer votre entreprise en franchise ?</small>
+                                <label for="proudest_achievement" class="form-label">Votre entreprise cartonne, mais quelle est la plus grande réussite dont vous êtes fier ?</label>
+                                <textarea class="form-control" id="proudest_achievement" name="proudest_achievement" required></textarea>
+                                <small class="text-gray-500">(Prix, gros contrat, etc.).</small>
                             </div>
+                            <div class="mb-4">
+                                <label for="customer_count" class="form-label">Combien de clients avez-vous servi jusqu’à aujourd’hui ?</label>
+                                <div>
+                                    <input type="radio" id="cent" name="customer_count" value="Moins de 100">
+                                    <label for="cent">Moins de 100</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="eun_trois" name="customer_count" value="100 à 500">
+                                    <label for="cent_cinq">100 à 500</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="cinq" name="customer_count" value="Plus de 500">
+                                    <label for="cinq">Plus de 500</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="current_revenue" class="form-label">Quel est votre chiffre d’affaires actuel ?</label>
+                                <div>
+                                    <input type="radio" id="centk" name="current_revenue" value="Moins de 100 000 €">
+                                    <label for="centk">Moins de 100 000 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="cent_cinqk" name="current_revenue" value="Entre 100 000 € et 500 000 €">
+                                    <label for="cent_cinqk">Entre 100 000 € et 500 000 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="cinqk" name="current_revenue" value="Plus de 500 000 €">
+                                    <label for="cinqk">Plus de 500 000 €</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="scalability_score" class="form-label">Sur une échelle de 1 à 10, comment évaluez-vous la scalabilité de votre modèle ? (Indice : Scalabilité = possibilité de reproduire facilement votre concept ailleurs)
+                                </label>
+                                <div>
+                                    <input type="radio" id="pas_encore" name="scalability_score" value="1 : Pas encore prêt à se déployer">
+                                    <label for="pas_encore">1 : Pas encore prêt à se déployer</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="marcher_ailleurs" name="scalability_score" value="5 : Ça pourrait marcher ailleurs">
+                                    <label for="marcher_ailleurs">5 : Ça pourrait marcher ailleurs</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="pret" name="scalability_score" value="10 : Mon modèle est prêt à conquérir le monde !">
+                                    <label for="pret">10 : Mon modèle est prêt à conquérir le monde !</label>
+                                </div>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">🛠️ Le Grand Saut : Pourquoi franchiser votre entreprise ?</h3>
+                            <div class="mb-4">
+                                <label for="franchise_motivation" class="form-label">Pourquoi souhaitez-vous transformer votre entreprise en franchise ?</label>
+                                <div>
+                                    <input type="radio" id="franchise_motivation_1" name="franchise_motivation" value="Accroître ma visibilité" onclick="toggleOtherMotivationInput(false)">
+                                    <label for="franchise_motivation_1">Accroître ma visibilité</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="franchise_motivation_2" name="franchise_motivation" value="Augmenter mon chiffre d’affaires" onclick="toggleOtherMotivationInput(false)">
+                                    <label for="franchise_motivation_2">Augmenter mon chiffre d’affaires</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="franchise_motivation_3" name="franchise_motivation" value="Partager mon succès avec d’autres entrepreneurs" onclick="toggleOtherMotivationInput(false)">
+                                    <label for="franchise_motivation_3">Partager mon succès avec d’autres entrepreneurs</label>
+                                </div>
+
+                                <!-- Option "Autre" avec champ texte -->
+                                <div class="mt-2">
+                                    <input type="radio" id="franchise_motivation_other_radio" name="franchise_motivation" value="" onclick="toggleOtherMotivationInput(true)">
+                                    <label for="franchise_motivation_other_radio">Autre (précisez) :</label>
+                                    <input type="text" class="form-control mt-2" id="franchise_motivation_other" placeholder="Précisez votre motivation" oninput="updateOtherMotivationValue()" style="display: none;">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="excitement" class="form-label">Qu’est-ce qui vous excite le plus à l’idée de voir votre marque à plusieurs endroits ?</label>
+                                <textarea class="form-control" id="excitement" name="excitement" required></textarea>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="current_locations" class="form-label">Votre entreprise est-elle déjà implantée dans plusieurs villes/régions ?</label>
-                                <textarea class="form-control" id="current_locations" name="current_locations" required></textarea>
+                                <div>
+                                    <input type="radio" id="current_locations_1" name="current_locations" value="Oui">
+                                    <label for="current_locations_1">Oui</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="current_locations_2" name="current_locations" value="Non, mais c’est le rêve !">
+                                    <label for="current_locations_2">Non, mais c’est le rêve !</label>
+                                </div>
                             </div>
 
                             <div class="mb-4">
-                                <label for="franchise_target" class="form-label">Cible de Franchise</label>
-                                <input type="number" class="form-control" id="franchise_target" name="franchise_target" required>
-                                <small class="text-gray-500">Avez-vous déjà une idée du nombre de franchises que vous souhaitez lancer ?</small>
+                                <label for="franchise_target" class="form-label">Avez-vous déjà une idée du nombre de franchises que vous souhaitez lancer dans les 3 prochaines années ?</label>
+                                <div>
+                                    <input type="radio" id="franchise_target_1" name="franchise_target" value="1 à 5 franchises">
+                                    <label for="franchise_target_1">1 à 5 franchises</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="franchise_target_2" name="franchise_target" value="5 à 10 franchises">
+                                    <label for="franchise_target_2">5 à 10 franchises</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="franchise_target_3" name="franchise_target" value="Plus de 10 franchises, je vise grand !">
+                                    <label for="franchise_target_3">Plus de 10 franchises, je vise grand !</label>
+                                </div>
                             </div>
+
+                            <h3 class="text-lg font-semibold mb-2">Les Détails qui Comptent : Scalabilité et Potentiel</h3>
 
                             <div class="mb-3">
                                 <label for="franchise_reproducibility" class="form-label">Comment votre entreprise peut-elle être reproduite facilement dans d’autres villes ou pays ?</label>
                                 <textarea class="form-control" id="franchise_reproducibility" name="franchise_reproducibility" required></textarea>
+                                <small class="text-gray-500">(Décrivez-nous en quoi votre modèle est adaptable et duplicable)</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="key_resources" class="form-label">Quelles sont les ressources clés nécessaires pour lancer une franchise de votre entreprise ?</label>
                                 <textarea class="form-control" id="key_resources" name="key_resources" required></textarea>
+                                <small class="text-gray-500">(Ex: Personnel, matériel spécifique, formation)</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="sector_growth" class="form-label">Votre secteur est-il en pleine croissance ?</label>
                                 <textarea class="form-control" id="sector_growth" name="sector_growth" required></textarea>
+                                <small class="text-gray-500">(Expliquez-nous pourquoi c'est le bon moment de franchiser dans votre domaine)</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="market_study" class="form-label">Avez-vous déjà envisagé des données géographiques ou des études de marché pour vos futures implantations ?</label>
                                 <textarea class="form-control" id="market_study" name="market_study" required></textarea>
+                                <small class="text-gray-500">(Population cible, concurrence local)</small>
                             </div>
+
+                            <h3 class="text-lg font-semibold mb-2">Valeurs et Vision (C’est là qu’on connecte !)</h3>
 
                             <div class="mb-3">
                                 <label for="company_values" class="form-label">Quelles sont les valeurs clés de votre entreprise ?</label>
                                 <textarea class="form-control" id="company_values" name="company_values" required></textarea>
+                                <small class="text-gray-500">(Innovation, respect, qualité, service client..)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="business_currency" class="form-label">Si votre entreprise était une devise inspirante, ce serait…</label>
+                                <input type="text" class="form-control" id="business_currency" name="business_currency" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="franchisee_requirements" class="form-label">En quoi ces valeurs seront-elles essentielles pour vos futurs franchisés ?</label>
                                 <textarea class="form-control" id="franchisee_requirements" name="franchisee_requirements" required></textarea>
+                                <small class="text-gray-500">(Pourquoi est-ce important qu'ils partagent ces valeurs ?)</small>
                             </div>
 
                             <div class="mb-3">
+                                <label for="franchisee_search" class="form-label">Que recherchez-vous chez un futur franchisé ?</label>
+                                <textarea class="form-control" id="franchisee_search" name="franchisee_search" required></textarea>
+                                <small class="text-gray-500">(Pourquoi est-ce important qu'ils partagent ces valeurs ?)</small>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">Data et Stratégie (La partie sérieuse mais essentielle)</h3>
+
+                            <div class="mb-3">
                                 <label for="competitors" class="form-label">Connaissez-vous les principaux concurrents dans les zones où vous souhaitez vous implanter ?</label>
-                                <textarea class="form-control" id="competitors" name="competitors" required></textarea>
+                                <div>
+                                    <input type="radio" id="competitors_1" name="competitors" value="Oui, je les ai bien identifiés">
+                                    <label for="competitors_1">Oui, je les ai bien identifiés</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="competitors_2" name="competitors" value="Non, pas encore">
+                                    <label for="competitors_2">Non, pas encore</label>
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="location_data" class="form-label">Disposez-vous déjà de données d’analyse pour identifier les meilleures zones d’implantation ?</label>
                                 <textarea class="form-control" id="location_data" name="location_data" required></textarea>
+                                <small class="text-gray-500">(Population, revenu moyen, etc)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="competitors" class="form-label">Si non, aimeriez-vous que ZeroInvestissement.com vous aide à analyser ces données pour trouver les meilleurs emplacements ?</label>
+                                <div>
+                                    <input type="radio" id="analyse_1" name="analyse" value="Oui, j’ai besoin d’aide !">
+                                    <label for="analyse_1">Oui, j’ai besoin d’aide !</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="analyse_2" name="analyse" value="Non, j’ai déjà tout ce qu’il me faut!">
+                                    <label for="analyse_2">Non, j’ai déjà tout ce qu’il me faut!</label>
+                                </div>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">La Gestion et l’Accompagnement : Allons-nous bien bosser ensemble ?</h3>
+
+                            <div class="mb-3">
+                                <label for="competitors" class="form-label">Quel rôle souhaitez-vous jouer dans le développement de votre franchise ?</label>
+                                <div>
+                                    <input type="radio" id="role_1" name="role" value="Gérer tous les aspects avec nos conseils">
+                                    <label for="role_1">Gérer tous les aspects avec nos conseils</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="role_2" name="role" value="Gérer tous les aspects avec nos conseils">
+                                    <label for="role_2">Gérer tous les aspects avec nos conseils</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="role_2" name="role" value="eGérer tous les aspects avec nos conseils">
+                                    <label for="role_3">Laisser ZeroInvestissement.com gérer entièrement le développement et l’accompagnement</label>
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="franchisee_training" class="form-label">Comment imaginez-vous la formation de vos futurs franchisés ?</label>
                                 <textarea class="form-control" id="franchisee_training" name="franchisee_training" required></textarea>
+                                <small class="text-gray-500">(Structure, contenu, durée... partagez-nous votre vision)</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="tools" class="form-label">Quels sont les outils essentiels que vous pensez devoir fournir à vos franchisés ?
                                 </label>
                                 <textarea class="form-control" id="tools" name="tools" required></textarea>
+                                <small class="text-gray-500">(Ex: Manuels d'opération, outils marketing, formations)</small>
+                            </div>
+
+                            <h3 class="text-lg font-semibold mb-2">L’aventure commence ! (On s’amuse un peu)</h3>
+
+                            <div class="mb-3">
+                                <label for="business_song" class="form-label">Si votre entreprise était une chanson, laquelle serait-ce et pourquoi ?</label>
+                                <input type="text" class="form-control" id="business_song" name="business_song" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="business_song" class="form-label">Si votre entreprise était une chanson, laquelle serait-ce et pourquoi ? ?</label>
-                                <input type="text" class="form-control" id="business_song" name="business_song" required>
+                                <label for="imaginary" class="form-label">Imaginez que votre entreprise devienne la franchise la plus célèbre du pays, quelle serait la première chose que vous feriez ?</label>
+                                <input type="text" class="form-control" id="imaginary" name="imaginary" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="success_plan" class="form-label">Si vous deviez déjeuner avec une autre grande marque franchisée pour obtenir des conseils, laquelle choisiriez-vous et pourquoi ?</label>
                                 <textarea class="form-control" id="success_plan" name="success_plan" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="file_input" class="form-label">Téléverser un fichier ( Dernier bilan )</label>
+                                <input class="form-control" type="file" id="file_input" name="file_input">
                             </div>
 
                             <button type="submit" class="py-2 px-4 rounded text-white" style="background-color:#6A00B8; color:white;">Enregistrer</button>
@@ -429,6 +591,36 @@
 
 
     </div>
+    <script>
+        // Affiche ou masque le champ de saisie pour l'option "Autre"
+        function toggleOtherMotivationInput(show) {
+            const otherInput = document.getElementById('franchise_motivation_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le bouton radio
+        function updateOtherMotivationValue() {
+            const otherRadio = document.getElementById('franchise_motivation_other_radio');
+            const otherInput = document.getElementById('franchise_motivation_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="franchise_motivation"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'franchise_motivation_other_radio') {
+                    toggleOtherMotivationInput(false);
+                }
+            });
+        });
+    </script>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
     <script src="{{ asset('build/assets/js/core/popper.min.js') }}"></script>

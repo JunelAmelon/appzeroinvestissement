@@ -261,6 +261,8 @@
                             <h2 class="text-center mb-4">Bienvenue dans notre questionnaire interactif ! 🚀</h2>
                             <p class="text-center mb-4">Pour que nous puissions bien comprendre votre projet et votre motivation, répondez à ces quelques questions. Amusez-vous et soyez créatif, nous vous attendons avec impatience !</p>
 
+                            <h3 class="text-lg font-semibold mb-2">L’Idée qui va tout changer</h3> <br>
+
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nom de votre projet (soyez créatif !)</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -279,26 +281,42 @@
                             <div class="mb-3">
                                 <label for="problem" class="form-label">Quel est le problème majeur que votre idée va résoudre ?</label>
                                 <textarea class="form-control" id="problem" name="problem" required></textarea>
+                                <small class="text-gray-500">(On adore les solutions aux problèmes)</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="main_feature" class="form-label">Fonctionnalité phare : Quelle est la fonctionnalité qui rendra votre site ou appli indispensable ?</label>
-                                <input type="text" class="form-control" id="main_feature" name="main_feature" required>
+                                <div>
+                                    <input type="radio" id="vente_en_ligne" name="main_feature" value="Vente en ligne">
+                                    <label for="vente_en_ligne">Vente en ligne</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="reservation" name="main_feature" value="Reservation">
+                                    <label for="reservation">Reservation</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="service_innovant" name="main_feature" value="Service innovant">
+                                    <label for="service_innovant">Service innovant</label>
+                                </div>
+                                <div class="mt-2">
+                                    <label for="main_feature_other" class="form-label">Autre (expliquez-nous!) :</label>
+                                    <input type="text" class="form-control" id="main_feature_other" name="main_feature">
+                                    <small class="text-gray-500">(Autre fonctionnalité)</small>
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="why_good" class="form-label">Pourquoi pensez-vous que votre idée est meilleure que ce qui existe déjà ?</label>
-                                <textarea class="form-control" id="why_good" name="why_good" required></textarea>
-                            </div>
+                            <br>
+                            <h3 class="text-lg font-semibold mb-2">Pourquoi cette idée est-elle la bonne ?</h3><br>
 
                             <div class="mb-3">
                                 <label for="idea_origin" class="form-label">Comment vous est venue cette idée ?</label>
                                 <textarea class="form-control" id="idea_origin" name="idea_origin" required></textarea>
+                                <small class="text-gray-500">(Coup de génie en pleine nuit, inpiration de la vie quotidienne ou conversation avec votre chat)</small>
                             </div>
 
                             <div class="mb-3">
-                                <label for="competition" class="form-label">Avez-vous déjà pensé à une stratégie pour atteindre vos clients cibles ? Si oui, laquelle ?</label>
-                                <textarea class="form-control" id="competition" name="competition" required></textarea>
+                                <label for="why_good" class="form-label">En une phrase, pourquoi pensez-vous que votre idée est meilleure que ce qui existe déjà ?</label>
+                                <textarea class="form-control" id="why_good" name="why_good" required></textarea>
                             </div>
 
                             <div class="mb-3">
@@ -311,38 +329,138 @@
                                 <textarea class="form-control" id="fallback_plan" name="fallback_plan" required></textarea>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="target_customers" class="form-label">Votre cible idéale : Décrivez votre client idéal.</label>
-                                <textarea class="form-control" id="target_customers" name="target_customers" required></textarea>
-                            </div>
+                            <br>
+                            <h3 class="text-lg font-semibold mb-2">Votre vision du futur : la rentabilité</h3><br>
 
                             <div class="mb-3">
                                 <label for="revenue_model" class="form-label">Comment votre projet va-t-il rapporter des sous ?</label>
                                 <textarea class="form-control" id="revenue_model" name="revenue_model" required></textarea>
+                                <small class="text-gray-500">(Ex: Vente en ligne, abonnements, publicité...soyez clair!)</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="target_customers" class="form-label">Combien de personnes pensez-vous que votre projet touchera dans sa première année ? (Soyez ambitieux, mais réaliste.)</label>
-                                <input type="number" class="form-control" id="target_customers" name="target_customers" required>
+                                <div>
+                                    <input type="radio" id="customer_1" name="target_customers" value="Moins de 1 000">
+                                    <label for="customer_1">Moins de 1 000</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="customer_2" name="target_customers" value="Entre 1 000 et 10 000">
+                                    <label for="customer_2">Entre 1 000 et 10 000</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="customer_3" name="target_customers" value="Plus de 10 000">
+                                    <label for="customer_3">Plus de 10 000</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="target_incomes" class="form-label">D’ici 2 ans, votre projet aura généré… (une estimation amusante mais réaliste !)</label>
+                                <div>
+                                    <input type="radio" id="income_1" name="target_incomes" value="10 000 €">
+                                    <label for="income_1">10 000 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="income_2" name="target_incomes" value="50 000 €">
+                                    <label for="income_2">50 000 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="income_3" name="target_incomes" value="Plus de 100 000 €">
+                                    <label for="income_3">Plus de 100 000 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="income_3" name="target_incomes" value="Ça va exploser tous les compteurs, vous allez voir !">
+                                    <label for="income_3">Ça va exploser tous les compteurs, vous allez voir !</label>
+                                </div>
+                            </div>
+
+                            <br>
+                            <h3 class="text-lg font-semibold mb-2">Public cible et stratégie marketing (on ne rigole plus)</h3><br>
+
+                            <div class="mb-3">
+                                <label for="target_customers_ideal" class="form-label">Votre cible idéale : Décrivez votre client idéal comme si c'était votre meilleur ami:</label>
+                                <textarea class="form-control" id="target_customers_ideal" name="target_customers_ideal" required></textarea>
+                                <small class="text-gray-500">(Age, centre d'intérêt, comportements)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="competition" class="form-label">Avez-vous déjà pensé à une stratégie pour atteindre vos clients cibles ? Si oui, laquelle ?</label>
+                                <textarea class="form-control" id="competition" name="competition" required></textarea>
+                                <small class="text-gray-500">(Campagne publitaire, réseaux sociaux, influenceurs ?)</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="social_platform" class="form-label">Si vous deviez choisir une plateforme de réseaux sociaux pour promouvoir votre projet, laquelle serait-elle ?</label>
-                                <input type="text" class="form-control" id="social_platform" name="social_platform" required>
+                                <div>
+                                    <input type="radio" id="Instagram" name="social_platform" value="Instagram" onclick="toggleOtherPlatformInput(false)" required>
+                                    <label for="Instagram">Instagram</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="TikTok" name="social_platform" value="TikTok" onclick="toggleOtherPlatformInput(false)">
+                                    <label for="TikTok">TikTok</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="LinkedIn" name="social_platform" value="LinkedIn" onclick="toggleOtherPlatformInput(false)">
+                                    <label for="LinkedIn">LinkedIn</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Facebook" name="social_platform" value="Facebook" onclick="toggleOtherPlatformInput(false)">
+                                    <label for="Facebook">Facebook</label>
+                                </div>
+
+                                <!-- Option "Autre" avec champ texte -->
+                                <div>
+                                    <input type="radio" id="social_platform_other_radio" name="social_platform" value="" onclick="toggleOtherPlatformInput(true)">
+                                    <label for="social_platform_other_radio">Autre</label>
+                                    <input type="text" class="form-control mt-2" id="social_platform_other" placeholder="Précisez une autre plateforme" oninput="updateOtherPlatformValue()" style="display: none;">
+                                </div>
+                            </div>
+
+                            <br>
+                            <h3 class="text-lg font-semibold mb-2">Rentabilité et Engagement</h3><br>
+
+                            <div class="mb-3">
+                                <label for="motivation" class="form-label">Êtes-vous prêt à vous engager à 100% pour faire grandir ce projet ?</label>
+                                <div>
+                                    <input type="radio" id="motivation_1" name="motivation" value="Oui, je suis à fond !">
+                                    <label for="motivation_1">Oui, je suis à fond !</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="motivation_2" name="motivation" value="Oui, mais je continue d'autres projets en parallèle.">
+                                    <label for="motivation_2">Oui, mais je continue d'autres projets en parallèle.</label>
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="availability" class="form-label">Quelles sont vos disponibilités ?</label>
-                                <input type="text" class="form-control" id="availability" name="availability" required>
+                                <div>
+                                    <input type="radio" id="Temps_plein" name="availability" value="Temps plein">
+                                    <label for="Temps_plein">Temps plein</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Temps_partiel" name="availability" value="Temps partiel">
+                                    <label for="Temps_partiel">Temps partiel</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="soiree" name="availability" value="Pendant mes soirées/week-ends">
+                                    <label for="soiree">Pendant mes soirées/week-ends</label>
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="funding_status" class="form-label">Avez-vous des fonds, investisseurs ou partenaires prêts à vous soutenir ?</label>
-                                <select class="form-select" id="funding_status" name="funding_status" required>
-                                    <option value="Oui, j’ai déjà des investisseurs">Oui, j’ai déjà des investisseurs</option>
-                                    <option value="Pas encore, mais je suis prêt à en chercher">Pas encore, mais je suis prêt à en chercher</option>
-                                    <option value="Non, je compte sur ZeroInvestissement.com !">Non, je compte sur ZeroInvestissement.com !</option>
-                                </select>
+                                <div>
+                                    <input type="radio" id="investisseurs_oui" name="funding_status" value="Oui, j’ai déjà des investisseurs" required>
+                                    <label for="investisseurs_oui">Oui, j’ai déjà des investisseurs</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="investisseurs_prets" name="funding_status" value="Pas encore, mais je suis prêt à en chercher">
+                                    <label for="investisseurs_prets">Pas encore, mais je suis prêt à en chercher</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="zero_investissement" name="funding_status" value="Non, je compte sur ZeroInvestissement.com !">
+                                    <label for="zero_investissement">Non, je compte sur ZeroInvestissement.com !</label>
+                                </div>
                             </div>
 
                             <div class="mb-3">
@@ -350,45 +468,128 @@
                                 <textarea class="form-control" id="project_pitch" name="project_pitch" required></textarea>
                             </div>
 
+                            <br>
+                            <h3 class="text-lg font-semibold mb-2">Laissez votre créativité parler : le design</h3><br>
+
                             <div class="mb-3">
                                 <label for="dominant_color" class="form-label">Si votre site/appli avait une couleur dominante, ce serait…</label>
-                                <input type="text" class="form-control" id="dominant_color" name="dominant_color" required>
+                                <div>
+                                    <input type="radio" id="Rouge" name="dominant_color" value="Rouge (énergique, passionné)" onclick="toggleOtherColorInput(false)" required>
+                                    <label for="Rouge">Rouge (énergique, passionné)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Bleu" name="dominant_color" value="Bleu (calme, fiable)" onclick="toggleOtherColorInput(false)">
+                                    <label for="Bleu">Bleu (calme, fiable)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Vert" name="dominant_color" value="Vert (naturel, apaisant)" onclick="toggleOtherColorInput(false)">
+                                    <label for="Vert">Vert (naturel, apaisant)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Noir" name="dominant_color" value="Noir (élégant, sophistiqué)" onclick="toggleOtherColorInput(false)">
+                                    <label for="Noir">Noir (élégant, sophistiqué)</label>
+                                </div>
+
+                                <!-- Option "Autre" avec champ texte associé -->
+                                <div>
+                                    <input type="radio" id="color_other" name="dominant_color" value="" onclick="toggleOtherColorInput(true)">
+                                    <label for="color_other">Autre (surprenez-nous!)</label>
+                                    <input type="text" class="form-control mt-2" id="dominant_color_other" placeholder="Entrez votre couleur" oninput="updateOtherColorValue()" style="display: none;">
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="design_style" class="form-label">Quel est le style de design qui vous attire le plus ?</label>
                                 <textarea class="form-control" id="design_style" name="design_style" required></textarea>
+                                <small class="text-gray-500">(Simple et épurée, funky et moderne ou autre chose... décrivez-nous ça!)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="example_style" class="form-label">Avez-vous des exemples de sites/applis qui vous inspirent ? Si oui, lesquels ?</label>
+                                <textarea class="form-control" id="example_style" name="example_style" required></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label for="graphic_elements" class="form-label">Avez-vous déjà des éléments graphiques comme un logo ou une charte graphique ?</label>
-                                <select class="form-select" id="graphic_elements" name="graphic_elements" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
+                                <div>
+                                    <input type="radio" id="graphic_elements_yes" name="graphic_elements" value="1" required>
+                                    <label for="graphic_elements_yes">Oui, tout est prêt !</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="graphic_elements_no" name="graphic_elements" value="0">
+                                    <label for="graphic_elements_no">Non, j’aurais besoin d’aide sur ce point.
+                                    </label>
+                                </div>
                             </div>
+
+                            <br>
+                            <h3 class="text-lg font-semibold mb-2">Technique et plateformes</h3><br>
 
                             <div class="mb-3">
                                 <label for="support_type" class="form-label">Pour quel support souhaitez-vous développer votre projet ?</label>
-                                <select class="form-select" id="support_type" name="support_type" required>
-                                    <option value="Site web">Site web</option>
-                                    <option value="Application mobile">Application mobile</option>
-                                    <option value="Site web & Application mobile">Les deux</option>
-                                </select>
+                                <div>
+                                    <input type="radio" id="support_web" name="support_type" value="Site web" required>
+                                    <label for="support_web">Site web</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="support_mobile" name="support_type" value="Application mobile">
+                                    <label for="support_mobile">Application mobile</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="support_both" name="support_type" value="Site web & Application mobile">
+                                    <label for="support_both">Les deux</label>
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="platforms" class="form-label">Sur quelle(s) plateforme(s) souhaitez-vous que votre appli soit disponible ?</label>
-                                <select class="form-select" id="platforms" name="platforms" required>
-                                    <option value="iOS">iOS</option>
-                                    <option value="Android">Android</option>
-                                    <option value="iOS & Android">Les deux</option>
-                                </select>
+                                <div>
+                                    <input type="radio" id="platform_ios" name="platforms" value="iOS" required>
+                                    <label for="platform_ios">iOS</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="platform_android" name="platforms" value="Android">
+                                    <label for="platform_android">Android</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="platform_both" name="platforms" value="iOS & Android">
+                                    <label for="platform_both">Les deux</label>
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="tech_requirements" class="form-label">Avez-vous des exigences spécifiques en termes de technologie ou d’hébergement ?</label>
                                 <textarea class="form-control" id="tech_requirements" name="tech_requirements" required></textarea>
+                            </div>
+
+                            <br>
+                            <h3 class="text-lg font-semibold mb-2">Un peu plus sur vous (on aime bien en savoir plus)</h3><br>
+
+                            <div class="mb-3">
+                                <label for="contractor_power" class="form-label">Quel est votre superpouvoir en tant qu’entrepreneur ?</label>
+                                <textarea class="form-control" id="contractor_power" name="contractor_power" required></textarea>
+                                <small class="text-gray-500">(Ex: Je suis une machine à idées, je gère nien le stress, je suis ultra-organisé)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="leisure" class="form-label">Que faites-vous quand vous ne travaillez pas sur votre projet ?</label>
+                                <textarea class="form-control" id="leisure" name="leisure" required></textarea>
+                                <small class="text-gray-500">(On parle de loisir bien sûr... ou même de siestes!)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="famous_entrepreneur" class="form-label">Si vous pouviez déjeuner avec un entrepreneur célèbre, qui serait-ce et pourquoi ?</label>
+                                <textarea class="form-control" id="famous_entrepreneur" name="famous_entrepreneur" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="worldwide_success" class="form-label">Quelle serait la première chose que vous ferez une fois que votre projet sera un succès mondial ?</label>
+                                <textarea class="form-control" id="worldwide_success" name="worldwide_success" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="file_input" class="form-label">Téléverser un fichier ( Dernier bilan )</label>
+                                <input class="form-control" type="file" id="file_input" name="file_input">
                             </div>
 
                             <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
@@ -413,6 +614,66 @@
 
 
     </div>
+    <script>
+        // Affiche ou masque le champ de saisie pour l'option "Autre"
+        function toggleOtherPlatformInput(show) {
+            const otherInput = document.getElementById('social_platform_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le bouton radio
+        function updateOtherPlatformValue() {
+            const otherRadio = document.getElementById('social_platform_other_radio');
+            const otherInput = document.getElementById('social_platform_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="social_platform"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'social_platform_other_radio') {
+                    toggleOtherPlatformInput(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Fonction pour afficher ou masquer le champ de saisie pour l'option "Autre"
+        function toggleOtherColorInput(show) {
+            const otherInput = document.getElementById('dominant_color_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le bouton radio
+        function updateOtherColorValue() {
+            const otherRadio = document.getElementById('color_other');
+            const otherInput = document.getElementById('dominant_color_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="dominant_color"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'color_other') {
+                    toggleOtherColorInput(false);
+                }
+            });
+        });
+    </script>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
     <script src="{{ asset('build/assets/js/core/popper.min.js') }}"></script>

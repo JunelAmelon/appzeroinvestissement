@@ -254,23 +254,21 @@
                         <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Incubateur</h2>
                         <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
                             @csrf
-                            <h2 class="text-xl font-bold mb-4">Bienvenue dans l’univers de l’Accélérateur Zéro !</h2>
-                            <p class="mb-4">Répondez aux questions ci-dessous pour nous aider à comprendre votre projet.</p>
+                            <h2 class="text-center mb-4">Bienvenue dans l’univers de l’Accélérateur Zéro !</h2>
+                            <p class="text-center mb-4">Que vous soyez au début d’une idée innovante ou à la tête d’une entreprise existante, nous sommes là pour vous accompagner à chaque étape!<br> Répondez aux questions ci-dessous pour nous aider à comprendre votre projet.</p>
 
                             <h3 class="text-lg font-semibold mb-2">🚀 Votre Projet : Parlons du cœur de votre idée</h3>
                             <div class="mb-4">
-                                <label for="project_name" class="form-label">Nom de votre projet ou entreprise</label>
-                                <input type="text" class="form-control" id="project_name" name="project_name" required>
-                                <small class="text-gray-500">Pourquoi ce nom est parfait ?</small>
+                                <label for="project_name" class="form-label">Nom de votre projet ou entreprise (et pourquoi ce nom est parfait) :</label>
+                                <textarea class="form-control" id="project_name" name="project_name" required></textarea>
                                 @error('project_name')
                                 <div class="text-red-500">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-4">
-                                <label for="project_description" class="form-label">Décrivez votre idée ou entreprise</label>
+                                <label for="project_description" class="form-label">Décrivez votre idée ou entreprise en une phrase qui nous fera tomber sous le charme:</label>
                                 <textarea class="form-control" id="project_description" name="project_description" required></textarea>
-                                <small class="text-gray-500">En une phrase qui nous fera tomber sous le charme.</small>
                                 @error('project_description')
                                 <div class="text-red-500">{{ $message }}</div>
                                 @enderror
@@ -278,163 +276,459 @@
 
                             <div class="mb-4">
                                 <label for="project_stage" class="form-label">À quel stade en êtes-vous avec ce projet ?</label>
-                                <select class="form-control" id="project_stage" name="project_stage" required>
-                                    <option value="simple_idea">Simple idée</option>
-                                    <option value="development">En développement</option>
-                                    <option value="existing_business">Entreprise déjà existante</option>
-                                </select>
+                                <div>
+                                    <div>
+                                        <input type="radio" name="project_stage" id="simple_idea" value="simple_idea">
+                                        <label for="simple_idea">
+                                            Simple idée
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="project_stage" id="development" value="development">
+                                        <label for="development">
+                                            En développement
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="project_stage" id="existing_business" value="existing_business">
+                                        <label for="existing_business">
+                                            Entreprise déjà existante
+                                        </label>
+                                    </div>
+                                </div>
                                 @error('project_stage')
                                 <div class="text-red-500">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-4">
+                                <label for="project_movie" class="form-label">Si votre projet était un film, quel en serait le titre et pourquoi ?</label>
+                                <input type="text" id="project_movie" name="project_movie" class="form-control" required>
+                            </div>
+
+                            <div class="mb-4">
                                 <label for="project_mission" class="form-label">Quelle est la mission principale de votre projet ?</label>
-                                <input type="text" id="project_mission" name="project_mission" class="form-control" required>
+                                <textarea id="project_mission" name="project_mission" class="form-control" required></textarea>
+                                <small class="text-gray-500">(Changer une industrie, résoudre un problème, proposer un produit/Un service)</small>
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">🎯Origine et Motivation : Pourquoi cette idée vous passionne-t-elle ?</h3>
 
                             <div class="mb-4">
                                 <label for="origin_motivation" class="form-label">Comment l'idée de ce projet vous est-elle venue ?</label>
-                                <input type="text" id="origin_motivation" name="origin_motivation" class="form-control" required>
+                                <textarea id="origin_motivation" name="origin_motivation" class="form-control" required></textarea>
+                                <small class="text-gray-500">(Un moment eureka, une discussion avec un ami, unbesoin non satisfait ?)</small>
                             </div>
 
                             <div class="mb-4">
                                 <label for="passion_aspect" class="form-label">Qu’est-ce qui vous passionne le plus dans ce projet ?</label>
-                                <input type="text" id="passion_aspect" name="passion_aspect" class="form-control" required>
+                                <div>
+                                    <input type="radio" name="passion_aspect" id="entrepreneurial_challenge" value="Le défi entrepreneurial" onclick="toggleOtherObjectiveInput9(false)">
+                                    <label for="entrepreneurial_challenge">
+                                        Le défi entrepreneurial
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="passion_aspect" id="impact" value="L'impact que ce projet peut avoir" onclick="toggleOtherObjectiveInput9(false)">
+                                    <label for="impact">
+                                        L'impact que ce projet peut avoir
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="passion_aspect" id="growth_potential" value="Le potentiel de croissance" onclick="toggleOtherObjectiveInput9(false)">
+                                    <label for="growth_potential">
+                                        Le potentiel de croissance
+                                    </label>
+                                </div>
+                                <div class="mt-2">
+                                    <input type="radio" name="passion_aspect" id="other_passion_aspect" value="" onclick="toggleOtherObjectiveInput9(true)">
+                                    <label for="custom_passion">
+                                        Autre :
+                                    </label>
+                                    <input type="text" id="passion_aspect_custom" name="passion_aspect" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherObjectiveValue9()" style="display: none;">
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="strength" class="form-label">Si vous deviez décrire la plus grande force de votre projet en une phrase, quelle serait-elle ?</label>
-                                <input type="text" id="strength" name="strength" class="form-control" required>
+                                <textarea id="strength" name="strength" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="obstacle" class="form-label">Quel est le plus grand obstacle auquel vous avez fait face jusqu'à présent dans ce projet ?</label>
-                                <input type="text" id="obstacle" name="obstacle" class="form-control" required>
+                                <textarea id="obstacle" name="obstacle" class="form-control" required></textarea>
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">🛠️L’Avenir : Quels sont vos rêves pour ce projet ?</h3>
 
                             <div class="mb-4">
                                 <label for="objective" class="form-label">Quel est votre objectif principal avec ce projet sur les 5 prochaines années ?</label>
-                                <input type="text" id="objective" name="objective" class="form-control" required>
+                                <div>
+                                    <input type="radio" name="objective" id="new_market" value="Conquérir un nouveau marché" onclick="toggleOtherObjectiveInput8(false)" required>
+                                    <label for="new_market">Conquérir un nouveau marché</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="objective" id="create_brand" value="Créer une marque incontournable" onclick="toggleOtherObjectiveInput8(false)">
+                                    <label for="create_brand">Créer une marque incontournable</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="objective" id="innovate_industry" value="Innover dans une industrie" onclick="toggleOtherObjectiveInput8(false)">
+                                    <label for="innovate_industry">Innover dans une industrie</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="objective" id="other_objective" value="" onclick="toggleOtherObjectiveInput8(true)">
+                                    <label for="other_objective">Autre :</label>
+                                    <input type="text" id="objective_other" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherObjectiveValue8()" style="display: none;">
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="time_to_profit" class="form-label">Dans combien de temps pensez-vous que votre projet pourrait être rentable ? (en mois)</label>
-                                <input type="number" id="time_to_profit" name="time_to_profit" class="form-control" min="1" max="60" required>
+                                <div>
+                                    <input type="radio" name="time_to_profit" id="less_than_6" value="Moins de 6 mois">
+                                    <label for="less_than_6">
+                                        Moins de 6 mois
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="time_to_profit" id="between_6_and_12" value="Entre 6 et 12 mois">
+                                    <label for="between_6_and_12">
+                                        Entre 6 et 12 mois
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="time_to_profit" id="more_than_1_year" value="Plus d’un an">
+                                    <label for="more_than_1_year">
+                                        Plus d’un an
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="strategy" class="form-label">Quelle est votre stratégie pour atteindre cet objectif ?</label>
-                                <input type="text" id="strategy" name="strategy" class="form-control" required>
+                                <textarea id="strategy" name="strategy" class="form-control" required></textarea>
+                                <small class="text-gray-500">(Développer un produit/service unique, accroître la notériété etc)</small>
                             </div>
 
                             <div class="mb-4">
                                 <label for="target_amount" class="form-label">Si vous deviez lever des fonds pour ce projet, quel serait votre montant cible ?</label>
-                                <input type="number" id="target_amount" name="target_amount" class="form-control" min="0" step="0.01">
+                                <div>
+                                    <input type="radio" name="target_amount" id="less_than_100k" value="Moins de 100 000 €">
+                                    <label for="less_than_100k">
+                                        Moins de 100 000 €
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="target_amount" id="between_100k_and_500k" value="Entre 100 000 € et 500 000 €">
+                                    <label for="between_100k_and_500k">
+                                        Entre 100 000 € et 500 000 €
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="target_amount" id="more_than_500k" value="Plus de 500 000 €">
+                                    <label for="more_than_500k">
+                                        Plus de 500 000 €
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="growth_vision" class="form-label">Comment voyez-vous la croissance de votre projet sur les 12 prochains mois ?</label>
-                                <input type="text" id="growth_vision" name="growth_vision" class="form-control" required>
+                                <div>
+                                    <input type="radio" name="growth_vision" id="stable_growth" value="Stable, avec une croissance continue">
+                                    <label for="stable_growth">
+                                        Stable, avec une croissance continue
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="growth_vision" id="accelerated_growth" value="Accélérée, en atteignant de nouveaux marchés">
+                                    <label for="accelerated_growth">
+                                        Accélérée, en atteignant de nouveaux marchés
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="growth_vision" id="explosive_growth" value="Explosive, avec une expansion rapide">
+                                    <label for="explosive_growth">
+                                        Explosive, avec une expansion rapide
+                                    </label>
+                                </div>
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">🎨Potentiel et Scalabilité</h3>
 
                             <div class="mb-4">
+                                <label for="why" class="form-label">Pourquoi pensez-vous que votre projet peut se développer à grande échelle ?</label>
+                                <textarea id="why" name="why" class="form-control" required></textarea>
+                            </div>
+
+                            <div class="mb-4">
                                 <label for="sector" class="form-label">Dans quel secteur opère votre projet et en quoi est-il innovant ?</label>
-                                <input type="text" id="sector" name="sector" class="form-control" required>
+                                <div>
+                                    <input type="radio" name="sector" id="ecommerce" value="E-commerce" onclick="toggleOtherSectorInput7(false)" required>
+                                    <label for="ecommerce">E-commerce</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="sector" id="technology" value="Technologie" onclick="toggleOtherSectorInput7(false)">
+                                    <label for="technology">Technologie</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="sector" id="health" value="Santé" onclick="toggleOtherSectorInput7(false)">
+                                    <label for="health">Santé</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="sector" id="other_sector" value="" onclick="toggleOtherSectorInput7(true)">
+                                    <label for="other_sector">Autre :</label>
+                                    <input type="text" id="sector_other" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherSectorValue7()" style="display: none;">
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="market_target" class="form-label">Quel est le marché cible de votre projet ?</label>
-                                <input type="text" id="market_target" name="market_target" class="form-control" required>
+                                <textarea id="market_target" name="market_target" class="form-control" required></textarea>
+                                <small class="text-gray-500">(Ex: Enfants, entreprises, consommateurs, etc)</small>
                             </div>
 
                             <div class="mb-4">
                                 <label for="unique_features" class="form-label">Quelles sont les trois principales caractéristiques qui rendent votre projet unique et compétitif ?</label>
-                                <input type="text" id="unique_features" name="unique_features" class="form-control" required>
+                                <textarea id="unique_features" name="unique_features" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="growth_limitations" class="form-label">Qu’est-ce qui pourrait limiter la croissance de votre projet ?</label>
-                                <input type="text" id="growth_limitations" name="growth_limitations" class="form-control" required>
+                                <textarea id="growth_limitations" name="growth_limitations" class="form-control" required></textarea>
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">💻 Analyse du Marché et Concurrence</h3>
 
                             <div class="mb-4">
                                 <label for="market_analysis" class="form-label">Avez-vous déjà réalisé une analyse de marché pour ce projet ?</label>
-                                <select id="market_analysis" name="market_analysis" class="form-select border border-gray-300 p-2 rounded" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
+                                <div>
+                                    <input type="radio" name="market_analysis" id="analysis_complete" value="Oui, une analyse complète">
+                                    <label for="analysis_complete">
+                                        Oui, une analyse complète
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="market_analysis" id="analysis_support_needed" value="Non, je compte sur votre soutien">
+                                    <label for="analysis_support_needed">
+                                        Non, je compte sur votre soutien
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="market_analysis" id="analysis_partial" value="Partiellement, je travaille encore dessus">
+                                    <label for="analysis_partial">
+                                        Partiellement, je travaille encore dessus
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="competitors" class="form-label">Qui sont vos principaux concurrents, et qu’est-ce qui vous différencie d’eux ?</label>
-                                <input type="text" id="competitors" name="competitors" class="form-control" required>
+                                <textarea id="competitors" name="competitors" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="clients" class="form-label">Votre projet a-t-il déjà eu des clients ou utilisateurs ?</label>
-                                <select id="clients" name="clients" class="form-select border border-gray-300 p-2 rounded" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
+                                <div>
+                                    <input type="radio" name="clients" id="clients_excellent_feedback" value="Oui, et les retours sont excellents">
+                                    <label for="clients_excellent_feedback">
+                                        Oui, et les retours sont excellents
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="clients" id="clients_needs_improvement" value="Oui, mais je dois encore l'améliorer">
+                                    <label for="clients_needs_improvement">
+                                        Oui, mais je dois encore l'améliorer
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="clients" id="clients_not_yet" value="Non, pas encore">
+                                    <label for="clients_not_yet">
+                                        Non, pas encore
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="market_strategy" class="form-label">Comment comptez-vous conquérir votre marché cible ?</label>
-                                <input type="text" id="market_strategy" name="market_strategy" class="form-control" required>
+                                <div>
+                                    <input type="radio" name="market_strategy" id="market_strategy_digital_ads" value="Publicité digitale" onclick="toggleOtherInput6(false)" required>
+                                    <label for="market_strategy_digital_ads">Publicité digitale</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="market_strategy" id="market_strategy_social_media" value="Réseaux sociaux" onclick="toggleOtherInput6(false)">
+                                    <label for="market_strategy_social_media">Réseaux sociaux</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="market_strategy" id="market_strategy_word_of_mouth" value="Bouche-à-oreille" onclick="toggleOtherInput6(false)">
+                                    <label for="market_strategy_word_of_mouth">Bouche-à-oreille</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="market_strategy" id="other_market_strategy" value="" onclick="toggleOtherInput6(true)">
+                                    <label for="other_market_strategy">Autre :</label>
+                                    <input type="text" id="market_strategy_other" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherValue6()" style="display: none;">
+                                </div>
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">📈Financement et Croissance : Parlons des chiffres !</h3>
 
                             <div class="mb-4">
                                 <label for="funds_raised" class="form-label">Avez-vous déjà levé des fonds pour ce projet ?</label>
-                                <select id="funds_raised" name="funds_raised" class="form-select border border-gray-300 p-2 rounded" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
+                                <div>
+                                    <input type="radio" name="funds_raised" id="funds_raised_success" value="Oui, avec succès">
+                                    <label for="funds_raised_success">
+                                        Oui, avec succès
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="funds_raised" id="funds_raised_not_yet" value="Non, pas encore">
+                                    <label for="funds_raised_not_yet">
+                                        Non, pas encore
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="funds_raised" id="funds_raised_leads" value="Non, mais j’ai des pistes">
+                                    <label for="funds_raised_leads">
+                                        Non, mais j’ai des pistes
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="initial_budget" class="form-label">Quel budget initial avez-vous prévu pour ce projet ?</label>
-                                <input type="number" id="initial_budget" name="initial_budget" class="form-control" min="0" step="0.01">
+                                <div>
+                                    <input type="radio" name="initial_budget" id="budget_less_50k" value="Moins de 50 000 €">
+                                    <label for="budget_less_50k">
+                                        Moins de 50 000 €
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="initial_budget" id="budget_50k_200k" value="Entre 50 000 € et 200 000 €">
+                                    <label for="budget_50k_200k">
+                                        Entre 50 000 € et 200 000 €
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="initial_budget" id="budget_above_200k" value="Plus de 200 000 €">
+                                    <label for="budget_above_200k">
+                                        Plus de 200 000 €
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="first_step_with_unlimited_funds" class="form-label">Si vous aviez accès à un financement illimité, quelle serait la première chose que vous feriez pour faire grandir votre projet ?</label>
-                                <input type="text" id="first_step_with_unlimited_funds" name="first_step_with_unlimited_funds" class="form-control" required>
+                                <textarea id="first_step_with_unlimited_funds" name="first_step_with_unlimited_funds" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="growth_needs" class="form-label">De quoi avez-vous le plus besoin pour accélérer la croissance de votre projet ?</label>
-                                <input type="text" id="growth_needs" name="growth_needs" class="form-control" required>
+                                <div>
+                                    <input type="radio" name="growth_needs" id="needs_funds" value="Plus de fonds" onclick="toggleOtherInput5(false)" required>
+                                    <label for="needs_funds">Plus de fonds</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="growth_needs" id="needs_technology" value="Développer une technologie ou un produit" onclick="toggleOtherInput5(false)">
+                                    <label for="needs_technology">Développer une technologie ou un produit</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="growth_needs" id="needs_marketing" value="Améliorer le marketing" onclick="toggleOtherInput5(false)">
+                                    <label for="needs_marketing">Améliorer le marketing</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="growth_needs" id="other_growth_needs" value="" onclick="toggleOtherInput5(true)">
+                                    <label for="other_growth_needs">Autre :</label>
+                                    <input type="text" id="growth_needs_other" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherValue5()" style="display: none;">
+                                </div>
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">🔧Soutien Stratégique et Partenariats</h3>
 
                             <div class="mb-4">
-                                <label for="strategic_support" class="form-label">Dans quel domaine avez-vous le plus besoin de notre soutien stratégique ?</label>
-                                <input type="text" id="strategic_support" name="strategic_support" class="form-control" required>
+                                <div>
+                                    <input type="radio" id="business_development" name="strategic_support" value="Développement commercial" onclick="toggleOtherInput2(false)" required>
+                                    <label for="business_development">Développement commercial</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="funding" name="strategic_support" value="Financement et levée de fonds" onclick="toggleOtherInput2(false)">
+                                    <label for="funding">Financement et levée de fonds</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="marketing_strategy" name="strategic_support" value="Stratégie marketing" onclick="toggleOtherInput2(false)">
+                                    <label for="marketing_strategy">Stratégie marketing</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="tech_expertise" name="strategic_support" value="Expertise technologique" onclick="toggleOtherInput2(false)">
+                                    <label for="tech_expertise">Expertise technologique</label>
+                                </div>
+
+                                <!-- Option "Autre" avec champ texte associé -->
+                                <div>
+                                    <input type="radio" id="other" name="strategic_support" value="" onclick="toggleOtherInput2(true)">
+                                    <label for="other">Autre :</label>
+                                    <input type="text" id="strategic_support_other" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherValue2()" style="display: none;">
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="co_management" class="form-label">Êtes-vous ouvert(e) à la co-gestion de votre projet avec notre équipe d’experts pour maximiser son potentiel ?</label>
-                                <select id="co_management" name="co_management" class="form-select border border-gray-300 p-2 rounded" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
+                                <div>
+                                    <input type="radio" id="yes_collaboration" name="co_management" value="Oui, je suis prêt(e) à travailler en étroite collaboration" onclick="toggleOtherInput1(false)" required>
+                                    <label for="yes_collaboration">Oui, je suis prêt(e) à travailler en étroite collaboration</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="no_self_management" name="co_management" value="Non, je préfère gérer seul(e)" onclick="toggleOtherInput1(false)">
+                                    <label for="no_self_management">Non, je préfère gérer seul(e)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="depends" name="co_management" value="Je ne sais pas encore, cela dépend du projet" onclick="toggleOtherInput1(false)">
+                                    <label for="depends">Je ne sais pas encore, cela dépend du projet</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="other_option" name="co_management" value="" onclick="toggleOtherInput1(true)">
+                                    <label for="other_option">Autre :</label>
+                                    <input type="text" id="co_management_other" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherValue1()" style="display: none;">
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="desired_connections" class="form-label">Quelles connexions ou partenaires aimeriez-vous avoir dans votre réseau ?</label>
-                                <input type="text" id="desired_connections" name="desired_connections" class="form-control" required>
+                                <div>
+                                    <input type="radio" id="investors" name="desired_connections" value="Investisseurs" onclick="toggleOtherInput3(false)" required>
+                                    <label for="investors">Investisseurs</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="industry_experts" name="desired_connections" value="Experts du secteur" onclick="toggleOtherInput3(false)">
+                                    <label for="industry_experts">Experts du secteur</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="suppliers" name="desired_connections" value="Fournisseurs ou distributeurs" onclick="toggleOtherInput3(false)">
+                                    <label for="suppliers">Fournisseurs ou distributeurs</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="others_option" name="desired_connections" value="" onclick="toggleOtherInput3(true)">
+                                    <label for="others_option">Autre :</label>
+                                    <input type="text" id="desired_connections_other" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherValue3()" style="display: none;">
+                                </div>
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">🔧Impact et Valeurs</h3>
@@ -442,22 +736,39 @@
                             <div class="mb-4">
                                 <label for="impact" class="form-label">En quoi votre projet a-t-il un impact positif (social, environnemental, économique) ?
                                 </label>
-                                <input type="text" id="impact" name="impact" class="form-control" required>
+                                <textarea id="impact" name="impact" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="core_values" class="form-label">Quelles sont les valeurs fondamentales de votre projet ou entreprise ?</label>
-                                <input type="text" id="core_values" name="core_values" class="form-control" required>
+                                <div>
+                                    <input type="radio" id="innovation" name="core_values" value="Innovation" onclick="toggleOtherInput4(false)" required>
+                                    <label for="innovation">Innovation</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="sustainability" name="core_values" value="Durabilité" onclick="toggleOtherInput4(false)">
+                                    <label for="sustainability">Durabilité</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="customer_service" name="core_values" value="Service client exceptionnel" onclick="toggleOtherInput4(false)">
+                                    <label for="customer_service">Service client exceptionnel</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="other_value" name="core_values" value="" onclick="toggleOtherInput4(true)">
+                                    <label for="other_value">Autre :</label>
+                                    <input type="text" id="core_values_other" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherValue4()" style="display: none;">
+                                </div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="value_translation" class="form-label">Comment ces valeurs se traduisent-elles dans votre quotidien professionnel ?</label>
-                                <input type="text" id="value_translation" name="value_translation" class="form-control" required>
+                                <textarea id="value_translation" name="value_translation" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="global_impact" class="form-label">Si votre projet devenait une référence mondiale, quel impact aimeriez-vous qu'il ait sur la société ?</label>
-                                <input type="text" id="global_impact" name="global_impact" class="form-control" required>
+                                <textarea id="global_impact" name="global_impact" class="form-control" required></textarea>
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">🔧Petites dernières pour le Fun</h3>
@@ -465,28 +776,33 @@
                             <div class="mb-4">
                                 <label for="cartoon_character" class="form-label">Si votre projet était un personnage de dessin animé, qui serait-il et pourquoi ?
                                 </label>
-                                <input type="text" id="cartoon_character" name="cartoon_character" class="form-control" required>
+                                <textarea id="cartoon_character" name="cartoon_character" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="tv_synopsis" class="form-label">Imaginez que votre projet soit transformé en série TV. Quel en serait le synopsis ?</label>
-                                <input type="text" id="tv_synopsis" name="tv_synopsis" class="form-control" required>
+                                <textarea id="tv_synopsis" name="tv_synopsis" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="documentary_title" class="form-label">Quel serait le titre du documentaire Netflix sur la réussite de votre projet ?</label>
-                                <input type="text" id="documentary_title" name="documentary_title" class="form-control" required>
+                                <textarea id="documentary_title" name="documentary_title" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="celebration_details" class="form-label">Si vous pouviez organiser une fête pour célébrer le succès de votre projet, où et comment se déroulerait-elle ?
                                 </label>
-                                <input type="text" id="celebration_details" name="celebration_details" class="form-control" required>
+                                <textarea id="celebration_details" name="celebration_details" class="form-control" required></textarea>
                             </div>
 
                             <div class="mb-4">
                                 <label for="client_slogan" class="form-label">Si votre projet pouvait parler, que dirait-il à ses futurs clients en un seul slogan ?</label>
-                                <input type="text" id="client_slogan" name="client_slogan" class="form-control" required>
+                                <textarea id="client_slogan" name="client_slogan" class="form-control" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="file_input" class="form-label">Téléverser un fichier ( Dernier bilan )</label>
+                                <input class="form-control" type="file" id="file_input" name="file_input">
                             </div>
 
                             <div>
@@ -495,31 +811,6 @@
                         </form>
                     </div>
                 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             </div>
             <footer class="footer">
@@ -536,6 +827,276 @@
 
 
     </div>
+    <script>
+        // Fonction pour afficher ou masquer le champ de saisie pour l'option "Autre"
+        function toggleOtherObjectiveInput9(show) {
+            const otherInput = document.getElementById('passion_aspect_custom');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le bouton radio
+        function updateOtherObjectiveValue9() {
+            const otherRadio = document.getElementById('other_passion_aspect');
+            const otherInput = document.getElementById('passion_aspect_custom');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="passion_aspect_custom"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'other_passion_aspect') {
+                    toggleOtherObjectiveInput9(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Fonction pour afficher ou masquer le champ de saisie pour l'option "Autre"
+        function toggleOtherObjectiveInput8(show) {
+            const otherInput = document.getElementById('objective_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le bouton radio
+        function updateOtherObjectiveValue8() {
+            const otherRadio = document.getElementById('other_objective');
+            const otherInput = document.getElementById('objective_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="objective"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'other_objective') {
+                    toggleOtherObjectiveInput8(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Fonction pour afficher ou masquer le champ de saisie pour l'option "Autre"
+        function toggleOtherSectorInput7(show) {
+            const otherInput = document.getElementById('sector_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le bouton radio
+        function updateOtherSectorValue7() {
+            const otherRadio = document.getElementById('other_sector');
+            const otherInput = document.getElementById('sector_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="sector"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'other_sector') {
+                    toggleOtherSectorInput7(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Fonction pour afficher ou masquer le champ de saisie pour l'option "Autre"
+        function toggleOtherInput6(show) {
+            const otherInput = document.getElementById('market_strategy_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le bouton radio
+        function updateOtherValue6() {
+            const otherRadio = document.getElementById('other_market_strategy');
+            const otherInput = document.getElementById('market_strategy_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="market_strategy"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'other_market_strategy') {
+                    toggleOtherInput6(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie personnalisée en fonction de l'option sélectionnée
+        function toggleOtherInput5(show) {
+            const otherInput = document.getElementById('growth_needs_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le champ radio
+        function updateOtherValue5() {
+            const otherRadio = document.getElementById('other_growth_needs');
+            const otherInput = document.getElementById('growth_needs_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="growth_needs"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'other_growth_needs') {
+                    toggleOtherInput5(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie personnalisée en fonction de l'option sélectionnée
+        function toggleOtherInput4(show) {
+            const otherInput = document.getElementById('core_values_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le champ radio
+        function updateOtherValue4() {
+            const otherRadio = document.getElementById('other_value');
+            const otherInput = document.getElementById('core_values_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="core_values"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'other_value') {
+                    toggleOtherInput4(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie personnalisée en fonction de l'option sélectionnée
+        function toggleOtherInput3(show) {
+            const otherInput = document.getElementById('desired_connections_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le champ radio
+        function updateOtherValue3() {
+            const otherRadio = document.getElementById('others_option');
+            const otherInput = document.getElementById('desired_connections_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="desired_connections"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'others_option') {
+                    toggleOtherInput3(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie personnalisée en fonction de l'option sélectionnée
+        function toggleOtherInput2(show) {
+            const otherInput = document.getElementById('strategic_support_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le champ radio
+        function updateOtherValue2() {
+            const otherRadio = document.getElementById('other');
+            const otherInput = document.getElementById('strategic_support_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Ajoute un événement pour masquer le champ texte lorsque les options radio prédéfinies sont sélectionnées
+        document.querySelectorAll('input[name="strategic_support"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'other') {
+                    toggleOtherInput2(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie personnalisée en fonction de l'option sélectionnée
+        function toggleOtherInput1(show) {
+            const otherInput = document.getElementById('co_management_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le champ radio
+        function updateOtherValue1() {
+            const otherRadio = document.getElementById('other_option');
+            const otherInput = document.getElementById('co_management_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Ajoute un événement pour masquer le champ texte lorsque les options radio prédéfinies sont sélectionnées
+        document.querySelectorAll('input[name="co_management"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'other_option') {
+                    toggleOtherInput1(false);
+                }
+            });
+        });
+    </script>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
     <script src="{{ asset('build/assets/js/core/popper.min.js') }}"></script>
