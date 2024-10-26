@@ -174,9 +174,10 @@
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
-                <!-- Prénom -->
+
+                <!-- Nom -->
                 <div class="form-group">
-                    <label for="firstname">Prénom</label>
+                    <label for="firstname">Prenom</label>
                     <input id="firstname" type="text" name="firstname" value="{{ old('firstname') }}" required autofocus>
                     <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
                 </div>
@@ -184,20 +185,22 @@
                 <!-- Adresse Email -->
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <!-- Téléphone -->
                 <div class="form-group">
                     <label for="phone">Téléphone (Indicatif + Numéro)</label>
-                    <input id="phone" type="text" name="phone" value="{{ old('phone') }}" pattern="\d{1,3} \d{1,15}" required placeholder="ex: 33 789898989">
+
+                    <input id="phone" type="text" name="phone" value="{{ old('phone') }}" pattern="\d{1,3} \d{1,15}" required autofocus placeholder="ex: 33 789898989">
                     <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                 </div>
 
                 <!-- Pays -->
                 <div class="form-group">
                     <label for="country">Pays</label>
+
                   <select id="country" name="country" required>
                         <option value="">Sélectionnez votre pays</option>
                         <option value="AF">Afghanistan</option>
@@ -448,14 +451,18 @@
                 <!-- Code Postal -->
                 <div class="form-group">
                     <label for="postal_code">Code Postal</label>
-                    <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code') }}" required>
+
+                    <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code') }}" required autofocus>
+
                     <x-input-error :messages="$errors->get('postal_code')" class="mt-2" />
                 </div>
 
                 <!-- Ville -->
                 <div class="form-group">
                     <label for="city">Ville</label>
+
                     <input id="city" type="text" name="city" value="{{ old('city') }}" required>
+
                     <x-input-error :messages="$errors->get('city')" class="mt-2" />
                 </div>
 
@@ -489,10 +496,19 @@
         const togglePassword = document.getElementById('togglePassword');
         const password = document.getElementById('password');
 
-        togglePassword.addEventListener('click', function () {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            this.textContent = type === 'password' ? '👁️' : '🙈';
+
+        togglePassword.addEventListener("click", function() {
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+        });
+
+        const togglePasswordConfirm = document.querySelector("#togglePasswordConfirm");
+        const passwordConfirm = document.querySelector("#password_confirmation");
+
+        togglePasswordConfirm.addEventListener("click", function() {
+            const type = passwordConfirm.getAttribute("type") === "password" ? "text" : "password";
+            passwordConfirm.setAttribute("type", type);
+
         });
     </script>
 </body>
