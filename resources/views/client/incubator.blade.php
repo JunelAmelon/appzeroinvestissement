@@ -204,9 +204,18 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
+                                    
 
                                 </ul>
                             </div>
+                        </li>
+                           <li class="nav-item ">
+                            <a href="/faq">
+                                <i class="fas icon-question"></i>
+                                <p>Faq</p>
+
+                            </a>
+
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('logout') }}">
@@ -527,8 +536,8 @@
                     <nav class="pull-left">
 
                     </nav>
-                    <div class="copyright ml-auto">
-                        &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
+                  <div class="copyright ml-auto">
+                      <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
             </footer>

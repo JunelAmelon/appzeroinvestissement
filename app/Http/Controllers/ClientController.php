@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use app;
-use Exception;
-use App\Models\Siteapp;
+use App\Http\Controllers\Controller;
 use App\Models\Franchise;
-use Illuminate\Http\Request;
-use App\Models\FranchiseDetail;
 use App\Models\IncubatorProject;
 use App\Models\Marketplacebusiness;
-use App\Http\Controllers\Controller;
+use App\Models\Siteapp;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Projectdetailsmarketplacebusiness;
 
 class ClientController extends Controller
 {
@@ -25,7 +23,15 @@ class ClientController extends Controller
             Auth::logout();
             return redirect()->route('login');
         }
-    }
+    }      public function  showfaq()
+    {
+        if (Auth::check()) {
+            return view('client.faq');
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
+    } 
 
     public function showsiteapp()
     {
@@ -151,7 +157,6 @@ class ClientController extends Controller
             'business_strategy' => 'required|string',
         ]);
 
-
         $validatedData['user_id'] = Auth::id();
         try {
             Marketplacebusiness::create($validatedData);
@@ -195,10 +200,9 @@ class ClientController extends Controller
             'pending' => $franchisePending + $siteappPending + $marketplacePending, // Nombre de projets en attente
             'submitted' => $totalSubmitted, // Total projets soumis
             'valid' => $totalValid,
-            'rejected' => $totalRejected
+            'rejected' => $totalRejected,
         ]);
     }
-
 
     public function index()
     {
@@ -301,4 +305,75 @@ class ClientController extends Controller
             return redirect()->route('incubator')->with('error', 'Erreur : ' . $e->getMessage());
         }
     }
+
+    public function showmarketplacebusiness()
+    {
+        if (Auth::check()) {
+            return view('client.marketplace-business');
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
+    }
+    public function regmarketplacebusiness(Request $request)
+    {  
+        $request->validate([
+        'business_choice' => 'required|string',
+        'attraction_reason' => 'required|string',
+        'industry' => 'required|string',
+        'business_model' => 'required|string',
+        'profitability_potential' => 'required|string',
+        'animal_comparison' => 'required|string',
+        'conviction_level' => 'required|integer|min:1|max:10',
+        'enthusiasm' => 'required|string',
+        'entrepreneurial_reason' => 'required|string',
+        'specific_motivation' => 'required|string',
+        'entrepreneurial_approach' => 'required|string',
+        'success_factors' => 'required|string',
+        'financing_plan' => 'required|boolean',
+        'financing_access' => 'required|string',
+        'maximum_budget' => 'required|numeric',
+        'interest_financing_option' => 'required|boolean',
+        'first_action' => 'required|string',
+        'marketing_strategy' => 'required|string',
+        'main_objective' => 'required|string',
+        'initial_ad_budget' => 'required|numeric',
+        'boost_part' => 'required|string',
+        'need_training' => 'required|boolean',
+        'training_preference' => 'required|string',
+        'skills_to_develop' => 'required|string',
+        'expected_followup' => 'required|string',
+        'time_commitment' => 'required|string',
+        'profitability_timeline' => 'required|string',
+        'growth_plan' => 'required|boolean',
+        'mentor_questions' => 'required|string',
+        'superpower' => 'required|string',
+        'book_title' => 'required|string',
+        'future_success_action' => 'required|string',
+        'file_upload' => 'nullable|file',
+    ]);
+
+    $data = $request->all();
+
+    // Gestion du téléversement de fichier
+    if ($request->hasFile('file_upload')) {
+        $filePath = $request->file('file_upload')->store('uploads', 'public');
+        $data['file_upload'] = $filePath;
+    }
+
+    MarketplaceBusiness::create($data);
+
+    return redirect()->back()->with('success', 'Vos réponses ont été enregistrées avec succès !');
+}
+
+ public function showpolitique()
+    {
+        if (Auth::check()) {
+            return view('client.politique');
+        } else {
+            Auth::logout();
+            return redirect()->route('login');
+        }
+    }
+
 }

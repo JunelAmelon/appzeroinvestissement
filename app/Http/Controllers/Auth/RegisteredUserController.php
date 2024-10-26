@@ -31,13 +31,23 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'firstname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'phone' => ['required', 'regex:/^\d{1,4}\s\d{1,15}$/'], // Format "indicatif numéro"
+            'country' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'postal_code' => ['required', 'string', 'max:10'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'firstname' => $request->firstname,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'country' => $request->country,
+            'city' => $request->city,
+            'postal_code' => $request->postal_code,
             'password' => Hash::make($request->password),
         ]);
 

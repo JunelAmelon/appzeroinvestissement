@@ -205,9 +205,18 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
+                                
 
                                 </ul>
                             </div>
+                        </li>
+                             <li class="nav-item ">
+                            <a href="/faq">
+                                <i class="fas icon-question"></i>
+                                <p>Faq</p>
+
+                            </a>
+
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('logout') }}">
@@ -356,8 +365,8 @@
                     <nav class="pull-left">
 
                     </nav>
-                    <div class="copyright ml-auto">
-                        &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
+                  <div class="copyright ml-auto">
+                      <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
             </footer>
@@ -391,7 +400,7 @@
     <script src="{{ asset('build/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <!-- <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script> -->
 
     <!-- jQuery Vector Maps -->
     <script src="{{ asset('build/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>

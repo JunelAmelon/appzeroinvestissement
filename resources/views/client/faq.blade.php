@@ -204,14 +204,13 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
-                               
 
                                 </ul>
                             </div>
                         </li>
-                              <li class="nav-item ">
+                          <li class="nav-item ">
                             <a href="/faq">
-                                <i class="fas icon-question"></i>
+                                <i class="fas icon-question "></i>
                                 <p>Faq</p>
 
                             </a>
@@ -225,7 +224,7 @@
                             </a>
 
                         </li>
-
+                        
                     </ul>
                 </div>
             </div>
@@ -234,178 +233,115 @@
 
         <div class="main-panel">
             <div class="content">
-                <div class="panel-header " style="background-color: none; ">
-                    <div class="page-inner py-5">
-                        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-                            <div>
-                                <h2 class=" pb-2 fw-bold" style=" color:#6A00B8;">Soumettre un projet</h2>
-                                <h5 class=" op-7 mb-2" style=" color:#6A00B8;">Veuillez remplir ces champs de formulaire {{ Auth::user()->name }} !</h5>
-                            </div>
+                 
+<!-- HTML -->
+<div class="faq-section">
+    <h2>Questions Fréquemment Posées (FAQ)</h2>
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="accordion-header">Qu'est-ce que ZeroInvestissement.com ?</div>
+            <div class="accordion-content">
+                <p>ZeroInvestissement.com est une plateforme dédiée à l'accompagnement des entrepreneurs dans l'acquisition de business clé en main, en leur offrant des solutions adaptées à leurs besoins.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Comment puis-je financer l'achat ?</div>
+            <div class="accordion-content">
+                <p>Nous proposons plusieurs options de financement et de soutien pour vous aider à acquérir votre business clé en main. N'hésitez pas à nous contacter pour plus d'informations.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Quels types de projets soutenez-vous ?</div>
+            <div class="accordion-content">
+                <p>Nous soutenons une variété de projets, allant des startups aux entreprises établies, en fonction de leur potentiel de succès et de leur modèle commercial.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Quel est le processus d'acquisition ?</div>
+            <div class="accordion-content">
+                <p>Le processus d'acquisition comprend une évaluation de vos besoins, la validation de votre capacité de financement, et un accompagnement personnalisé tout au long de votre parcours entrepreneurial.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Quelle est la durée du soutien offert ?</div>
+            <div class="accordion-content">
+                <p>Nous offrons un soutien continu depuis la première étape de votre projet jusqu'à votre succès entrepreneurial, avec des évaluations régulières de vos progrès.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Comment puis-je vous contacter ?</div>
+            <div class="accordion-content">
+                <p>Vous pouvez nous contacter via notre site web, par email ou par téléphone. Nous sommes là pour répondre à toutes vos questions.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-                        </div>
-                    </div>
-                </div>
+<!-- CSS -->
+<style>
+    .faq-section {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Arial', sans-serif;
+    }
 
+    .accordion-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Espace entre les blocs d'accordéons */
+    }
 
-                <section class="bg-gray-100 mb-4">
-                    <div class="container mx-auto mt-2 ">
-                        @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                        @endif
+    .accordion-item {
+        flex: 1 1 calc(50% - 20px); /* Deux accordéons par ligne */
+        border: 1px solid #eee;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #ffffff; /* Fond blanc */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
+    }
 
-                        @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                        @endif
-                        <!-- En-tête modifiée ici -->
-                        <h2 class="text-center mb-0  card-header" style="background-color: #6A00B8; color: white;">Site/app</h2>
+    .accordion-item:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
 
+    .accordion-header {
+        padding: 15px;
+        background: #6A00B8; /* Couleur mise à jour */
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s, color 0.3s;
+    }
 
-                        <form method="POST" action="{{ route('siteapp.save') }}" class="bg-white p-5 rounded shadow">
-                            @csrf
+    .accordion-header:hover {
+        background: #5e00a5; /* Couleur sur hover */
+    }
 
-                            <h2 class="text-center mb-4">Bienvenue dans notre questionnaire interactif ! 🚀</h2>
-                            <p class="text-center mb-4">Pour que nous puissions bien comprendre votre projet et votre motivation, répondez à ces quelques questions. Amusez-vous et soyez créatif, nous vous attendons avec impatience !</p>
+    .accordion-content {
+        padding: 15px;
+        display: block; /* Ouvert par défaut */
+        background: #f9f9f9; /* Fond légèrement gris pour le contenu */
+        border-top: 1px solid #eee;
+    }
+</style>
 
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nom de votre projet (soyez créatif !)</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
+<!-- JavaScript -->
+<script>
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
 
-                            <div class="mb-3">
-                                <label for="description" class="form-label">En une phrase, décrivez votre idée comme si vous la pitchiez à un alien (oui, un alien) :</label>
-                                <textarea class="form-control" id="description" name="description" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="animal" class="form-label">Si votre projet était un animal, lequel serait-il et pourquoi ?</label>
-                                <input type="text" class="form-control" id="animal" name="animal" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="problem" class="form-label">Quel est le problème majeur que votre idée va résoudre ?</label>
-                                <textarea class="form-control" id="problem" name="problem" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="main_feature" class="form-label">Fonctionnalité phare : Quelle est la fonctionnalité qui rendra votre site ou appli indispensable ?</label>
-                                <input type="text" class="form-control" id="main_feature" name="main_feature" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="why_good" class="form-label">Pourquoi pensez-vous que votre idée est meilleure que ce qui existe déjà ?</label>
-                                <textarea class="form-control" id="why_good" name="why_good" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="idea_origin" class="form-label">Comment vous est venue cette idée ?</label>
-                                <textarea class="form-control" id="idea_origin" name="idea_origin" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="competition" class="form-label">Avez-vous déjà pensé à une stratégie pour atteindre vos clients cibles ? Si oui, laquelle ?</label>
-                                <textarea class="form-control" id="competition" name="competition" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="excitement" class="form-label">Qu’est-ce qui vous rend super excité à l’idée de lancer ce projet ?</label>
-                                <textarea class="form-control" id="excitement" name="excitement" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="fallback_plan" class="form-label">Quel est votre plan B si tout ne se passe pas comme prévu ?</label>
-                                <textarea class="form-control" id="fallback_plan" name="fallback_plan" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="target_customers" class="form-label">Votre cible idéale : Décrivez votre client idéal.</label>
-                                <textarea class="form-control" id="target_customers" name="target_customers" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="revenue_model" class="form-label">Comment votre projet va-t-il rapporter des sous ?</label>
-                                <textarea class="form-control" id="revenue_model" name="revenue_model" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="target_customers" class="form-label">Combien de personnes pensez-vous que votre projet touchera dans sa première année ? (Soyez ambitieux, mais réaliste.)</label>
-                                <input type="number" class="form-control" id="target_customers" name="target_customers" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="social_platform" class="form-label">Si vous deviez choisir une plateforme de réseaux sociaux pour promouvoir votre projet, laquelle serait-elle ?</label>
-                                <input type="text" class="form-control" id="social_platform" name="social_platform" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="availability" class="form-label">Quelles sont vos disponibilités ?</label>
-                                <input type="text" class="form-control" id="availability" name="availability" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="funding_status" class="form-label">Avez-vous des fonds, investisseurs ou partenaires prêts à vous soutenir ?</label>
-                                <select class="form-select" id="funding_status" name="funding_status" required>
-                                    <option value="Oui, j’ai déjà des investisseurs">Oui, j’ai déjà des investisseurs</option>
-                                    <option value="Pas encore, mais je suis prêt à en chercher">Pas encore, mais je suis prêt à en chercher</option>
-                                    <option value="Non, je compte sur ZeroInvestissement.com !">Non, je compte sur ZeroInvestissement.com !</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="project_pitch" class="form-label">Si vous deviez vendre votre idée à un investisseur en une phrase, que diriez-vous ?</label>
-                                <textarea class="form-control" id="project_pitch" name="project_pitch" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="dominant_color" class="form-label">Si votre site/appli avait une couleur dominante, ce serait…</label>
-                                <input type="text" class="form-control" id="dominant_color" name="dominant_color" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="design_style" class="form-label">Quel est le style de design qui vous attire le plus ?</label>
-                                <textarea class="form-control" id="design_style" name="design_style" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="graphic_elements" class="form-label">Avez-vous déjà des éléments graphiques comme un logo ou une charte graphique ?</label>
-                                <select class="form-select" id="graphic_elements" name="graphic_elements" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="support_type" class="form-label">Pour quel support souhaitez-vous développer votre projet ?</label>
-                                <select class="form-select" id="support_type" name="support_type" required>
-                                    <option value="Site web">Site web</option>
-                                    <option value="Application mobile">Application mobile</option>
-                                    <option value="Site web & Application mobile">Les deux</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="platforms" class="form-label">Sur quelle(s) plateforme(s) souhaitez-vous que votre appli soit disponible ?</label>
-                                <select class="form-select" id="platforms" name="platforms" required>
-                                    <option value="iOS">iOS</option>
-                                    <option value="Android">Android</option>
-                                    <option value="iOS & Android">Les deux</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="tech_requirements" class="form-label">Avez-vous des exigences spécifiques en termes de technologie ou d’hébergement ?</label>
-                                <textarea class="form-control" id="tech_requirements" name="tech_requirements" required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-                        </form>
-
-                </section>
-
-
+            // Basculer l'affichage sans affecter les autres accordéons
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        });
+    });
+</script>
 
             </div>
             <footer class="footer">
@@ -413,7 +349,7 @@
                     <nav class="pull-left">
 
                     </nav>
-                   <div class="copyright ml-auto">
+                  <div class="copyright ml-auto">
                       <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>

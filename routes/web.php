@@ -27,8 +27,16 @@ Route::post('/franchisesave', [ClientController::class, 'regfranchise'])->name('
 Route::get('/marketplace', [ClientController::class, 'showmarketplace'])->name('marketplace');
 Route::post('/marketplacesave', [ClientController::class, 'regmarketplace'])->name('marketplace.save');
 
+Route::get('/marketplace-business', [ClientController::class, 'showmarketplacebusiness'])->name('marketplacebusiness');
+Route::post('/marketplacebusinessave', [ClientController::class, 'regmarketplacebusiness'])->name('marketplacebusiness.save');
+
+
 Route::get('/incubator', [ClientController::class, 'showincubator'])->name('incubator');
+Route::get('/politique-de-confidentialite', [ClientController::class, 'showpolitique'])->name('politique');
+
 Route::post('/incubatorsave', [ClientController::class, 'regincubator'])->name('incubator.save');
+Route::get('/faq', [ClientController::class, 'showfaq'])->name('faq');
+
 
 require __DIR__.'/auth.php';
 

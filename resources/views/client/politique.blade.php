@@ -204,14 +204,14 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
-                               
+                                  
 
                                 </ul>
                             </div>
                         </li>
-                              <li class="nav-item ">
+                           <li class="nav-item ">
                             <a href="/faq">
-                                <i class="fas icon-question"></i>
+                                <i class="fas icon-question "></i>
                                 <p>Faq</p>
 
                             </a>
@@ -238,172 +238,81 @@
                     <div class="page-inner py-5">
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
-                                <h2 class=" pb-2 fw-bold" style=" color:#6A00B8;">Soumettre un projet</h2>
-                                <h5 class=" op-7 mb-2" style=" color:#6A00B8;">Veuillez remplir ces champs de formulaire {{ Auth::user()->name }} !</h5>
+                                <h1 class=" pb-2 fw-bold" style=" color:#6A00B8;">Politique de confidentialité</h1>
+                               
                             </div>
 
                         </div>
                     </div>
                 </div>
 
+          <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-2 mb-4">
+        <h1 class="text-2xl font-bold mb-4 text-[#ee8d0e]">Pourquoi une politique de protection des données ?</h1>
+        <p class="mb-4">
+            Cette Politique de protection des données a pour but de vous informer – en tant que client ou utilisateur – de manière concise, transparente et compréhensible sur la façon dont ZEROINVESTISSEMENT recueille et gère vos données personnelles. En complément des différents supports contractuels ou de collecte de données, elle a vocation à centraliser ces informations pour que vous puissiez en prendre connaissance plus facilement. ZEROINVESTISSEMENT, ci-après nommé « le site » les informations suivantes : sera amenée à la modifier, par exemple en vue de tenir compte d’éventuelles évolutions organisationnelles, techniques ou règlementaires. Il est donc conseillé de la consulter régulièrement.
+        </p>
 
-                <section class="bg-gray-100 mb-4">
-                    <div class="container mx-auto mt-2 ">
-                        @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                        @endif
+        <h2 class="text-xl font-semibold mt-6 mb-2">Quelles sont les données personnelles que nous utilisons et comment nous les collectons ?</h2>
+        <h3 class="font-medium mt-4">Formulaire de contact</h3>
+        <p>
+            Afin de vous fournir des réponses adaptées à vos besoins, nous sommes amenés à vous demander vos informations d’identification et de contact.
+        </p>
 
-                        @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                        @endif
-                        <!-- En-tête modifiée ici -->
-                        <h2 class="text-center mb-0  card-header" style="background-color: #6A00B8; color: white;">Site/app</h2>
+        <h3 class="font-medium mt-4">Cookies</h3>
+        <p>
+            Un cookie est un fichier texte susceptible d’être enregistré dans un terminal lors de la consultation d’un Service avec un navigateur. Un Cookie permet à son émetteur, pendant sa durée de validité, de reconnaître le terminal concerné à chaque fois que ce terminal accède à un contenu numérique comportant des Cookies du même émetteur. Vous êtes informé que, lors de vos connexions sur ce Site, des Cookies sont installés sur votre terminal de réception (ordinateur, tablette, smartphone, etc.) pour le bon fonctionnement des Services, ou sur votre navigateur en fonction du choix que vous avez paramétré, ce choix pouvant être modifié à tout moment. Vous trouverez la liste des cookies installés sur ce site dans le gestionnaire accessible en bas à droite de votre écran.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-6 mb-2">Dans quels cas vos données personnelles sont-elles utilisées ?</h2>
+        <p>
+            Toutes les données personnelles que nous collectons sont utilisées dans le strict but de respecter nos engagements envers vous et de vous fournir le service que vous attendez dans le cadre de notre relation : Réponse aux questions et autres sollicitations provenant du formulaire de contact. Statistiques de fréquentation du site. En aucun cas vos données personnelles ne seront utilisées à d’autres fins.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-6 mb-2">Qui sont les destinataires de vos données personnelles ?</h2>
+        <p>
+            Vos données personnelles sont strictement destinées au personnel de l’organisation S.A ZEROINVESTISSEMENT habilité à les traiter de manière à assurer le service que vous avez demandé. En aucun cas vos données personnelles ne seront vendues ou divulguées à des tiers.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-6 mb-2">Vos données personnelles sont-elles en sécurité ?</h2>
+        <p>
+            ZEROINVESTISSEMENT veille à sensibiliser ses agents à la protection des données et à prendre toutes les mesures techniques et organisationnelles de nature à assurer la sécurité de vos données personnelles.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-6 mb-2">Quelle est la durée de conservation de vos données personnelles ?</h2>
+        <p>
+            Nous ne conserverons vos données que le temps nécessaire à accomplir nos services ou dans les limites prescrites par la loi. À l’issue de ce délai, vos données personnelles seront supprimées. Nous ne pouvons supprimer vos données en cas d’obligation de conservation légale, par exemple si elle est prescrite par le droit comptable ou lorsqu’il existe un motif juridique pour conserver les données, une relation contractuelle en cours par exemple.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-6 mb-2">Quels droits avez-vous sur vos données personnelles ?</h2>
+        <p>
+            La réglementation vous donne le droit de demander à ZEROINVESTISSEMENT : l’accès à vos données ; la rectification ou l’effacement de celles-ci ; la limitation du traitement vous concernant ; de vous opposer au traitement ; la portabilité de vos données. Pour plus d’informations sur le contenu et les conditions d’application de ces droits, n’hésitez pas à consulter le site de la CNIL.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-6 mb-2">Qui contacter pour exercer vos droits sur vos données personnelles ?</h2>
+        <p>
+            La personne référente sur le sujet de la protection des données personnelles à contacter à ZEROINVESTISSEMENT est Mr Sam Mune. Cette personne est joignable par mail à <a href="mailto:ccprconseil@gmail.com" class="text-blue-600 underline">ccprconseil@gmail.com</a>, ou par courrier au siège de ZEROINVESTISSEMENT. ZEROINVESTISSEMENT peut rejeter les demandes déraisonnables ou dont l’acceptation n’est pas exigée par la loi, notamment celles qui seraient difficiles à mettre en place, qui exigeraient un effort technique disproportionné ou qui pourraient occasionner des fraudes. Si vous estimez que vos droits ne sont pas respectés, vous avez le droit d’introduire une réclamation auprès de la CNIL – 3 Place de Fontenoy TSA 80715 75334 PARIS CEDEX 07 (<a href="https://www.cnil.fr" class="text-blue-600 underline">https://www.cnil.fr</a>).
+        </p>
+    </div>
 
 
-                        <form method="POST" action="{{ route('siteapp.save') }}" class="bg-white p-5 rounded shadow">
-                            @csrf
 
-                            <h2 class="text-center mb-4">Bienvenue dans notre questionnaire interactif ! 🚀</h2>
-                            <p class="text-center mb-4">Pour que nous puissions bien comprendre votre projet et votre motivation, répondez à ces quelques questions. Amusez-vous et soyez créatif, nous vous attendons avec impatience !</p>
 
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nom de votre projet (soyez créatif !)</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="description" class="form-label">En une phrase, décrivez votre idée comme si vous la pitchiez à un alien (oui, un alien) :</label>
-                                <textarea class="form-control" id="description" name="description" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="animal" class="form-label">Si votre projet était un animal, lequel serait-il et pourquoi ?</label>
-                                <input type="text" class="form-control" id="animal" name="animal" required>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="problem" class="form-label">Quel est le problème majeur que votre idée va résoudre ?</label>
-                                <textarea class="form-control" id="problem" name="problem" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="main_feature" class="form-label">Fonctionnalité phare : Quelle est la fonctionnalité qui rendra votre site ou appli indispensable ?</label>
-                                <input type="text" class="form-control" id="main_feature" name="main_feature" required>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="why_good" class="form-label">Pourquoi pensez-vous que votre idée est meilleure que ce qui existe déjà ?</label>
-                                <textarea class="form-control" id="why_good" name="why_good" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="idea_origin" class="form-label">Comment vous est venue cette idée ?</label>
-                                <textarea class="form-control" id="idea_origin" name="idea_origin" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="competition" class="form-label">Avez-vous déjà pensé à une stratégie pour atteindre vos clients cibles ? Si oui, laquelle ?</label>
-                                <textarea class="form-control" id="competition" name="competition" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="excitement" class="form-label">Qu’est-ce qui vous rend super excité à l’idée de lancer ce projet ?</label>
-                                <textarea class="form-control" id="excitement" name="excitement" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="fallback_plan" class="form-label">Quel est votre plan B si tout ne se passe pas comme prévu ?</label>
-                                <textarea class="form-control" id="fallback_plan" name="fallback_plan" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="target_customers" class="form-label">Votre cible idéale : Décrivez votre client idéal.</label>
-                                <textarea class="form-control" id="target_customers" name="target_customers" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="revenue_model" class="form-label">Comment votre projet va-t-il rapporter des sous ?</label>
-                                <textarea class="form-control" id="revenue_model" name="revenue_model" required></textarea>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="target_customers" class="form-label">Combien de personnes pensez-vous que votre projet touchera dans sa première année ? (Soyez ambitieux, mais réaliste.)</label>
-                                <input type="number" class="form-control" id="target_customers" name="target_customers" required>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="social_platform" class="form-label">Si vous deviez choisir une plateforme de réseaux sociaux pour promouvoir votre projet, laquelle serait-elle ?</label>
-                                <input type="text" class="form-control" id="social_platform" name="social_platform" required>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="availability" class="form-label">Quelles sont vos disponibilités ?</label>
-                                <input type="text" class="form-control" id="availability" name="availability" required>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="funding_status" class="form-label">Avez-vous des fonds, investisseurs ou partenaires prêts à vous soutenir ?</label>
-                                <select class="form-select" id="funding_status" name="funding_status" required>
-                                    <option value="Oui, j’ai déjà des investisseurs">Oui, j’ai déjà des investisseurs</option>
-                                    <option value="Pas encore, mais je suis prêt à en chercher">Pas encore, mais je suis prêt à en chercher</option>
-                                    <option value="Non, je compte sur ZeroInvestissement.com !">Non, je compte sur ZeroInvestissement.com !</option>
-                                </select>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="project_pitch" class="form-label">Si vous deviez vendre votre idée à un investisseur en une phrase, que diriez-vous ?</label>
-                                <textarea class="form-control" id="project_pitch" name="project_pitch" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="dominant_color" class="form-label">Si votre site/appli avait une couleur dominante, ce serait…</label>
-                                <input type="text" class="form-control" id="dominant_color" name="dominant_color" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="design_style" class="form-label">Quel est le style de design qui vous attire le plus ?</label>
-                                <textarea class="form-control" id="design_style" name="design_style" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="graphic_elements" class="form-label">Avez-vous déjà des éléments graphiques comme un logo ou une charte graphique ?</label>
-                                <select class="form-select" id="graphic_elements" name="graphic_elements" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="support_type" class="form-label">Pour quel support souhaitez-vous développer votre projet ?</label>
-                                <select class="form-select" id="support_type" name="support_type" required>
-                                    <option value="Site web">Site web</option>
-                                    <option value="Application mobile">Application mobile</option>
-                                    <option value="Site web & Application mobile">Les deux</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="platforms" class="form-label">Sur quelle(s) plateforme(s) souhaitez-vous que votre appli soit disponible ?</label>
-                                <select class="form-select" id="platforms" name="platforms" required>
-                                    <option value="iOS">iOS</option>
-                                    <option value="Android">Android</option>
-                                    <option value="iOS & Android">Les deux</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="tech_requirements" class="form-label">Avez-vous des exigences spécifiques en termes de technologie ou d’hébergement ?</label>
-                                <textarea class="form-control" id="tech_requirements" name="tech_requirements" required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-                        </form>
-
-                </section>
 
 
 
@@ -413,7 +322,7 @@
                     <nav class="pull-left">
 
                     </nav>
-                   <div class="copyright ml-auto">
+                    <div class="copyright ml-auto">
                       <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
@@ -462,6 +371,7 @@
     <!-- Atlantis DEMO methods, don't include it in your project! -->
     <script src="{{ asset('build/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('build/assets/js/demo.js') }}"></script>
+
 </body>
 
 </html>
