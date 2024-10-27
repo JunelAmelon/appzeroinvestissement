@@ -66,8 +66,6 @@
 
                     </div>
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-
-
                         <li class="nav-item dropdown hidden-caret">
                             <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <i class="fas fa-layer-group"></i>
@@ -248,17 +246,28 @@
 
                 <section class="bg-gray-100">
                     <div class="container mx-auto mt-2 ">
-                        @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                        @endif
+                      @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-                        @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                        @endif
+@if(session('success'))
+    <div class="alert alert-success">
+      {!! session('success') !!}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif    
+
                         <!-- En-tête modifiée ici -->
                         <h2 class="text-center card-header mb-0 p-3" style="background-color: #6A00B8; color: white;">Franchise</h2>
                         <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
@@ -286,6 +295,7 @@
                                     <input type="radio" id="un_an" name="business_age" value="Moins d’un an">
                                     <label for="un_an">Moins d’un an</label>
                                 </div>
+
                                 <div>
                                     <input type="radio" id="un_trois" name="business_age" value="1 à 3 ans">
                                     <label for="un_trois">1 à 3 ans</label>
@@ -344,22 +354,29 @@
                                     <label for="cinqk">Plus de 500 000 €</label>
                                 </div>
                             </div>
+                            
 
                             <div class="mb-4">
                                 <label for="scalability_score" class="form-label">Sur une échelle de 1 à 10, comment évaluez-vous la scalabilité de votre modèle ? (Indice : Scalabilité = possibilité de reproduire facilement votre concept ailleurs)
                                 </label>
                                 <div>
-                                    <input type="radio" id="pas_encore" name="scalability_score" value="1 : Pas encore prêt à se déployer">
+                                    <input type="radio" id="pas_encore" name="scalability_score" value="1">
                                     <label for="pas_encore">1 : Pas encore prêt à se déployer</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="marcher_ailleurs" name="scalability_score" value="5 : Ça pourrait marcher ailleurs">
+                                    <input type="radio" id="marcher_ailleurs" name="scalability_score" value="5">
                                     <label for="marcher_ailleurs">5 : Ça pourrait marcher ailleurs</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="pret" name="scalability_score" value="10 : Mon modèle est prêt à conquérir le monde !">
+                                    <input type="radio" id="pret" name="scalability_score" value="10">
                                     <label for="pret">10 : Mon modèle est prêt à conquérir le monde !</label>
                                 </div>
+ <div>
+                                    <label for="key_products">Produits Clés</label>
+<textarea id="key_products" name="key_products"   required ></textarea>
+
+                                </div>
+                               
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">🛠️ Le Grand Saut : Pourquoi franchiser votre entreprise ?</h3>

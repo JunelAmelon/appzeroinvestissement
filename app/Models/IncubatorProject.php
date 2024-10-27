@@ -49,5 +49,6 @@ class IncubatorProject extends Model
         'documentary_title',
         'celebration_details',
         'client_slogan',
+        'status',
     ];
 }

@@ -38,7 +38,7 @@ return new class extends Migration
             $table->string('clients');
             $table->text('market_strategy');
             $table->string('funds_raised');
-            $table->decimal('initial_budget', 15, 2)->nullable();
+            $table->string('initial_budget');
             $table->text('first_step_with_unlimited_funds');
             $table->text('growth_needs');
             $table->text('strategic_support');
@@ -53,6 +53,7 @@ return new class extends Migration
             $table->text('documentary_title');
             $table->text('celebration_details');
             $table->text('client_slogan');
+            $table->string('status')->default('en attente');
             $table->timestamps();
         });
     }

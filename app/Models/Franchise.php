@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Franchise extends Model
 {
     use HasFactory;
-    protected $fillable = [
+   protected $fillable = [
         'user_id',
         'business_name',
         'character_comparison',
@@ -34,9 +34,9 @@ class Franchise extends Model
         'franchisee_requirements',
         'franchisee_search',
         'competitors',
+        'location_data',
         'analyse',
         'role',
-        'location_data',
         'franchisee_training',
         'tools',
         'business_song',
@@ -44,4 +44,11 @@ class Franchise extends Model
         'success_plan',
         'status',
     ];
+
+  // Relation avec le modèle User
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

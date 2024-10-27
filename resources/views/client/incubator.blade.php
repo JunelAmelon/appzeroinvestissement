@@ -248,17 +248,29 @@
 
                 <section class="bg-gray-100">
                     <div class="container mx-auto mt-2">
-                        @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                        @endif
+                                            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-                        @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                        @endif
+@if(session('success'))
+    <div class="alert alert-success">
+      {!! session('success') !!}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+         
 
                         <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Incubateur</h2>
                         <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
@@ -329,34 +341,27 @@
                                 <small class="text-gray-500">(Un moment eureka, une discussion avec un ami, unbesoin non satisfait ?)</small>
                             </div>
 
-                            <div class="mb-4">
-                                <label for="passion_aspect" class="form-label">Qu’est-ce qui vous passionne le plus dans ce projet ?</label>
-                                <div>
-                                    <input type="radio" name="passion_aspect" id="entrepreneurial_challenge" value="Le défi entrepreneurial" onclick="toggleOtherObjectiveInput9(false)">
-                                    <label for="entrepreneurial_challenge">
-                                        Le défi entrepreneurial
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="passion_aspect" id="impact" value="L'impact que ce projet peut avoir" onclick="toggleOtherObjectiveInput9(false)">
-                                    <label for="impact">
-                                        L'impact que ce projet peut avoir
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="passion_aspect" id="growth_potential" value="Le potentiel de croissance" onclick="toggleOtherObjectiveInput9(false)">
-                                    <label for="growth_potential">
-                                        Le potentiel de croissance
-                                    </label>
-                                </div>
-                                <div class="mt-2">
-                                    <input type="radio" name="passion_aspect" id="other_passion_aspect" value="" onclick="toggleOtherObjectiveInput9(true)">
-                                    <label for="custom_passion">
-                                        Autre :
-                                    </label>
-                                    <input type="text" id="passion_aspect_custom" name="passion_aspect" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherObjectiveValue9()" style="display: none;">
-                                </div>
-                            </div>
+                           <div class="mb-4">
+    <label for="passion_aspect" class="form-label">Qu’est-ce qui vous passionne le plus dans ce projet ?</label>
+    <div>
+        <input type="radio" name="passion_aspect" id="entrepreneurial_challenge" value="Le défi entrepreneurial" onclick="toggleOtherObjectiveInput9(false)">
+        <label for="entrepreneurial_challenge">Le défi entrepreneurial</label>
+    </div>
+    <div>
+        <input type="radio" name="passion_aspect" id="impact" value="L'impact que ce projet peut avoir" onclick="toggleOtherObjectiveInput9(false)">
+        <label for="impact">L'impact que ce projet peut avoir</label>
+    </div>
+    <div>
+        <input type="radio" name="passion_aspect" id="growth_potential" value="Le potentiel de croissance" onclick="toggleOtherObjectiveInput9(false)">
+        <label for="growth_potential">Le potentiel de croissance</label>
+    </div>
+    <div class="mt-2">
+        <input type="radio" name="passion_aspect" id="other_passion_aspect" value="" onclick="toggleOtherObjectiveInput9(true)">
+        <label for="custom_passion">Autre :</label>
+        <input type="text" id="passion_aspect_custom" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherObjectiveValue9()" style="display: none;">
+    </div>
+</div>
+
 
                             <div class="mb-4">
                                 <label for="strength" class="form-label">Si vous deviez décrire la plus grande force de votre projet en une phrase, quelle serait-elle ?</label>
@@ -837,34 +842,27 @@
 
     </div>
     <script>
-        // Fonction pour afficher ou masquer le champ de saisie pour l'option "Autre"
-        function toggleOtherObjectiveInput9(show) {
-            const otherInput = document.getElementById('passion_aspect_custom');
-            if (show) {
-                otherInput.style.display = 'block';
-                otherInput.required = true;
-            } else {
-                otherInput.style.display = 'none';
-                otherInput.required = false;
-                otherInput.value = ''; // Réinitialise la valeur si non utilisée
-            }
-        }
+       
+       function toggleOtherObjectiveInput9(show) {
+    const customInput = document.getElementById("passion_aspect_custom");
+    const otherRadio = document.getElementById("other_passion_aspect");
 
-        // Met à jour la valeur de l'option "Autre" dans le bouton radio
-        function updateOtherObjectiveValue9() {
-            const otherRadio = document.getElementById('other_passion_aspect');
-            const otherInput = document.getElementById('passion_aspect_custom');
-            otherRadio.value = otherInput.value;
-        }
+    customInput.style.display = show ? "block" : "none";
+    customInput.disabled = !show; // Désactive le champ texte s'il n'est pas visible
+    
+    if (!show) {
+        customInput.value = ""; // Réinitialise le champ si "Autre" est désélectionné
+        otherRadio.value = ""; // Réinitialise la valeur du bouton radio "Autre"
+    }
+}
 
-        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
-        document.querySelectorAll('input[name="passion_aspect_custom"]').forEach((input) => {
-            input.addEventListener('change', (e) => {
-                if (e.target.id !== 'other_passion_aspect') {
-                    toggleOtherObjectiveInput9(false);
-                }
-            });
-        });
+function updateOtherObjectiveValue9() {
+    const customInput = document.getElementById("passion_aspect_custom");
+    const otherRadio = document.getElementById("other_passion_aspect");
+    
+    otherRadio.value = customInput.value; // Met à jour la valeur de l'option radio "Autre"
+}
+
     </script>
     <script>
         // Fonction pour afficher ou masquer le champ de saisie pour l'option "Autre"
