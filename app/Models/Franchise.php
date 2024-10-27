@@ -10,9 +10,9 @@ class Franchise extends Model
     use HasFactory;
    protected $fillable = [
         'user_id',
-        'business_name',
+        'project_name',
         'character_comparison',
-        'activity_description',
+        'project_description',
         'business_age',
         'sector',
         'sucess_product',
