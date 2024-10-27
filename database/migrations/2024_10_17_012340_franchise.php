@@ -22,7 +22,6 @@ return new class extends Migration
     $table->string('business_age');
     $table->string('sector');
     $table->string('sucess_product');
-    $table->text('key_products');
     $table->text('proudest_achievement');
     $table->string('customer_count');
     $table->string('current_revenue');
@@ -48,6 +47,8 @@ return new class extends Migration
     $table->string('business_song');
     $table->string('imaginary');
     $table->text('success_plan');
+    $table->string('files')->nullable(); // Chemin du fichier téléversé pour le dernier bilan
+
     $table->string('status')->default('en attente');
     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
     $table->timestamps();

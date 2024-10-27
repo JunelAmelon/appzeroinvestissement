@@ -273,10 +273,10 @@
          
 
                         <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Incubateur</h2>
-                        <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
+                        <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6"  enctype="multipart/form-data">
                             @csrf
-                            <h2 class="text-center mb-4">Bienvenue dans l’univers de l’Accélérateur Zéro !</h2>
-                            <p class="text-center mb-4">Que vous soyez au début d’une idée innovante ou à la tête d’une entreprise existante, nous sommes là pour vous accompagner à chaque étape!<br> Répondez aux questions ci-dessous pour nous aider à comprendre votre projet.</p>
+                            <h2 class="text-center mb-4">Bienvenue dans l’univers de l’Accélérateur Zéro ! Ici, vos idées et entreprises prennent leur envol, sans contrainte financière. </h2>
+                            <p class="text-center mb-4">Que vous soyez au début d’une idée innovante ou à la tête d’une entreprise existante, nous sommes là pour vous accompagner à chaque étape. Répondez à ces questions funs, engageantes et précises pour que nous puissions analyser votre potentiel et déterminer comment nous pouvons vous aider à transformer votre projet en un véritable succès.</p>
 
                             <h3 class="text-lg font-semibold mb-2">🚀 Votre Projet : Parlons du cœur de votre idée</h3>
                             <div class="mb-4">
@@ -816,12 +816,18 @@
 
                             <div class="mb-3">
                                 <label for="file_input" class="form-label">Téléverser un fichier ( Dernier bilan )</label>
-                                <input class="form-control" type="file" id="file_input" name="file_input">
+                                <input class="form-control" type="file" id="file_input" name="files">
                             </div>
 
                             <div>
                                 <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Soumettre le projet</button>
                             </div>
+                            <p style="padding-top:4%">Merci d’avoir partagé votre projet avec nous !
+Nous allons analyser votre dossier et vous recevrez un retour sous 7 jour ouvré. Si votre projet est sélectionné, nous organiserons un entretien pour discuter en détail de vos besoins spécifiques et de la manière dont ZeroInvestissement.com peut vous accompagner dans cette aventure. Préparez-vous à atteindre de nouveaux sommets !
+Pourquoi ce questionnaire ?
+Ce questionnaire est conçu pour nous permettre de bien comprendre votre projet, vos ambitions, et les défis auxquels vous faites face. Cela nous aide à identifier comment nous pouvons vous soutenir au mieux et vous aider à transformer vos idées en un succès commercial durable.
+
+</p>
                         </form>
                     </div>
                 </section>

@@ -16,7 +16,6 @@ class Franchise extends Model
         'business_age',
         'sector',
         'sucess_product',
-        'key_products',
         'proudest_achievement',
         'customer_count',
         'current_revenue',
@@ -43,6 +42,7 @@ class Franchise extends Model
         'imaginary',
         'success_plan',
         'status',
+        'files',
     ];
 
   // Relation avec le modèle User

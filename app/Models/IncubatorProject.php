@@ -50,5 +50,6 @@ class IncubatorProject extends Model
         'celebration_details',
         'client_slogan',
         'status',
+         'files',
     ];
 }

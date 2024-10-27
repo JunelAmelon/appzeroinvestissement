@@ -76,18 +76,41 @@ class ClientController extends Controller
             'famous_entrepreneur' => 'required|string',
             'worldwide_success' => 'required|string',
             'leisure' => 'required|string',
+          'files' => 'nullable|file',
+
         ]);
+
 
         $validatedData['user_id'] = Auth::id();
 
-        try {
-            Siteapp::create($validatedData);
-            return redirect()->route('siteapp')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
+try {
+    // Gestion du téléversement de fichier
+    if ($request->hasFile('files')) {
+        // Créez un nom de fichier unique
+        $filename = time() . '_' . $request->file('files')->getClientOriginalName();
 
-            
-        } catch (Exception $e) {
-            return redirect()->route('siteapp')->with('error', 'Erreur. ' . $e);
+        // Essayez de déplacer le fichier
+        $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
+
+        // Vérifiez si le fichier a bien été déplacé
+        if (!$filePath) {
+            return back()->with('error', 'Échec de l\'enregistrement du fichier dans le dossier public/build/assets/files.');
         }
+
+        // Enregistrez le chemin du fichier dans les données validées
+        $validatedData['files'] = 'build/assets/files/' . $filename;
+    }
+
+    // Enregistrement dans la base de données
+    Siteapp::create($validatedData);
+
+    return redirect()->route('siteapp')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
+} catch (\Exception $e) {
+    // Capture et affiche toute erreur
+    return back()->with('error', 'Erreur : ' . $e->getMessage());
+}
+
+
     }
 
     public function showfranchise()
@@ -109,7 +132,6 @@ public function regfranchise(Request $request)
         'business_age' => 'required|string|max:255',
         'sector' => 'required|string|max:255',
         'sucess_product' => 'required|string|max:255',
-        'key_products' => 'required|string',
         'proudest_achievement' => 'required|string',
         'customer_count' => 'required|string|max:255',
         'current_revenue' => 'required|string|max:255',
@@ -135,11 +157,27 @@ public function regfranchise(Request $request)
         'business_song' => 'required|string|max:255',
         'imaginary' => 'required|string|max:255',
         'success_plan' => 'required|string',
+        'files' => 'required|file'
     ]);
 
     $validatedData['user_id'] = Auth::id();
 
     try {
+        if ($request->hasFile('files')) {
+    // Créez un nom de fichier unique
+    $filename = time() . '_' . $request->file('files')->getClientOriginalName();
+
+    // Déplacez le fichier vers le dossier souhaité
+    $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
+
+    // Assurez-vous que le fichier a bien été déplacé et enregistrez le chemin dans $validatedData
+    if ($filePath) {
+        $validatedData['files'] = 'build/assets/files/' . $filename;
+    } else {
+        return back()->with('error', 'Échec de l\'enregistrement du fichier.');
+    }
+}
+
         Franchise::create($validatedData);
         return redirect()->route('franchise')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
     } catch (\Exception $e) {
@@ -321,12 +359,28 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
             'documentary_title' => 'required|string',
             'celebration_details' => 'required|string',
             'client_slogan' => 'required|string',
+            'files' => 'required|file'
         ]);
 
         // Ajouter l'ID de l'utilisateur
         $validatedData['user_id'] = Auth::id();
 
         try {
+            if ($request->hasFile('files')) {
+    // Créez un nom de fichier unique
+    $filename = time() . '_' . $request->file('files')->getClientOriginalName();
+
+    // Déplacez le fichier vers le dossier souhaité
+    $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
+
+    // Assurez-vous que le fichier a bien été déplacé et enregistrez le chemin dans $validatedData
+    if ($filePath) {
+        $validatedData['files'] = 'build/assets/files/' . $filename;
+    } else {
+        return back()->with('error', 'Échec de l\'enregistrement du fichier.');
+    }
+}
+
             // Créer un nouvel enregistrement dans la base de données
             IncubatorProject::create($validatedData);
             return redirect()->route('incubator')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
@@ -380,15 +434,15 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
         'superpower' => 'required|string',
         'book_title' => 'required|string',
         'future_success_action' => 'required|string',
-        'file_upload' => 'nullable|file',
+        'files' => 'nullable|file',
     ]);
 
     $data = $request->all();
 
     // Gestion du téléversement de fichier
-    if ($request->hasFile('file_upload')) {
-        $filePath = $request->file('file_upload')->store('uploads', 'public');
-        $data['file_upload'] = $filePath;
+    if ($request->hasFile('files')) {
+        $filePath = $request->file('files')->store('uploads', 'public');
+        $data['files'] = $filePath;
     }
 
     MarketplaceBusiness::create($data);

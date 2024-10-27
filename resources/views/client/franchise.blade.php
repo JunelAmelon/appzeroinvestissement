@@ -270,10 +270,12 @@
 
                         <!-- En-tête modifiée ici -->
                         <h2 class="text-center card-header mb-0 p-3" style="background-color: #6A00B8; color: white;">Franchise</h2>
-                        <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6">
+                        <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6"  enctype="multipart/form-data">
                             @csrf
-                            <h2 class="text-center mb-4">Bienvenue dans notre questionnaire franchise !</h2>
-                            <p class="text-center mb-4">Si vous avez une entreprise qui cartonne déjà et que vous voulez la voir grandir et conquérir de nouveaux territoires, vous êtes au bon endroit!<br>Répondez aux questions ci-dessous pour nous aider à comprendre votre entreprise.</p>
+                            <h2 class="text-center mb-4">Bienvenue dans notre questionnaire hyper fun et essentiel pour faire de votre entreprise une franchise à succès sans dépenser un centime </h2>
+                            <p class="text-center mb-4">Si vous avez une entreprise qui cartonne déjà et que vous voulez la voir grandir et conquérir de nouveaux territoires, vous êtes au bon endroit. Chez ZeroInvestissement.com, on adore les entreprises qui rêvent en grand, et on est là pour vous aider à franchiser sans stress !
+Alors, prêt à transformer votre entreprise en la prochaine grande franchise ? Répondez à ces questions et voyons comment on peut faire décoller tout ça !
+</p>
 
                             <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle : Montrez-nous ce que vous avez !</h3>
                             <div class="mb-4">
@@ -371,11 +373,7 @@
                                     <input type="radio" id="pret" name="scalability_score" value="10">
                                     <label for="pret">10 : Mon modèle est prêt à conquérir le monde !</label>
                                 </div>
- <div>
-                                    <label for="key_products">Produits Clés</label>
-<textarea id="key_products" name="key_products"   required ></textarea>
 
-                                </div>
                                
                             </div>
 
@@ -569,10 +567,15 @@
 
                             <div class="mb-3">
                                 <label for="file_input" class="form-label">Téléverser un fichier ( Dernier bilan )</label>
-                                <input class="form-control" type="file" id="file_input" name="file_input">
+                                <input class="form-control" type="file" id="file_input" name="files">
                             </div>
 
                             <button type="submit" class="py-2 px-4 rounded text-white" style="background-color:#6A00B8; color:white;">Enregistrer</button>
+                      <p style="padding-top:4%;">Merci d’avoir partagé votre vision !
+Notre équipe d’experts analysera votre projet avec attention et vous recevrez une réponse sous 15 jour ouvrée . Si votre modèle est validé, ZeroInvestissement.com vous accompagnera pour faire de votre entreprise la prochaine grande franchise, sans investissement de votre part. On est prêts à vous propulser vers le succès, et vous ?
+Pourquoi ce questionnaire ?
+Nous voulons nous assurer que votre entreprise est prête à franchir un cap, que votre modèle est duplicable, et que vous partagez nos valeurs. Plus on en sait sur vous et votre vision, mieux on pourra vous accompagner pour transformer votre réussite locale en succès national… voire mondial !
+</p>
                         </form>
 
 

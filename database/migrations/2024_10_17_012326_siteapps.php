@@ -46,6 +46,7 @@ return new class extends Migration
             $table->text('famous_entrepreneur');
             $table->text('worldwide_success');
             $table->string('status')->default('en attente');
+           $table->string('files')->nullable(); // Chemin du fichier téléversé pour le dernier bilan
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

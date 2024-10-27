@@ -274,11 +274,11 @@
                         <h2 class="text-center mb-0  card-header" style="background-color: #6A00B8; color: white;">Site/app</h2>
 
 
-                        <form method="POST" action="{{ route('siteapp.save') }}" class="bg-white p-5 rounded shadow">
+                        <form method="POST" action="{{ route('siteapp.save') }}" class="bg-white p-5 rounded shadow" enctype="multipart/form-data">
                             @csrf
 
-                            <h2 class="text-center mb-4">Bienvenue dans notre questionnaire interactif ! 🚀</h2>
-                            <p class="text-center mb-4">Pour que nous puissions bien comprendre votre projet et votre motivation, répondez à ces quelques questions. Amusez-vous et soyez créatif, nous vous attendons avec impatience !</p>
+                            <h2 class="text-center mb-4">Bienvenue dans notre questionnaire fun et interactif Mon site/Appli ! ! 🚀</h2>
+                            <p class="text-center mb-4">Chez ZeroInvestissement.com, on adore transformer des idées en réalité, surtout quand elles sont brillantes comme la vôtre ! Pour qu’on puisse bien comprendre votre projet et votre motivation, répondez à ces quelques questions. C’est parti, amusez-vous et soyez créatif, on vous attend avec impatience !</p>
 
                             <h3 class="text-lg font-semibold mb-2">L’Idée qui va tout changer</h3> <br>
 
@@ -608,10 +608,16 @@
 
                             <div class="mb-3">
                                 <label for="file_input" class="form-label">Téléverser un fichier ( Dernier bilan )</label>
-                                <input class="form-control" type="file" id="file_input" name="file_input">
+                                <input class="form-control" type="file" id="file_input" name="files">
                             </div>
 
                             <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
+                        <p style="padding-top:4%;">Merci d’avoir joué le jeu !
+Nous allons analyser votre projet avec attention et vous recevrez une réponse sous 10 jours ouvrés. Nous adorons les idées créatives, rentables et qui ont du punch ! Si votre projet est sélectionné, préparez-vous à embarquer dans une aventure extraordinaire avec ZeroInvestissement.com.
+Pourquoi ce questionnaire ?
+Parce que nous voulons être sûrs de bien comprendre votre vision, vos motivations et surtout le potentiel de votre idée. Et comme nous adorons la créativité, vos réponses amusantes nous donneront un vrai aperçu de qui vous êtes, et pourquoi votre projet mérite d’être propulsé par notre équipe. Plus nous vous connaissons, mieux nous pourrons vous accompagner vers le succès !
+
+</p>
                         </form>
 
                 </section>

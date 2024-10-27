@@ -41,5 +41,6 @@ class Siteapp extends Model
         'famous_entrepreneur',
         'worldwide_success',
         'status',
+         'files',
     ];
 }
