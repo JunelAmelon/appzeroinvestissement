@@ -196,7 +196,10 @@
                                     </li>
                                     <li>
                                         <a href="/marketplace">
-                                            <span class="sub-item">Marketplace</span>
+                                            <span class="sub-item">Marketplace Business</span>
+                                        </a>
+                                        <a href="/marketplace-business">
+                                            <span class="sub-item">Marketplace Dépôt</span>
                                         </a>
                                     </li>
                                     <li>
@@ -208,7 +211,7 @@
                                 </ul>
                             </div>
                         </li>
-                          <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="/faq">
                                 <i class="fas icon-question "></i>
                                 <p>Faq</p>
@@ -224,7 +227,7 @@
                             </a>
 
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -233,115 +236,122 @@
 
         <div class="main-panel">
             <div class="content">
-                 
-<!-- HTML -->
-<div class="faq-section">
-    <h2>Questions Fréquemment Posées (FAQ)</h2>
-    <div class="accordion-container">
-        <div class="accordion-item">
-            <div class="accordion-header">Qu'est-ce que ZeroInvestissement.com ?</div>
-            <div class="accordion-content">
-                <p>ZeroInvestissement.com est une plateforme dédiée à l'accompagnement des entrepreneurs dans l'acquisition de business clé en main, en leur offrant des solutions adaptées à leurs besoins.</p>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Comment puis-je financer l'achat ?</div>
-            <div class="accordion-content">
-                <p>Nous proposons plusieurs options de financement et de soutien pour vous aider à acquérir votre business clé en main. N'hésitez pas à nous contacter pour plus d'informations.</p>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Quels types de projets soutenez-vous ?</div>
-            <div class="accordion-content">
-                <p>Nous soutenons une variété de projets, allant des startups aux entreprises établies, en fonction de leur potentiel de succès et de leur modèle commercial.</p>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Quel est le processus d'acquisition ?</div>
-            <div class="accordion-content">
-                <p>Le processus d'acquisition comprend une évaluation de vos besoins, la validation de votre capacité de financement, et un accompagnement personnalisé tout au long de votre parcours entrepreneurial.</p>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Quelle est la durée du soutien offert ?</div>
-            <div class="accordion-content">
-                <p>Nous offrons un soutien continu depuis la première étape de votre projet jusqu'à votre succès entrepreneurial, avec des évaluations régulières de vos progrès.</p>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header">Comment puis-je vous contacter ?</div>
-            <div class="accordion-content">
-                <p>Vous pouvez nous contacter via notre site web, par email ou par téléphone. Nous sommes là pour répondre à toutes vos questions.</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- CSS -->
-<style>
-    .faq-section {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        font-family: 'Arial', sans-serif;
-    }
+                <!-- HTML -->
+                <div class="faq-section">
+                    <h2>Questions Fréquemment Posées (FAQ)</h2>
+                    <div class="accordion-container">
+                        <div class="accordion-item">
+                            <div class="accordion-header">Qu'est-ce que ZeroInvestissement.com ?</div>
+                            <div class="accordion-content">
+                                <p>ZeroInvestissement.com est une plateforme dédiée à l'accompagnement des entrepreneurs dans l'acquisition de business clé en main, en leur offrant des solutions adaptées à leurs besoins.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Comment puis-je financer l'achat ?</div>
+                            <div class="accordion-content">
+                                <p>Nous proposons plusieurs options de financement et de soutien pour vous aider à acquérir votre business clé en main. N'hésitez pas à nous contacter pour plus d'informations.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Quels types de projets soutenez-vous ?</div>
+                            <div class="accordion-content">
+                                <p>Nous soutenons une variété de projets, allant des startups aux entreprises établies, en fonction de leur potentiel de succès et de leur modèle commercial.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Quel est le processus d'acquisition ?</div>
+                            <div class="accordion-content">
+                                <p>Le processus d'acquisition comprend une évaluation de vos besoins, la validation de votre capacité de financement, et un accompagnement personnalisé tout au long de votre parcours entrepreneurial.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Quelle est la durée du soutien offert ?</div>
+                            <div class="accordion-content">
+                                <p>Nous offrons un soutien continu depuis la première étape de votre projet jusqu'à votre succès entrepreneurial, avec des évaluations régulières de vos progrès.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">Comment puis-je vous contacter ?</div>
+                            <div class="accordion-content">
+                                <p>Vous pouvez nous contacter via notre site web, par email ou par téléphone. Nous sommes là pour répondre à toutes vos questions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    .accordion-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px; /* Espace entre les blocs d'accordéons */
-    }
+                <!-- CSS -->
+                <style>
+                    .faq-section {
+                        max-width: 800px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        font-family: 'Arial', sans-serif;
+                    }
 
-    .accordion-item {
-        flex: 1 1 calc(50% - 20px); /* Deux accordéons par ligne */
-        border: 1px solid #eee;
-        border-radius: 8px;
-        overflow: hidden;
-        background: #ffffff; /* Fond blanc */
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.3s;
-    }
+                    .accordion-container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px;
+                        /* Espace entre les blocs d'accordéons */
+                    }
 
-    .accordion-item:hover {
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    }
+                    .accordion-item {
+                        flex: 1 1 calc(50% - 20px);
+                        /* Deux accordéons par ligne */
+                        border: 1px solid #eee;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        background: #ffffff;
+                        /* Fond blanc */
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                        transition: box-shadow 0.3s;
+                    }
 
-    .accordion-header {
-        padding: 15px;
-        background: #6A00B8; /* Couleur mise à jour */
-        color: white;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background 0.3s, color 0.3s;
-    }
+                    .accordion-item:hover {
+                        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+                    }
 
-    .accordion-header:hover {
-        background: #5e00a5; /* Couleur sur hover */
-    }
+                    .accordion-header {
+                        padding: 15px;
+                        background: #6A00B8;
+                        /* Couleur mise à jour */
+                        color: white;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: background 0.3s, color 0.3s;
+                    }
 
-    .accordion-content {
-        padding: 15px;
-        display: block; /* Ouvert par défaut */
-        background: #f9f9f9; /* Fond légèrement gris pour le contenu */
-        border-top: 1px solid #eee;
-    }
-</style>
+                    .accordion-header:hover {
+                        background: #5e00a5;
+                        /* Couleur sur hover */
+                    }
 
-<!-- JavaScript -->
-<script>
-    document.querySelectorAll('.accordion-header').forEach(header => {
-        header.addEventListener('click', () => {
-            const content = header.nextElementSibling;
+                    .accordion-content {
+                        padding: 15px;
+                        display: block;
+                        /* Ouvert par défaut */
+                        background: #f9f9f9;
+                        /* Fond légèrement gris pour le contenu */
+                        border-top: 1px solid #eee;
+                    }
+                </style>
 
-            // Basculer l'affichage sans affecter les autres accordéons
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
-            }
-        });
-    });
-</script>
+                <!-- JavaScript -->
+                <script>
+                    document.querySelectorAll('.accordion-header').forEach(header => {
+                        header.addEventListener('click', () => {
+                            const content = header.nextElementSibling;
+
+                            // Basculer l'affichage sans affecter les autres accordéons
+                            if (content.style.display === 'block') {
+                                content.style.display = 'none';
+                            } else {
+                                content.style.display = 'block';
+                            }
+                        });
+                    });
+                </script>
 
             </div>
             <footer class="footer">
@@ -349,8 +359,8 @@
                     <nav class="pull-left">
 
                     </nav>
-                  <div class="copyright ml-auto">
-                      <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
+                    <div class="copyright ml-auto">
+                        <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
             </footer>

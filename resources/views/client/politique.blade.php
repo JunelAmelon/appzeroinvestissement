@@ -196,7 +196,10 @@
                                     </li>
                                     <li>
                                         <a href="/marketplace">
-                                            <span class="sub-item">Marketplace</span>
+                                            <span class="sub-item">Marketplace Business</span>
+                                        </a>
+                                        <a href="/marketplace-business">
+                                            <span class="sub-item">Marketplace Dépôt</span>
                                         </a>
                                     </li>
                                     <li>
@@ -204,12 +207,12 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
-                                  
+
 
                                 </ul>
                             </div>
                         </li>
-                           <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="/faq">
                                 <i class="fas icon-question "></i>
                                 <p>Faq</p>
@@ -239,60 +242,60 @@
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
                                 <h1 class=" pb-2 fw-bold" style=" color:#6A00B8;">Politique de confidentialité</h1>
-                               
+
                             </div>
 
                         </div>
                     </div>
                 </div>
 
-          <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-2 mb-4">
-        <h1 class="text-2xl font-bold mb-4 text-[#ee8d0e]">Pourquoi une politique de protection des données ?</h1>
-        <p class="mb-4">
-            Cette Politique de protection des données a pour but de vous informer – en tant que client ou utilisateur – de manière concise, transparente et compréhensible sur la façon dont ZEROINVESTISSEMENT recueille et gère vos données personnelles. En complément des différents supports contractuels ou de collecte de données, elle a vocation à centraliser ces informations pour que vous puissiez en prendre connaissance plus facilement. ZEROINVESTISSEMENT, ci-après nommé « le site » les informations suivantes : sera amenée à la modifier, par exemple en vue de tenir compte d’éventuelles évolutions organisationnelles, techniques ou règlementaires. Il est donc conseillé de la consulter régulièrement.
-        </p>
+                <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-2 mb-4">
+                    <h1 class="text-2xl font-bold mb-4 text-[#ee8d0e]">Pourquoi une politique de protection des données ?</h1>
+                    <p class="mb-4">
+                        Cette Politique de protection des données a pour but de vous informer – en tant que client ou utilisateur – de manière concise, transparente et compréhensible sur la façon dont ZEROINVESTISSEMENT recueille et gère vos données personnelles. En complément des différents supports contractuels ou de collecte de données, elle a vocation à centraliser ces informations pour que vous puissiez en prendre connaissance plus facilement. ZEROINVESTISSEMENT, ci-après nommé « le site » les informations suivantes : sera amenée à la modifier, par exemple en vue de tenir compte d’éventuelles évolutions organisationnelles, techniques ou règlementaires. Il est donc conseillé de la consulter régulièrement.
+                    </p>
 
-        <h2 class="text-xl font-semibold mt-6 mb-2">Quelles sont les données personnelles que nous utilisons et comment nous les collectons ?</h2>
-        <h3 class="font-medium mt-4">Formulaire de contact</h3>
-        <p>
-            Afin de vous fournir des réponses adaptées à vos besoins, nous sommes amenés à vous demander vos informations d’identification et de contact.
-        </p>
+                    <h2 class="text-xl font-semibold mt-6 mb-2">Quelles sont les données personnelles que nous utilisons et comment nous les collectons ?</h2>
+                    <h3 class="font-medium mt-4">Formulaire de contact</h3>
+                    <p>
+                        Afin de vous fournir des réponses adaptées à vos besoins, nous sommes amenés à vous demander vos informations d’identification et de contact.
+                    </p>
 
-        <h3 class="font-medium mt-4">Cookies</h3>
-        <p>
-            Un cookie est un fichier texte susceptible d’être enregistré dans un terminal lors de la consultation d’un Service avec un navigateur. Un Cookie permet à son émetteur, pendant sa durée de validité, de reconnaître le terminal concerné à chaque fois que ce terminal accède à un contenu numérique comportant des Cookies du même émetteur. Vous êtes informé que, lors de vos connexions sur ce Site, des Cookies sont installés sur votre terminal de réception (ordinateur, tablette, smartphone, etc.) pour le bon fonctionnement des Services, ou sur votre navigateur en fonction du choix que vous avez paramétré, ce choix pouvant être modifié à tout moment. Vous trouverez la liste des cookies installés sur ce site dans le gestionnaire accessible en bas à droite de votre écran.
-        </p>
+                    <h3 class="font-medium mt-4">Cookies</h3>
+                    <p>
+                        Un cookie est un fichier texte susceptible d’être enregistré dans un terminal lors de la consultation d’un Service avec un navigateur. Un Cookie permet à son émetteur, pendant sa durée de validité, de reconnaître le terminal concerné à chaque fois que ce terminal accède à un contenu numérique comportant des Cookies du même émetteur. Vous êtes informé que, lors de vos connexions sur ce Site, des Cookies sont installés sur votre terminal de réception (ordinateur, tablette, smartphone, etc.) pour le bon fonctionnement des Services, ou sur votre navigateur en fonction du choix que vous avez paramétré, ce choix pouvant être modifié à tout moment. Vous trouverez la liste des cookies installés sur ce site dans le gestionnaire accessible en bas à droite de votre écran.
+                    </p>
 
-        <h2 class="text-xl font-semibold mt-6 mb-2">Dans quels cas vos données personnelles sont-elles utilisées ?</h2>
-        <p>
-            Toutes les données personnelles que nous collectons sont utilisées dans le strict but de respecter nos engagements envers vous et de vous fournir le service que vous attendez dans le cadre de notre relation : Réponse aux questions et autres sollicitations provenant du formulaire de contact. Statistiques de fréquentation du site. En aucun cas vos données personnelles ne seront utilisées à d’autres fins.
-        </p>
+                    <h2 class="text-xl font-semibold mt-6 mb-2">Dans quels cas vos données personnelles sont-elles utilisées ?</h2>
+                    <p>
+                        Toutes les données personnelles que nous collectons sont utilisées dans le strict but de respecter nos engagements envers vous et de vous fournir le service que vous attendez dans le cadre de notre relation : Réponse aux questions et autres sollicitations provenant du formulaire de contact. Statistiques de fréquentation du site. En aucun cas vos données personnelles ne seront utilisées à d’autres fins.
+                    </p>
 
-        <h2 class="text-xl font-semibold mt-6 mb-2">Qui sont les destinataires de vos données personnelles ?</h2>
-        <p>
-            Vos données personnelles sont strictement destinées au personnel de l’organisation S.A ZEROINVESTISSEMENT habilité à les traiter de manière à assurer le service que vous avez demandé. En aucun cas vos données personnelles ne seront vendues ou divulguées à des tiers.
-        </p>
+                    <h2 class="text-xl font-semibold mt-6 mb-2">Qui sont les destinataires de vos données personnelles ?</h2>
+                    <p>
+                        Vos données personnelles sont strictement destinées au personnel de l’organisation S.A ZEROINVESTISSEMENT habilité à les traiter de manière à assurer le service que vous avez demandé. En aucun cas vos données personnelles ne seront vendues ou divulguées à des tiers.
+                    </p>
 
-        <h2 class="text-xl font-semibold mt-6 mb-2">Vos données personnelles sont-elles en sécurité ?</h2>
-        <p>
-            ZEROINVESTISSEMENT veille à sensibiliser ses agents à la protection des données et à prendre toutes les mesures techniques et organisationnelles de nature à assurer la sécurité de vos données personnelles.
-        </p>
+                    <h2 class="text-xl font-semibold mt-6 mb-2">Vos données personnelles sont-elles en sécurité ?</h2>
+                    <p>
+                        ZEROINVESTISSEMENT veille à sensibiliser ses agents à la protection des données et à prendre toutes les mesures techniques et organisationnelles de nature à assurer la sécurité de vos données personnelles.
+                    </p>
 
-        <h2 class="text-xl font-semibold mt-6 mb-2">Quelle est la durée de conservation de vos données personnelles ?</h2>
-        <p>
-            Nous ne conserverons vos données que le temps nécessaire à accomplir nos services ou dans les limites prescrites par la loi. À l’issue de ce délai, vos données personnelles seront supprimées. Nous ne pouvons supprimer vos données en cas d’obligation de conservation légale, par exemple si elle est prescrite par le droit comptable ou lorsqu’il existe un motif juridique pour conserver les données, une relation contractuelle en cours par exemple.
-        </p>
+                    <h2 class="text-xl font-semibold mt-6 mb-2">Quelle est la durée de conservation de vos données personnelles ?</h2>
+                    <p>
+                        Nous ne conserverons vos données que le temps nécessaire à accomplir nos services ou dans les limites prescrites par la loi. À l’issue de ce délai, vos données personnelles seront supprimées. Nous ne pouvons supprimer vos données en cas d’obligation de conservation légale, par exemple si elle est prescrite par le droit comptable ou lorsqu’il existe un motif juridique pour conserver les données, une relation contractuelle en cours par exemple.
+                    </p>
 
-        <h2 class="text-xl font-semibold mt-6 mb-2">Quels droits avez-vous sur vos données personnelles ?</h2>
-        <p>
-            La réglementation vous donne le droit de demander à ZEROINVESTISSEMENT : l’accès à vos données ; la rectification ou l’effacement de celles-ci ; la limitation du traitement vous concernant ; de vous opposer au traitement ; la portabilité de vos données. Pour plus d’informations sur le contenu et les conditions d’application de ces droits, n’hésitez pas à consulter le site de la CNIL.
-        </p>
+                    <h2 class="text-xl font-semibold mt-6 mb-2">Quels droits avez-vous sur vos données personnelles ?</h2>
+                    <p>
+                        La réglementation vous donne le droit de demander à ZEROINVESTISSEMENT : l’accès à vos données ; la rectification ou l’effacement de celles-ci ; la limitation du traitement vous concernant ; de vous opposer au traitement ; la portabilité de vos données. Pour plus d’informations sur le contenu et les conditions d’application de ces droits, n’hésitez pas à consulter le site de la CNIL.
+                    </p>
 
-        <h2 class="text-xl font-semibold mt-6 mb-2">Qui contacter pour exercer vos droits sur vos données personnelles ?</h2>
-        <p>
-            La personne référente sur le sujet de la protection des données personnelles à contacter à ZEROINVESTISSEMENT est Mr Sam Mune. Cette personne est joignable par mail à <a href="mailto:ccprconseil@gmail.com" class="text-blue-600 underline">ccprconseil@gmail.com</a>, ou par courrier au siège de ZEROINVESTISSEMENT. ZEROINVESTISSEMENT peut rejeter les demandes déraisonnables ou dont l’acceptation n’est pas exigée par la loi, notamment celles qui seraient difficiles à mettre en place, qui exigeraient un effort technique disproportionné ou qui pourraient occasionner des fraudes. Si vous estimez que vos droits ne sont pas respectés, vous avez le droit d’introduire une réclamation auprès de la CNIL – 3 Place de Fontenoy TSA 80715 75334 PARIS CEDEX 07 (<a href="https://www.cnil.fr" class="text-blue-600 underline">https://www.cnil.fr</a>).
-        </p>
-    </div>
+                    <h2 class="text-xl font-semibold mt-6 mb-2">Qui contacter pour exercer vos droits sur vos données personnelles ?</h2>
+                    <p>
+                        La personne référente sur le sujet de la protection des données personnelles à contacter à ZEROINVESTISSEMENT est Mr Sam Mune. Cette personne est joignable par mail à <a href="mailto:ccprconseil@gmail.com" class="text-blue-600 underline">ccprconseil@gmail.com</a>, ou par courrier au siège de ZEROINVESTISSEMENT. ZEROINVESTISSEMENT peut rejeter les demandes déraisonnables ou dont l’acceptation n’est pas exigée par la loi, notamment celles qui seraient difficiles à mettre en place, qui exigeraient un effort technique disproportionné ou qui pourraient occasionner des fraudes. Si vous estimez que vos droits ne sont pas respectés, vous avez le droit d’introduire une réclamation auprès de la CNIL – 3 Place de Fontenoy TSA 80715 75334 PARIS CEDEX 07 (<a href="https://www.cnil.fr" class="text-blue-600 underline">https://www.cnil.fr</a>).
+                    </p>
+                </div>
 
 
 
@@ -323,7 +326,7 @@
 
                     </nav>
                     <div class="copyright ml-auto">
-                      <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
+                        <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
             </footer>

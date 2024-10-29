@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Franchise;
 use App\Models\IncubatorProject;
 use App\Models\Marketplacebusiness;
+use App\Models\MarketplacebusinessModel;
+use App\Models\Marketplacedepot;
 use App\Models\Siteapp;
 use Exception;
 use Illuminate\Http\Request;
@@ -23,7 +25,8 @@ class ClientController extends Controller
             Auth::logout();
             return redirect()->route('login');
         }
-    }      public function  showfaq()
+    }
+    public function  showfaq()
     {
         if (Auth::check()) {
             return view('client.faq');
@@ -31,7 +34,7 @@ class ClientController extends Controller
             Auth::logout();
             return redirect()->route('login');
         }
-    } 
+    }
 
     public function showsiteapp()
     {
@@ -76,41 +79,39 @@ class ClientController extends Controller
             'famous_entrepreneur' => 'required|string',
             'worldwide_success' => 'required|string',
             'leisure' => 'required|string',
-          'files' => 'nullable|file',
+            'files' => 'required|file',
 
         ]);
 
 
         $validatedData['user_id'] = Auth::id();
 
-try {
-    // Gestion du téléversement de fichier
-    if ($request->hasFile('files')) {
-        // Créez un nom de fichier unique
-        $filename = time() . '_' . $request->file('files')->getClientOriginalName();
+        try {
+            // Gestion du téléversement de fichier
+            if ($request->hasFile('files')) {
+                // Créez un nom de fichier unique
+                $filename = time() . '_' . $request->file('files')->getClientOriginalName();
 
-        // Essayez de déplacer le fichier
-        $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
+                // Essayez de déplacer le fichier
+                $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
 
-        // Vérifiez si le fichier a bien été déplacé
-        if (!$filePath) {
-            return back()->with('error', 'Échec de l\'enregistrement du fichier dans le dossier public/build/assets/files.');
+                // Vérifiez si le fichier a bien été déplacé
+                if (!$filePath) {
+                    return back()->with('error', 'Échec de l\'enregistrement du fichier dans le dossier public/build/assets/files.');
+                }
+
+                // Enregistrez le chemin du fichier dans les données validées
+                $validatedData['files'] = 'build/assets/files/' . $filename;
+            }
+
+            // Enregistrement dans la base de données
+            Siteapp::create($validatedData);
+
+            return redirect()->route('siteapp')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
+        } catch (Exception $e) {
+            // Capture et affiche toute erreur
+            return back()->with('error', 'Erreur : ' . $e->getMessage());
         }
-
-        // Enregistrez le chemin du fichier dans les données validées
-        $validatedData['files'] = 'build/assets/files/' . $filename;
-    }
-
-    // Enregistrement dans la base de données
-    Siteapp::create($validatedData);
-
-    return redirect()->route('siteapp')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
-} catch (\Exception $e) {
-    // Capture et affiche toute erreur
-    return back()->with('error', 'Erreur : ' . $e->getMessage());
-}
-
-
     }
 
     public function showfranchise()
@@ -123,67 +124,67 @@ try {
         }
     }
 
-public function regfranchise(Request $request)
-{
-    $validatedData = $request->validate([
-        'business_name' => 'required|string|max:255',
-        'character_comparison' => 'required|string|max:255',
-        'activity_description' => 'required|string',
-        'business_age' => 'required|string|max:255',
-        'sector' => 'required|string|max:255',
-        'sucess_product' => 'required|string|max:255',
-        'proudest_achievement' => 'required|string',
-        'customer_count' => 'required|string|max:255',
-        'current_revenue' => 'required|string|max:255',
-        'scalability_score' => 'required|integer',
-        'franchise_motivation' => 'required|string',
-        'excitement' => 'required|string',
-        'current_locations' => 'required|string',
-        'franchise_target' => 'required|string',
-        'franchise_reproducibility' => 'required|string',
-        'key_resources' => 'required|string',
-        'sector_growth' => 'required|string',
-        'market_study' => 'required|string',
-        'company_values' => 'required|string',
-        'business_currency' => 'required|string|max:255',
-        'franchisee_requirements' => 'required|string',
-        'franchisee_search' => 'required|string',
-        'competitors' => 'required|string',
-        'analyse' => 'required|string',
-        'role' => 'required|string',
-        'location_data' => 'required|string',
-        'franchisee_training' => 'required|string',
-        'tools' => 'required|string',
-        'business_song' => 'required|string|max:255',
-        'imaginary' => 'required|string|max:255',
-        'success_plan' => 'required|string',
-        'files' => 'required|file'
-    ]);
+    public function regfranchise(Request $request)
+    {
+        $validatedData = $request->validate([
+            'business_name' => 'required|string|max:255',
+            'character_comparison' => 'required|string|max:255',
+            'activity_description' => 'required|string',
+            'business_age' => 'required|string|max:255',
+            'sector' => 'required|string|max:255',
+            'sucess_product' => 'required|string|max:255',
+            'proudest_achievement' => 'required|string',
+            'customer_count' => 'required|string|max:255',
+            'current_revenue' => 'required|string|max:255',
+            'scalability_score' => 'required|integer',
+            'franchise_motivation' => 'required|string',
+            'excitement' => 'required|string',
+            'current_locations' => 'required|string',
+            'franchise_target' => 'required|string',
+            'franchise_reproducibility' => 'required|string',
+            'key_resources' => 'required|string',
+            'sector_growth' => 'required|string',
+            'market_study' => 'required|string',
+            'company_values' => 'required|string',
+            'business_currency' => 'required|string|max:255',
+            'franchisee_requirements' => 'required|string',
+            'franchisee_search' => 'required|string',
+            'competitors' => 'required|string',
+            'analyse' => 'required|string',
+            'role' => 'required|string',
+            'location_data' => 'required|string',
+            'franchisee_training' => 'required|string',
+            'tools' => 'required|string',
+            'business_song' => 'required|string|max:255',
+            'imaginary' => 'required|string|max:255',
+            'success_plan' => 'required|string',
+            'files' => 'required|file'
+        ]);
 
-    $validatedData['user_id'] = Auth::id();
+        $validatedData['user_id'] = Auth::id();
 
-    try {
-        if ($request->hasFile('files')) {
-    // Créez un nom de fichier unique
-    $filename = time() . '_' . $request->file('files')->getClientOriginalName();
+        try {
+            if ($request->hasFile('files')) {
+                // Créez un nom de fichier unique
+                $filename = time() . '_' . $request->file('files')->getClientOriginalName();
 
-    // Déplacez le fichier vers le dossier souhaité
-    $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
+                // Déplacez le fichier vers le dossier souhaité
+                $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
 
-    // Assurez-vous que le fichier a bien été déplacé et enregistrez le chemin dans $validatedData
-    if ($filePath) {
-        $validatedData['files'] = 'build/assets/files/' . $filename;
-    } else {
-        return back()->with('error', 'Échec de l\'enregistrement du fichier.');
+                // Assurez-vous que le fichier a bien été déplacé et enregistrez le chemin dans $validatedData
+                if ($filePath) {
+                    $validatedData['files'] = 'build/assets/files/' . $filename;
+                } else {
+                    return back()->with('error', 'Échec de l\'enregistrement du fichier.');
+                }
+            }
+
+            Franchise::create($validatedData);
+            return redirect()->route('franchise')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
+        } catch (Exception $e) {
+            return redirect()->route('franchise')->with('error', 'Erreur lors de l\'enregistrement: ' . $e->getMessage());
+        }
     }
-}
-
-        Franchise::create($validatedData);
-        return redirect()->route('franchise')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
-    } catch (\Exception $e) {
-        return redirect()->route('franchise')->with('error', 'Erreur lors de l\'enregistrement: ' . $e->getMessage());
-    }
-}
 
     public function showmarketplace()
     {
@@ -198,27 +199,61 @@ public function regfranchise(Request $request)
     public function regmarketplace(Request $request)
     {
         $validatedData = $request->validate([
-            'business_name' => 'required|string|max:255',
-            'attraction_reason' => 'required|string',
-            'business_animal' => 'required|string|max:255',
-            'conviction_score' => 'required|integer',
-            'business_motivation' => 'required|string',
-            'entrepreneurial_approach' => 'required|string',
-            'personal_strengths' => 'required|string',
-            'financing_plan' => 'required|string',
-            'financing_help' => 'required|boolean',
-            'budget' => 'required|decimal:0,2',
-            'post_acquisition_action' => 'required|string',
-            'business_strategy' => 'required|string',
+            'business_name' => 'required|string',
+            'business_attraction' => 'required|string',
+            'animal_comparison' => 'required|string',
+            'conviction_level' => 'required|string',
+            'enthusiasm_reason' => 'required|string',
+            'entrepreneur_reason' => 'required|string',
+            'specific_motivation' => 'required|string',
+            'approach_keywords' => 'required|string',
+            'success_factors' => 'required|string',
+            'financing_planned' => 'required|string',
+            'financing_method' => 'required|string',
+            'max_budget' => 'required|string',
+            'interest_in_financing_option' => 'required|string',
+            'first_action' => 'required|string',
+            'marketing_strategy' => 'required|string',
+            'main_objective' => 'required|string',
+            'initial_ad_budget' => 'required|string',
+            'business_boost_area' => 'required|string',
+            'training_needed' => 'required|string',
+            'preferred_training_method' => 'required|string',
+            'skills_to_develop' => 'required|string',
+            'expected_support' => 'required|string',
+            'weekly_hours' => 'required|string',
+            'profit_timeline' => 'required|string',
+            'growth_plan' => 'required|string',
+            'mentor_questions' => 'required|string',
+            'superpower' => 'required|string',
+            'book_title' => 'required|string',
+            'five_year_action' => 'required|string',
+            'files' => 'required|file',
         ]);
 
         $validatedData['user_id'] = Auth::id();
-        try {
-            Marketplacebusiness::create($validatedData);
-            return redirect()->route('marketplace')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
 
+        try {
+            if ($request->hasFile('files')) {
+                // Créez un nom de fichier unique
+                $filename = time() . '_' . $request->file('files')->getClientOriginalName();
+
+                // Déplacez le fichier vers le dossier souhaité
+                $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
+
+                // Assurez-vous que le fichier a bien été déplacé et enregistrez le chemin dans $validatedData
+                if ($filePath) {
+                    $validatedData['files'] = 'build/assets/files/' . $filename;
+                } else {
+                    return back()->with('error', 'Échec de l\'enregistrement du fichier.');
+                }
+            }
+
+            MarketplaceBusiness::create($validatedData);
+            return redirect()->route('marketplace')->with('success', 'Vos réponses ont été enregistrées avec succès !');
         } catch (Exception $e) {
-            return redirect()->route('marketplace')->with('error', 'Erreur. ' . $e);
+            // En cas d'erreur, rediriger avec un message d'erreur
+            return redirect()->route('marketplace')->with('error', 'Erreur : ' . $e->getMessage());
         }
     }
 
@@ -247,7 +282,7 @@ public function regfranchise(Request $request)
         $franchiseRejected = Franchise::where('status', 'rejeté')->count();
         $siteappRejected = Siteapp::where('status', 'rejeté')->count();
         $marketplaceRejected = Marketplacebusiness::where('status', 'rejeté')->count();
-         $incubatoreRejected = IncubatorProject::where('status', 'rejeté')->count();
+        $incubatoreRejected = IncubatorProject::where('status', 'rejeté')->count();
         // Nombre total de projets validés et rejetés
         $totalValid = $franchiseValid + $siteappValid + $marketplaceValid +  $incubatorValid;
         $totalRejected = $franchiseRejected + $siteappRejected + $marketplaceRejected +  $incubatoreRejected;
@@ -261,7 +296,7 @@ public function regfranchise(Request $request)
         ]);
     }
 
- public function index()
+    public function index()
     {
         if (Auth::check()) {
             // Récupérer tous les projets de chaque modèle
@@ -269,11 +304,11 @@ public function regfranchise(Request $request)
                 $item->type = 'Franchise';
                 return $item;
             });
-$incubator = IncubatorProject::select('id', 'project_name as nom', 'project_description as description', 'status')->get()->map(function ($item) {
+            $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_description as description', 'status')->get()->map(function ($item) {
                 $item->type = 'IncubatorProject';
                 return $item;
             });
-            $marketplaces = Marketplacebusiness::select('id', 'business_name as nom', 'business_motivation as description', 'status')->get()->map(function ($item) {
+            $marketplaces = Marketplacebusiness::select('id', 'business_name as nom', 'specific_motivation as description', 'status')->get()->map(function ($item) {
                 $item->type = 'Marketplace';
                 return $item;
             });
@@ -283,9 +318,13 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
                 return $item;
             });
 
-            
+            $marketplacesd = Marketplacedepot::select('id', 'project_name as nom', 'mission', 'status')->get()->map(function ($item) {
+                $item->type = 'Marketplaced';
+                return $item;
+            });
+
             // Fusionner tous les projets
-            $projects = $franchises->merge($marketplaces)->merge($siteapps)->merge($incubator);
+            $projects = $franchises->merge($marketplaces)->merge($siteapps)->merge($incubator)->merge($marketplacesd);
 
             // Vérification de la fusion
             if ($projects->isEmpty()) {
@@ -300,11 +339,6 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
             return redirect()->route('login');
         }
     }
-
-
-
-
-
 
     public function showincubator()
     {
@@ -332,7 +366,7 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
             'objective' => 'required|string',
             'time_to_profit' => 'required|string',
             'strategy' => 'required|string',
-            'target_amount' => 'nullable|string',
+            'target_amount' => 'required|string',
             'growth_vision' => 'required|string',
             'why' => 'required|string',
             'sector' => 'required|string',
@@ -344,7 +378,7 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
             'clients' => 'required|string',
             'market_strategy' => 'required|string',
             'funds_raised' => 'required|string',
-            'initial_budget' => 'nullable|string|min:0',
+            'initial_budget' => 'required|string|min:0',
             'first_step_with_unlimited_funds' => 'required|string',
             'growth_needs' => 'required|string',
             'strategic_support' => 'required|string',
@@ -367,24 +401,24 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
 
         try {
             if ($request->hasFile('files')) {
-    // Créez un nom de fichier unique
-    $filename = time() . '_' . $request->file('files')->getClientOriginalName();
+                // Créez un nom de fichier unique
+                $filename = time() . '_' . $request->file('files')->getClientOriginalName();
 
-    // Déplacez le fichier vers le dossier souhaité
-    $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
+                // Déplacez le fichier vers le dossier souhaité
+                $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
 
-    // Assurez-vous que le fichier a bien été déplacé et enregistrez le chemin dans $validatedData
-    if ($filePath) {
-        $validatedData['files'] = 'build/assets/files/' . $filename;
-    } else {
-        return back()->with('error', 'Échec de l\'enregistrement du fichier.');
-    }
-}
+                // Assurez-vous que le fichier a bien été déplacé et enregistrez le chemin dans $validatedData
+                if ($filePath) {
+                    $validatedData['files'] = 'build/assets/files/' . $filename;
+                } else {
+                    return back()->with('error', 'Échec de l\'enregistrement du fichier.');
+                }
+            }
 
             // Créer un nouvel enregistrement dans la base de données
             IncubatorProject::create($validatedData);
             return redirect()->route('incubator')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             // En cas d'erreur, rediriger avec un message d'erreur
             return redirect()->route('incubator')->with('error', 'Erreur : ' . $e->getMessage());
         }
@@ -393,64 +427,70 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
     public function showmarketplacebusiness()
     {
         if (Auth::check()) {
-            return view('client.marketplace-business');
+            return view('client.marketplace-depot');
         } else {
             Auth::logout();
             return redirect()->route('login');
         }
     }
     public function regmarketplacebusiness(Request $request)
-    {  
-        $request->validate([
-        'business_choice' => 'required|string',
-        'attraction_reason' => 'required|string',
-        'industry' => 'required|string',
-        'business_model' => 'required|string',
-        'profitability_potential' => 'required|string',
-        'animal_comparison' => 'required|string',
-        'conviction_level' => 'required|integer|min:1|max:10',
-        'enthusiasm' => 'required|string',
-        'entrepreneurial_reason' => 'required|string',
-        'specific_motivation' => 'required|string',
-        'entrepreneurial_approach' => 'required|string',
-        'success_factors' => 'required|string',
-        'financing_plan' => 'required|boolean',
-        'financing_access' => 'required|string',
-        'maximum_budget' => 'required|numeric',
-        'interest_financing_option' => 'required|boolean',
-        'first_action' => 'required|string',
-        'marketing_strategy' => 'required|string',
-        'main_objective' => 'required|string',
-        'initial_ad_budget' => 'required|numeric',
-        'boost_part' => 'required|string',
-        'need_training' => 'required|boolean',
-        'training_preference' => 'required|string',
-        'skills_to_develop' => 'required|string',
-        'expected_followup' => 'required|string',
-        'time_commitment' => 'required|string',
-        'profitability_timeline' => 'required|string',
-        'growth_plan' => 'required|boolean',
-        'mentor_questions' => 'required|string',
-        'superpower' => 'required|string',
-        'book_title' => 'required|string',
-        'future_success_action' => 'required|string',
-        'files' => 'nullable|file',
-    ]);
+    {
+        $validated = $request->validate([
+            'project_name' => 'required|string|max:255',
+            'elevator_pitch' => 'required',
+            'dish_comparison' => 'required|string|max:255',
+            'mission' => 'required',
+            'industry_sector' => 'required|string|max:255',
+            'success_factors' => 'required',
+            'scalability_score' => 'required|string|max:255',
+            'current_or_target_customers' => 'required|string|max:255',
+            'annual_revenue' => 'required|string|max:255',
+            'unicorn_magic' => 'required',
+            'key_features' => 'required',
+            'requires_specific_skills' => 'required|string|max:255',
+            'tools_in_place' => 'required',
+            'has_existing_team' => 'required|string|max:255',
+            'unique_selling_points' => 'required',
+            'selling_price' => 'required|string|max:255',
+            'purchase_includes' => 'required',
+            'advertising_slogan' => 'required|string|max:255',
+            'provides_training' => 'required|string|max:255',
+            'partners_and_suppliers' => 'required',
+            'business_summary' => 'required|string|max:255',
+            'elon_pitch' => 'required',
+            'next_project' => 'required',
+            'files' => 'required|file',
+        ]);
 
-    $data = $request->all();
+        // Ajouter l'ID de l'utilisateur
+        $validated['user_id'] = Auth::id();
 
-    // Gestion du téléversement de fichier
-    if ($request->hasFile('files')) {
-        $filePath = $request->file('files')->store('uploads', 'public');
-        $data['files'] = $filePath;
+        try {
+            if ($request->hasFile('files')) {
+                // Créez un nom de fichier unique
+                $filename = time() . '_' . $request->file('files')->getClientOriginalName();
+
+                // Déplacez le fichier vers le dossier souhaité
+                $filePath = $request->file('files')->move(public_path('build/assets/files'), $filename);
+
+                // Assurez-vous que le fichier a bien été déplacé et enregistrez le chemin dans $validatedData
+                if ($filePath) {
+                    $validated['files'] = 'build/assets/files/' . $filename;
+                } else {
+                    return back()->with('error', 'Échec de l\'enregistrement du fichier.');
+                }
+            }
+
+            // Créer un nouvel enregistrement dans la base de données
+            Marketplacedepot::create($validated);
+            return redirect()->route('marketplacebusiness')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
+        } catch (Exception $e) {
+            // En cas d'erreur, rediriger avec un message d'erreur
+            return redirect()->route('marketplacebusiness')->with('error', 'Erreur : ' . $e->getMessage());
+        }
     }
 
-    MarketplaceBusiness::create($data);
-
-    return redirect()->back()->with('success', 'Vos réponses ont été enregistrées avec succès !');
-}
-
- public function showpolitique()
+    public function showpolitique()
     {
         if (Auth::check()) {
             return view('client.politique');
@@ -459,5 +499,4 @@ $incubator = IncubatorProject::select('id', 'project_name as nom', 'project_desc
             return redirect()->route('login');
         }
     }
-
 }

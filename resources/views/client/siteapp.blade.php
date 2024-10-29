@@ -196,7 +196,10 @@
                                     </li>
                                     <li>
                                         <a href="/marketplace">
-                                            <span class="sub-item">Marketplace</span>
+                                            <span class="sub-item">Marketplace Business</span>
+                                        </a>
+                                        <a href="/marketplace-business">
+                                            <span class="sub-item">Marketplace Dépôt</span>
                                         </a>
                                     </li>
                                     <li>
@@ -204,12 +207,12 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
-                               
+
 
                                 </ul>
                             </div>
                         </li>
-                              <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="/faq">
                                 <i class="fas icon-question"></i>
                                 <p>Faq</p>
@@ -249,27 +252,27 @@
 
                 <section class="bg-gray-100 mb-4">
                     <div class="container mx-auto mt-2 ">
-                         @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
 
-@if(session('success'))
-    <div class="alert alert-success">
-      {!! session('success') !!}
-    </div>
-@endif
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {!! session('success') !!}
+                        </div>
+                        @endif
 
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
                         <!-- En-tête modifiée ici -->
                         <h2 class="text-center mb-0  card-header" style="background-color: #6A00B8; color: white;">Site/app</h2>
 
@@ -305,21 +308,26 @@
 
                             <div class="mb-3">
                                 <label for="main_feature" class="form-label">Fonctionnalité phare : Quelle est la fonctionnalité qui rendra votre site ou appli indispensable ?</label>
+
+                                <!-- Options prédéfinies -->
                                 <div>
-                                    <input type="radio" id="vente_en_ligne" name="main_feature" value="Vente en ligne">
+                                    <input type="radio" id="vente_en_ligne" name="main_feature" value="Vente en ligne" onclick="toggleOtherFeatureInput(false)">
                                     <label for="vente_en_ligne">Vente en ligne</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="reservation" name="main_feature" value="Reservation">
+                                    <input type="radio" id="reservation" name="main_feature" value="Reservation" onclick="toggleOtherFeatureInput(false)">
                                     <label for="reservation">Reservation</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="service_innovant" name="main_feature" value="Service innovant">
+                                    <input type="radio" id="service_innovant" name="main_feature" value="Service innovant" onclick="toggleOtherFeatureInput(false)">
                                     <label for="service_innovant">Service innovant</label>
                                 </div>
+
+                                <!-- Option "Autre" avec champ texte -->
                                 <div class="mt-2">
-                                    <label for="main_feature_other" class="form-label">Autre (expliquez-nous!) :</label>
-                                    <input type="text" class="form-control" id="main_feature_other" name="main_feature">
+                                    <input type="radio" id="main_feature_other_radio" name="main_feature" value="" onclick="toggleOtherFeatureInput(true)">
+                                    <label for="main_feature_other_radio">Autre (expliquez-nous!) :</label>
+                                    <input type="text" class="form-control mt-2" id="main_feature_other" placeholder="Décrivez votre fonctionnalité" oninput="updateOtherFeatureValue()" style="display: none;">
                                     <small class="text-gray-500">(Autre fonctionnalité)</small>
                                 </div>
                             </div>
@@ -612,12 +620,12 @@
                             </div>
 
                             <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-                        <p style="padding-top:4%;">Merci d’avoir joué le jeu !
-Nous allons analyser votre projet avec attention et vous recevrez une réponse sous 10 jours ouvrés. Nous adorons les idées créatives, rentables et qui ont du punch ! Si votre projet est sélectionné, préparez-vous à embarquer dans une aventure extraordinaire avec ZeroInvestissement.com.
-Pourquoi ce questionnaire ?
-Parce que nous voulons être sûrs de bien comprendre votre vision, vos motivations et surtout le potentiel de votre idée. Et comme nous adorons la créativité, vos réponses amusantes nous donneront un vrai aperçu de qui vous êtes, et pourquoi votre projet mérite d’être propulsé par notre équipe. Plus nous vous connaissons, mieux nous pourrons vous accompagner vers le succès !
+                            <p style="padding-top:4%;">Merci d’avoir joué le jeu !
+                                Nous allons analyser votre projet avec attention et vous recevrez une réponse sous 10 jours ouvrés. Nous adorons les idées créatives, rentables et qui ont du punch ! Si votre projet est sélectionné, préparez-vous à embarquer dans une aventure extraordinaire avec ZeroInvestissement.com.
+                                Pourquoi ce questionnaire ?
+                                Parce que nous voulons être sûrs de bien comprendre votre vision, vos motivations et surtout le potentiel de votre idée. Et comme nous adorons la créativité, vos réponses amusantes nous donneront un vrai aperçu de qui vous êtes, et pourquoi votre projet mérite d’être propulsé par notre équipe. Plus nous vous connaissons, mieux nous pourrons vous accompagner vers le succès !
 
-</p>
+                            </p>
                         </form>
 
                 </section>
@@ -630,8 +638,8 @@ Parce que nous voulons être sûrs de bien comprendre votre vision, vos motivati
                     <nav class="pull-left">
 
                     </nav>
-                   <div class="copyright ml-auto">
-                      <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
+                    <div class="copyright ml-auto">
+                        <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
             </footer>
@@ -639,6 +647,36 @@ Parce que nous voulons être sûrs de bien comprendre votre vision, vos motivati
 
 
     </div>
+    <script>
+        // Affiche ou masque le champ de saisie pour l'option "Autre"
+        function toggleOtherFeatureInput(show) {
+            const otherInput = document.getElementById('main_feature_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur de l'option "Autre" dans le bouton radio
+        function updateOtherFeatureValue() {
+            const otherRadio = document.getElementById('main_feature_other_radio');
+            const otherInput = document.getElementById('main_feature_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Assure que le champ texte est masqué si une option prédéfinie est sélectionnée
+        document.querySelectorAll('input[name="main_feature"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'main_feature_other_radio') {
+                    toggleOtherFeatureInput(false);
+                }
+            });
+        });
+    </script>
     <script>
         // Affiche ou masque le champ de saisie pour l'option "Autre"
         function toggleOtherPlatformInput(show) {

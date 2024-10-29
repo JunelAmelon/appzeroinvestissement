@@ -54,7 +54,6 @@ return new class extends Migration
             $table->text('celebration_details');
             $table->text('client_slogan');
             $table->string('files')->nullable(); // Chemin du fichier téléversé pour le dernier bilan
-
             $table->string('status')->default('en attente');
             $table->timestamps();
         });

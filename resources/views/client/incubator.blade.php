@@ -190,8 +190,11 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/franchise">
-                                            <span class="sub-item">Ma franchise</span>
+                                        <a href="/marketplace">
+                                            <span class="sub-item">Marketplace Business</span>
+                                        </a>
+                                        <a href="/marketplace-business">
+                                            <span class="sub-item">Marketplace Dépôt</span>
                                         </a>
                                     </li>
                                     <li>
@@ -204,12 +207,12 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
-                                    
+
 
                                 </ul>
                             </div>
                         </li>
-                           <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="/faq">
                                 <i class="fas icon-question"></i>
                                 <p>Faq</p>
@@ -248,32 +251,32 @@
 
                 <section class="bg-gray-100">
                     <div class="container mx-auto mt-2">
-                                            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
 
-@if(session('success'))
-    <div class="alert alert-success">
-      {!! session('success') !!}
-    </div>
-@endif
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {!! session('success') !!}
+                        </div>
+                        @endif
 
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
 
-         
+
 
                         <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Incubateur</h2>
-                        <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6"  enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('incubator.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6" enctype="multipart/form-data">
                             @csrf
                             <h2 class="text-center mb-4">Bienvenue dans l’univers de l’Accélérateur Zéro ! Ici, vos idées et entreprises prennent leur envol, sans contrainte financière. </h2>
                             <p class="text-center mb-4">Que vous soyez au début d’une idée innovante ou à la tête d’une entreprise existante, nous sommes là pour vous accompagner à chaque étape. Répondez à ces questions funs, engageantes et précises pour que nous puissions analyser votre potentiel et déterminer comment nous pouvons vous aider à transformer votre projet en un véritable succès.</p>
@@ -341,26 +344,26 @@
                                 <small class="text-gray-500">(Un moment eureka, une discussion avec un ami, unbesoin non satisfait ?)</small>
                             </div>
 
-                           <div class="mb-4">
-    <label for="passion_aspect" class="form-label">Qu’est-ce qui vous passionne le plus dans ce projet ?</label>
-    <div>
-        <input type="radio" name="passion_aspect" id="entrepreneurial_challenge" value="Le défi entrepreneurial" onclick="toggleOtherObjectiveInput9(false)">
-        <label for="entrepreneurial_challenge">Le défi entrepreneurial</label>
-    </div>
-    <div>
-        <input type="radio" name="passion_aspect" id="impact" value="L'impact que ce projet peut avoir" onclick="toggleOtherObjectiveInput9(false)">
-        <label for="impact">L'impact que ce projet peut avoir</label>
-    </div>
-    <div>
-        <input type="radio" name="passion_aspect" id="growth_potential" value="Le potentiel de croissance" onclick="toggleOtherObjectiveInput9(false)">
-        <label for="growth_potential">Le potentiel de croissance</label>
-    </div>
-    <div class="mt-2">
-        <input type="radio" name="passion_aspect" id="other_passion_aspect" value="" onclick="toggleOtherObjectiveInput9(true)">
-        <label for="custom_passion">Autre :</label>
-        <input type="text" id="passion_aspect_custom" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherObjectiveValue9()" style="display: none;">
-    </div>
-</div>
+                            <div class="mb-4">
+                                <label for="passion_aspect" class="form-label">Qu’est-ce qui vous passionne le plus dans ce projet ?</label>
+                                <div>
+                                    <input type="radio" name="passion_aspect" id="entrepreneurial_challenge" value="Le défi entrepreneurial" onclick="toggleOtherObjectiveInput9(false)">
+                                    <label for="entrepreneurial_challenge">Le défi entrepreneurial</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="passion_aspect" id="impact" value="L'impact que ce projet peut avoir" onclick="toggleOtherObjectiveInput9(false)">
+                                    <label for="impact">L'impact que ce projet peut avoir</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="passion_aspect" id="growth_potential" value="Le potentiel de croissance" onclick="toggleOtherObjectiveInput9(false)">
+                                    <label for="growth_potential">Le potentiel de croissance</label>
+                                </div>
+                                <div class="mt-2">
+                                    <input type="radio" name="passion_aspect" id="other_passion_aspect" value="" onclick="toggleOtherObjectiveInput9(true)">
+                                    <label for="custom_passion">Autre :</label>
+                                    <input type="text" id="passion_aspect_custom" class="form-control mt-2" placeholder="Veuillez spécifier" oninput="updateOtherObjectiveValue9()" style="display: none;">
+                                </div>
+                            </div>
 
 
                             <div class="mb-4">
@@ -823,11 +826,11 @@
                                 <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Soumettre le projet</button>
                             </div>
                             <p style="padding-top:4%">Merci d’avoir partagé votre projet avec nous !
-Nous allons analyser votre dossier et vous recevrez un retour sous 7 jour ouvré. Si votre projet est sélectionné, nous organiserons un entretien pour discuter en détail de vos besoins spécifiques et de la manière dont ZeroInvestissement.com peut vous accompagner dans cette aventure. Préparez-vous à atteindre de nouveaux sommets !
-Pourquoi ce questionnaire ?
-Ce questionnaire est conçu pour nous permettre de bien comprendre votre projet, vos ambitions, et les défis auxquels vous faites face. Cela nous aide à identifier comment nous pouvons vous soutenir au mieux et vous aider à transformer vos idées en un succès commercial durable.
+                                Nous allons analyser votre dossier et vous recevrez un retour sous 7 jour ouvré. Si votre projet est sélectionné, nous organiserons un entretien pour discuter en détail de vos besoins spécifiques et de la manière dont ZeroInvestissement.com peut vous accompagner dans cette aventure. Préparez-vous à atteindre de nouveaux sommets !
+                                Pourquoi ce questionnaire ?
+                                Ce questionnaire est conçu pour nous permettre de bien comprendre votre projet, vos ambitions, et les défis auxquels vous faites face. Cela nous aide à identifier comment nous pouvons vous soutenir au mieux et vous aider à transformer vos idées en un succès commercial durable.
 
-</p>
+                            </p>
                         </form>
                     </div>
                 </section>
@@ -838,8 +841,8 @@ Ce questionnaire est conçu pour nous permettre de bien comprendre votre projet,
                     <nav class="pull-left">
 
                     </nav>
-                  <div class="copyright ml-auto">
-                      <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
+                    <div class="copyright ml-auto">
+                        <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
             </footer>
@@ -848,27 +851,25 @@ Ce questionnaire est conçu pour nous permettre de bien comprendre votre projet,
 
     </div>
     <script>
-       
-       function toggleOtherObjectiveInput9(show) {
-    const customInput = document.getElementById("passion_aspect_custom");
-    const otherRadio = document.getElementById("other_passion_aspect");
+        function toggleOtherObjectiveInput9(show) {
+            const customInput = document.getElementById("passion_aspect_custom");
+            const otherRadio = document.getElementById("other_passion_aspect");
 
-    customInput.style.display = show ? "block" : "none";
-    customInput.disabled = !show; // Désactive le champ texte s'il n'est pas visible
-    
-    if (!show) {
-        customInput.value = ""; // Réinitialise le champ si "Autre" est désélectionné
-        otherRadio.value = ""; // Réinitialise la valeur du bouton radio "Autre"
-    }
-}
+            customInput.style.display = show ? "block" : "none";
+            customInput.disabled = !show; // Désactive le champ texte s'il n'est pas visible
 
-function updateOtherObjectiveValue9() {
-    const customInput = document.getElementById("passion_aspect_custom");
-    const otherRadio = document.getElementById("other_passion_aspect");
-    
-    otherRadio.value = customInput.value; // Met à jour la valeur de l'option radio "Autre"
-}
+            if (!show) {
+                customInput.value = ""; // Réinitialise le champ si "Autre" est désélectionné
+                otherRadio.value = ""; // Réinitialise la valeur du bouton radio "Autre"
+            }
+        }
 
+        function updateOtherObjectiveValue9() {
+            const customInput = document.getElementById("passion_aspect_custom");
+            const otherRadio = document.getElementById("other_passion_aspect");
+
+            otherRadio.value = customInput.value; // Met à jour la valeur de l'option radio "Autre"
+        }
     </script>
     <script>
         // Fonction pour afficher ou masquer le champ de saisie pour l'option "Autre"

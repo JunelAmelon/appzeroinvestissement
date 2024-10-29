@@ -196,7 +196,10 @@
                                     </li>
                                     <li>
                                         <a href="/marketplace">
-                                            <span class="sub-item">Marketplace</span>
+                                            <span class="sub-item">Marketplace Business</span>
+                                        </a>
+                                        <a href="/marketplace-business">
+                                            <span class="sub-item">Marketplace Dépôt</span>
                                         </a>
                                     </li>
                                     <li>
@@ -204,12 +207,12 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
-                                  
+
 
                                 </ul>
                             </div>
                         </li>
-                           <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="/faq">
                                 <i class="fas icon-question"></i>
                                 <p>Faq</p>
@@ -253,106 +256,469 @@
                 <section class="bg-gray-100 mb-4">
                     <div class="container mx-auto mt-2">
                         @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
 
-@if(session('success'))
-    <div class="alert alert-success">
-      {!! session('success') !!}
-    </div>
-@endif
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {!! session('success') !!}
+                        </div>
+                        @endif
 
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
                         <!-- En-tête modifiée ici -->
-                        <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Marketplace</h2>
+                        <h2 class="text-center mb-0 card-header p-3" style="background-color: #6A00B8; color: white;">Marketplace Business</h2>
 
-                        <form action="{{ route('marketplace.save') }}" method="POST" class="bg-white p-5 rounded shadow">
+                        <form action="{{ route('marketplace.save') }}" method="POST" class="bg-white p-5 rounded shadow" enctype="multipart/form-data">
                             @csrf
 
-                            <h2 class="text-lg font-bold mb-4">Bienvenue dans l’univers Marketplace Achat de ZeroInvestissement.com</h2>
-                            <p class="mb-4">Répondez à ces questions pour que nous puissions mieux comprendre pourquoi vous avez choisi ce business et comment nous pouvons vous aider à maximiser vos chances de succès !</p>
+                            <h2 class="text-center mb-4">Bienvenue dans l’univers Marketplace !! 🚀</h2>
+                            <p class="text-center mb-4">Chez ZeroInvestissement.com, on adore transformer des idées en réalité, surtout quand elles sont brillantes comme la vôtre ! Vous êtes à deux doigts de trouver le business clé en main qui vous correspond parfaitement sur notre marketplace. Pour qu’on puisse bien comprendre votre projet et votre motivation, répondez à ces quelques questions. C’est parti, amusez-vous et soyez créatif, on vous attend avec impatience !</p>
 
-                            <h3 class="text-md font-semibold mt-4">Votre Business Clé en Main</h3>
-
+                            <h3 class="text-lg font-semibold mb-2">Pourquoi avoir choisi ce Business Clé en Main ?</h3> <br>
                             <div class="mb-3">
-                                <label for="business_name" class="form-label">Nom de l'Entreprise</label>
-                                <input type="text" class="form-control" id="business_name" name="business_name" required>
+                                <label class="form-label">Quel business avez-vous choisi sur la marketplace ? (Nom et description rapide)</label>
+                                <textarea class="form-control" name="business_name" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Qu’est-ce qui vous a attiré dans ce business en particulier ? </label>
+                                <div>
+                                    <input type="radio" id="attraction_sector" name="business_attraction" value="Le secteur d’activité" onclick="toggleOtherAttractionInput(false)">
+                                    <label for="attraction_sector">Le secteur d’activité</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="attraction_business_model" name="business_attraction" value="Le modèle d’affaires" onclick="toggleOtherAttractionInput(false)">
+                                    <label for="attraction_business_model">Le modèle d’affaires</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="attraction_profitability" name="business_attraction" value="Le potentiel de rentabilité" onclick="toggleOtherAttractionInput(false)">
+                                    <label for="attraction_profitability">Le potentiel de rentabilité</label>
+                                </div>
+
+                                <!-- Champ texte pour une réponse personnalisée -->
+                                <div class="mt-2">
+                                    <input type="radio" id="attraction_other_radio" name="business_attraction" value="" onclick="toggleOtherAttractionInput(true)">
+                                    <label for="attraction_other_radio">Autre :</label>
+                                    <input type="text" class="form-control mt-2" id="attraction_other" placeholder="Entrez votre réponse" oninput="updateOtherAttractionValue()" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Si ce business clé en main était un animal, lequel serait-il et pourquoi ?</label>
+                                <input type="text" class="form-control" name="animal_comparison" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Sur une échelle de 1 à 10, à quel point êtes-vous convaincu que ce business est fait pour vous ?</label>
+                                <div>
+                                    <input type="radio" id="conviction_level_1" name="conviction_level" value="1 : Juste curieux">
+                                    <label for="conviction_level_1">1 : Juste curieux</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="conviction_level_5" name="conviction_level" value="5 : Ça pourrait marcher">
+                                    <label for="conviction_level_5">5 : Ça pourrait marcher</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="conviction_level_10" name="conviction_level" value="10 : Facile à déployer n’importe où">
+                                    <label for="conviction_level_10">10 : C’est exactement ce que je cherchais !</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Qu’est-ce qui vous enthousiasme le plus à l’idée de prendre en main ce business ?</label>
+                                <div>
+                                    <input type="radio" id="enthusiasm_reason_1" name="enthusiasm_reason" value="Sa capacité à générer des revenus rapidement">
+                                    <label for="enthusiasm_reason_1">Sa capacité à générer des revenus rapidement</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="enthusiasm_reason_2" name="enthusiasm_reason" value="Le défi entrepreneurial">
+                                    <label for="enthusiasm_reason_2">Le défi entrepreneurial</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="enthusiasm_reason_3" name="enthusiasm_reason" value="La possibilité d’innover dans ce secteur">
+                                    <label for="enthusiasm_reason_3">La possibilité d’innover dans ce secteur</label>
+                                </div>
                             </div>
 
+                            <h3 class="text-lg font-semibold mb-2">Votre Motivation et Ambitions</h3>
                             <div class="mb-3">
-                                <label for="attraction_reason" class="form-label">Raison d'Attraction</label>
-                                <textarea class="form-control" id="attraction_reason" name="attraction_reason" required></textarea>
+                                <label class="form-label">Pourquoi avez-vous décidé de vous lancer dans l'entrepreneuriat ?</label>
+                                <div>
+                                    <input type="radio" id="entrepreneur_reason_1" name="entrepreneur_reason" value="Devenir mon propre patron" onclick="toggleOtherEntrepreneurInput(false)">
+                                    <label for="entrepreneur_reason_1">Devenir mon propre patron</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="entrepreneur_reason_2" name="entrepreneur_reason" value="Diversifier mes sources de revenus" onclick="toggleOtherEntrepreneurInput(false)">
+                                    <label for="entrepreneur_reason_2">Diversifier mes sources de revenus</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="entrepreneur_reason_3" name="entrepreneur_reason" value="Lancer un projet que je contrôle entièrement" onclick="toggleOtherEntrepreneurInput(false)">
+                                    <label for="entrepreneur_reason_3">Lancer un projet que je contrôle entièrement</label>
+                                </div>
+
+                                <!-- Champ texte pour une raison personnalisée -->
+                                <div class="mt-2">
+                                    <input type="radio" id="entrepreneur_reason_other_radio" name="entrepreneur_reason" value="" onclick="toggleOtherEntrepreneurInput(true)">
+                                    <label for="entrepreneur_reason_other_radio">Autre :</label>
+                                    <textarea class="form-control mt-2" id="entrepreneur_reason_other" placeholder="Entrez une autre raison" oninput="updateOtherEntrepreneurValue()" style="display: none;"></textarea>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Qu’est-ce qui vous motive le plus dans ce business clé en main spécifique ?</label>
+                                <div>
+                                    <input type="radio" id="specific_motivation_1" name="specific_motivation" value="Le potentiel de croissance" onclick="toggleOtherMotivationInput(false)">
+                                    <label for="specific_motivation_1">Le potentiel de croissance</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="specific_motivation_2" name="specific_motivation" value="L’absence de risque de démarrage" onclick="toggleOtherMotivationInput(false)">
+                                    <label for="specific_motivation_2">L’absence de risque de démarrage</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="specific_motivation_3" name="specific_motivation" value="La possibilité de m’y investir pleinement" onclick="toggleOtherMotivationInput(false)">
+                                    <label for="specific_motivation_3">La possibilité de m’y investir pleinement</label>
+                                </div>
+
+                                <!-- Champ texte pour une motivation personnalisée -->
+                                <div class="mt-2">
+                                    <input type="radio" id="specific_motivation_other_radio" name="specific_motivation" value="" onclick="toggleOtherMotivationInput(true)">
+                                    <label for="specific_motivation_other_radio">Autre :</label>
+                                    <textarea class="form-control mt-2" id="specific_motivation_other" placeholder="Entrez une autre motivation" oninput="updateOtherMotivationValue()" style="display: none;"></textarea>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Si vous deviez décrire votre approche entrepreneuriale en 3 mots, ce serait…</label>
+                                <input type="text" class="form-control" name="approach_keywords" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Qu’est-ce qui, selon vous, va vous permettre de réussir avec ce business ?</label>
+                                <textarea class="form-control" name="success_factors" required></textarea>
                             </div>
 
+                            <h3 class="text-lg font-semibold mb-2">Financement : Parlons Argent !</h3>
                             <div class="mb-3">
-                                <label for="business_animal" class="form-label">Si ce business clé en main était un animal, lequel serait-il et pourquoi ?</label>
-                                <input type="text" class="form-control" id="business_animal" name="business_animal" required>
+                                <label class="form-label">Avez-vous déjà planifié comment financer l’achat de ce business clé en main ?</label>
+                                <div>
+                                    <input type="radio" id="financing_option_1" name="financing_planned" value="Oui, j’ai déjà les fonds disponibles">
+                                    <label for="financing_option_1">Oui, j’ai déjà les fonds disponibles</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="financing_option_2" name="financing_planned" value="Oui, j’ai prévu un financement partiel">
+                                    <label for="financing_option_2">Oui, j’ai prévu un financement partiel</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="financing_option_3" name="financing_planned" value="Non, je cherche des solutions de financement">
+                                    <label for="financing_option_3">Non, je cherche des solutions de financement</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Si vous avez besoin de financement, comment pensez-vous y accéder ?</label>
+                                <div>
+                                    <input type="radio" id="financing_method_1" name="financing_method" value="Prêt bancaire">
+                                    <label for="financing_method_1">Prêt bancaire</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="financing_method_2" name="financing_method" value="Investissement personnel">
+                                    <label for="financing_method_2">Investissement personnel</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="financing_method_3" name="financing_method" value="Partenaires ou investisseurs externes">
+                                    <label for="financing_method_3">Partenaires ou investisseurs externes</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="financing_method_4" name="financing_method" value="Je cherche des options, pouvez-vous m’aider ?">
+                                    <label for="financing_method_4">Je cherche des options, pouvez-vous m’aider ?</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Quel est votre budget maximum pour l’achat de ce business ?</label>
+                                <div>
+                                    <input type="radio" id="budget_1" name="max_budget" value="Moins de 10 000 €" onclick="toggleOtherBudgetInput(false)">
+                                    <label for="budget_1">Moins de 10 000 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="budget_2" name="max_budget" value="Entre 10 000 € et 50 000 €" onclick="toggleOtherBudgetInput(false)">
+                                    <label for="budget_2">Entre 10 000 € et 50 000 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="budget_3" name="max_budget" value="Plus de 50 000 €" onclick="toggleOtherBudgetInput(false)">
+                                    <label for="budget_3">Plus de 50 000 €</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Seriez-vous intéressé par une option de financement proposée par ZeroInvestissement.com ?</label>
+                                <div>
+                                    <input type="radio" id="interested_financing_yes" name="interest_in_financing_option" value="Oui, je suis intéressé par l'option de financement de ZeroInvestissement.com">
+                                    <label for="interested_financing_yes">Oui, je suis intéressé par l'option de financement de ZeroInvestissement.com</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="interested_financing_no" name="interest_in_financing_option" value="Non, je préfère trouver une solution de mon côté">
+                                    <label for="interested_financing_no">Non, je préfère trouver une solution de mon côté</label>
+                                </div>
                             </div>
 
+                            <h3 class="text-lg font-semibold mb-2">Stratégie et Gestion</h3>
                             <div class="mb-3">
-                                <label for="conviction_score" class="form-label">Score de Conviction (1-10)</label>
-                                <input type="number" min="1" max="10" class="form-control" id="conviction_score" name="conviction_score" required>
+                                <label class="form-label">Quelle est la première action que vous allez entreprendre une fois le business acquis ?</label>
+                                <div>
+                                    <input type="radio" id="action_promotion" name="first_action" value="Lancer une campagne de promotion" onclick="toggleOtherActionInput(false)">
+                                    <label for="action_promotion">Lancer une campagne de promotion</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="action_marketing_strategy" name="first_action" value="Revoir la stratégie marketing" onclick="toggleOtherActionInput(false)">
+                                    <label for="action_marketing_strategy">Revoir la stratégie marketing</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="action_optimize_operations" name="first_action" value="Optimiser les opérations internes" onclick="toggleOtherActionInput(false)">
+                                    <label for="action_optimize_operations">Optimiser les opérations internes</label>
+                                </div>
+
+                                <!-- Champ texte pour une réponse personnalisée -->
+                                <div class="mt-2">
+                                    <input type="radio" id="action_other_radio" name="first_action" value="" onclick="toggleOtherActionInput(true)">
+                                    <label for="action_other_radio">Autre :</label>
+                                    <input type="text" class="form-control mt-2" id="action_other" placeholder="Entrez votre réponse" oninput="updateOtherActionValue()" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Comment comptez-vous faire connaître ce business à vos futurs clients ?</label>
+                                <div>
+                                    <input type="radio" id="digital_ads" name="marketing_strategy" value="Publicité digitale (Google, Facebook, etc.)" onclick="toggleOtherMarketingInput(false)">
+                                    <label for="digital_ads">Publicité digitale (Google, Facebook, etc.)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="social_media" name="marketing_strategy" value="Réseaux sociaux (Instagram, TikTok, LinkedIn)" onclick="toggleOtherMarketingInput(false)">
+                                    <label for="social_media">Réseaux sociaux (Instagram, TikTok, LinkedIn)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="word_of_mouth" name="marketing_strategy" value="Bouche-à-oreille" onclick="toggleOtherMarketingInput(false)">
+                                    <label for="word_of_mouth">Bouche-à-oreille</label>
+                                </div>
+
+                                <!-- Champ texte pour une réponse personnalisée -->
+                                <div class="mt-2">
+                                    <input type="radio" id="marketing_other_radio" name="marketing_strategy" value="" onclick="toggleOtherMarketingInput(true)">
+                                    <label class="form-label" for="marketing_other_radio">Autre :</label>
+                                    <input type="text" class="form-control mt-2" id="marketing_other" placeholder="Entrez votre réponse" oninput="updateOtherMarketingValue()" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Quel est votre objectif principal avec ce business clé en main dans les 12 prochains mois ?</label>
+                                <div>
+                                    <input type="radio" id="revenue_goal" name="main_objective" value="Générer un chiffre d’affaires de X €" onclick="toggleOtherObjectiveInput(false)">
+                                    <label for="revenue_goal">Générer un chiffre d’affaires de X €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="client_retention" name="main_objective" value="Fidéliser un grand nombre de clients" onclick="toggleOtherObjectiveInput(false)">
+                                    <label for="client_retention">Fidéliser un grand nombre de clients</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="expand_activity" name="main_objective" value="Étendre l’activité dans plusieurs régions" onclick="toggleOtherObjectiveInput(false)">
+                                    <label for="expand_activity">Étendre l’activité dans plusieurs régions</label>
+                                </div>
+
+                                <!-- Champ texte pour une réponse personnalisée -->
+                                <div class="mt-2">
+                                    <input type="radio" id="objective_other_radio" name="main_objective" value="" onclick="toggleOtherObjectiveInput(true)">
+                                    <label for="objective_other_radio">Autre :</label>
+                                    <input type="text" class="form-control mt-2" id="objective_other" placeholder="Entrez votre réponse" oninput="updateOtherObjectiveValue()" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Quel budget publicitaire initial prévoyez-vous pour ce business ?</label>
+                                <div>
+                                    <input type="radio" id="initial_ad_budget_1" name="initial_ad_budget" value="Moins de 500 €">
+                                    <label for="initial_ad_budget_1">Moins de 500 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="initial_ad_budget_2" name="initial_ad_budget" value="500 € à 2000 €">
+                                    <label for="initial_ad_budget_2">500 € à 2000 €</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="initial_ad_budget_3" name="initial_ad_budget" value="Plus de 2000 €">
+                                    <label for="initial_ad_budget_3">Plus de 2000 €</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Si vous pouviez donner un coup de boost immédiat à une partie du business, laquelle serait-ce ?</label>
+                                <div>
+                                    <input type="radio" id="boost_sales" name="business_boost_area" value="Les ventes" onclick="toggleOtherBoostAreaInput(false)">
+                                    <label for="boost_sales">Les ventes</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="boost_notoriety" name="business_boost_area" value="La notoriété" onclick="toggleOtherBoostAreaInput(false)">
+                                    <label for="boost_notoriety">La notoriété</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="boost_customer_service" name="business_boost_area" value="Le service client" onclick="toggleOtherBoostAreaInput(false)">
+                                    <label for="boost_customer_service">Le service client</label>
+                                </div>
+
+                                <!-- Champ texte pour une réponse personnalisée -->
+                                <div class="mt-2">
+                                    <input type="radio" id="boost_other_radio" name="business_boost_area" value="" onclick="toggleOtherBoostAreaInput(true)">
+                                    <label for="boost_other_radio">Autre :</label>
+                                    <input type="text" class="form-control mt-2" id="boost_other" placeholder="Entrez votre réponse" oninput="updateOtherBoostAreaValue()" style="display: none;">
+                                </div>
                             </div>
 
+                            <h3 class="text-lg font-semibold mb-2">Formation et Support</h3>
                             <div class="mb-3">
-                                <label for="business_motivation" class="form-label">Motivation de l'Entreprise</label>
-                                <textarea class="form-control" id="business_motivation" name="business_motivation" required></textarea>
+                                <label class="form-label">Avez-vous besoin d'une formation pour mieux comprendre le secteur du business que vous avez choisi ?</label>
+                                <div>
+                                    <input type="radio" id="training_needed_1" name="training_needed" value="Oui, je suis prêt à me former à 100 %">
+                                    <label for="training_needed_1">Oui, je suis prêt à me former à 100 %</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="training_needed_2" name="training_needed" value="Oui, mais seulement sur certains aspects">
+                                    <label for="training_needed_2">Oui, mais seulement sur certains aspects</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="training_needed_3" name="training_needed" value="Non, je maîtrise déjà bien ce secteur">
+                                    <label for="training_needed_3">Non, je maîtrise déjà bien ce secteur</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Comment préférez-vous suivre la formation associée à ce business ?</label>
+                                <div>
+                                    <input type="radio" id="preferred_training_method_1" name="preferred_training_method" value="Modules en ligne à mon rythme">
+                                    <label for="preferred_training_method_1">Modules en ligne à mon rythme</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="preferred_training_method_2" name="preferred_training_method" value="Webinaires et ateliers pratiques">
+                                    <label for="preferred_training_method_2">Webinaires et ateliers pratiques</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="preferred_training_method_3" name="preferred_training_method" value="Sessions de coaching en direct">
+                                    <label for="preferred_training_method_3">Sessions de coaching en direct</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Quelles compétences spécifiques aimeriez-vous développer avant de vous lancer ?</label>
+                                <div>
+                                    <input type="radio" id="develop_digital_marketing" name="skills_to_develop" value="Marketing digital" onclick="toggleOtherSkillsInput(false)">
+                                    <label for="develop_digital_marketing">Marketing digital</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="develop_operations_management" name="skills_to_develop" value="Gestion des opérations" onclick="toggleOtherSkillsInput(false)">
+                                    <label for="develop_operations_management">Gestion des opérations</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="develop_customer_relations" name="skills_to_develop" value="Relation client" onclick="toggleOtherSkillsInput(false)">
+                                    <label for="develop_customer_relations">Relation client</label>
+                                </div>
+
+                                <!-- Champ texte pour une réponse personnalisée -->
+                                <div class="mt-2">
+                                    <input type="radio" id="develop_other_radio" name="skills_to_develop" value="" onclick="toggleOtherSkillsInput(true)">
+                                    <label for="develop_other_radio">Autre :</label>
+                                    <input type="text" class="form-control mt-2" id="develop_other" placeholder="Entrez votre réponse" oninput="updateOtherSkillsValue()" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Quel type de suivi attendez-vous de ZeroInvestissement.com après le lancement ?</label>
+                                <div>
+                                    <input type="radio" id="expected_support_1" name="expected_support" value="Suivi hebdomadaire pour des conseils stratégiques">
+                                    <label for="expected_support_1">Suivi hebdomadaire pour des conseils stratégiques</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="expected_support_2" name="expected_support" value="Suivi mensuel pour évaluer les performances">
+                                    <label for="expected_support_2">Suivi mensuel pour évaluer les performances</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="expected_support_3" name="expected_support" value="Suivi selon mes besoins spécifiques">
+                                    <label for="expected_support_3">Suivi selon mes besoins spécifiquest</label>
+                                </div>
                             </div>
 
+                            <h3 class="text-lg font-semibold mb-2">Engagement et Croissance</h3>
                             <div class="mb-3">
-                                <label for="entrepreneurial_approach" class="form-label">Approche Entrepreneuriale (3 mots)</label>
-                                <textarea class="form-control" id="entrepreneurial_approach" name="entrepreneurial_approach" required></textarea>
+                                <label class="form-label">Combien de temps par semaine êtes-vous prêt à consacrer au développement de ce business ?</label>
+                                <div>
+                                    <input type="radio" id="weekly_hours_1" name="weekly_hours" value="Temps plein (40h+)">
+                                    <label for="weekly_hours_1">Temps plein (40h+)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="weekly_hours_2" name="weekly_hours" value="Temps partiel (20-30h)">
+                                    <label for="weekly_hours_2">Temps partiel (20-30h)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="weekly_hours_3" name="weekly_hours" value="Soirées et week-ends">
+                                    <label for="weekly_hours_3">Soirées et week-ends</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Combien de temps vous donnez-vous pour rendre ce business rentable ?</label>
+                                <div>
+                                    <input type="radio" id="profit_timeline_1" name="profit_timeline" value="3 mois ou moins">
+                                    <label for="profit_timeline_1">3 mois ou moins</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="profit_timeline_2" name="profit_timeline" value="6 à 12 mois">
+                                    <label for="profit_timeline_2">6 à 12 mois</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="profit_timeline_3" name="profit_timeline" value="Je suis prêt à attendre plus si nécessaire">
+                                    <label for="profit_timeline_3">Je suis prêt à attendre plus si nécessaire</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Avez-vous un plan de croissance pour ce business une fois lancé ?</label>
+                                <div>
+                                    <input type="radio" id="growth_plan_1" name="growth_plan" value="Oui, je compte l’étendre rapidement">
+                                    <label for="growth_plan_1">Oui, je compte l’étendre rapidement</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="growth_plan_2" name="growth_plan" value="Non, je préfère d’abord stabiliser les opérations">
+                                    <label for="growth_plan_2">Non, je préfère d’abord stabiliser les opérations</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Si vous aviez accès à un mentor entrepreneur, que lui demanderiez-vous en priorité ?</label>
+                                <textarea class="form-control" name="mentor_questions" required></textarea>
                             </div>
 
+                            <h3 class="text-lg font-semibold mb-2">Et pour finir, amusons-nous un peu !</h3>
                             <div class="mb-3">
-                                <label for="personal_strengths" class="form-label">Forces Personnelles</label>
-                                <textarea class="form-control" id="personal_strengths" name="personal_strengths" required></textarea>
+                                <label class="form-label">Si votre business clé en main avait un superpouvoir, lequel serait-il et pourquoi ?</label>
+                                <input type="text" class="form-control" name="superpower" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Quel serait le titre d’un livre sur votre aventure entrepreneuriale avec ce business ?</label>
+                                <input type="text" class="form-control" name="book_title" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Imaginez que dans 5 ans, votre business est un énorme succès. Quelle serait la première chose que vous feriez ?</label>
+                                <div>
+                                    <input type="radio" id="five_year_action_1" name="five_year_action" value="Un voyage autour du monde">
+                                    <label for="five_year_action_1">Un voyage autour du monde</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="five_year_action_2" name="five_year_action" value="Réinvestir dans d’autres projets">
+                                    <label for="five_year_action_2">Réinvestir dans d’autres projets</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="five_year_action_3" name="five_year_action" value="Organiser une fête incroyable pour célébrer">
+                                    <label for="five_year_action_3">Organiser une fête incroyable pour célébrer</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="file_input" class="form-label">Téléverser un fichier ( Dernier bilan )</label>
+                                <input class="form-control" type="file" id="file_input" name="files">
                             </div>
 
-                            <h3 class="text-md font-semibold mt-4">Financement</h3>
+                            <button type="submit" class="btn" style="background-color: #6A00B8; color: white;">Enregistrer</button>
 
-                            <div class="mb-3">
-                                <label for="financing_plan" class="form-label">Plan de Financement</label>
-                                <textarea class="form-control" id="financing_plan" name="financing_plan" required></textarea>
-                            </div>
+                            <p style="padding-top:4%;">Merci pour vos réponses !
+                                Notre équipe analysera vos réponses, notamment en ce qui concerne le financement, et nous vous contacterons sous 10 jours ouvrés pour valider votre acquisition du business clé en main. Ensemble, nous allons transformer ce projet en un succès entrepreneurial ! ZeroInvestissement.com est prêt à vous accompagner de la première étape jusqu’au sommet.
 
-                            <div class="mb-3">
-                                <label for="financing_help" class="form-label">Aide au Financement</label>
-                                <select class="form-select" id="financing_help" name="financing_help" required>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="budget" class="form-label">Budget</label>
-                                <input type="number" class="form-control" id="budget" name="budget" required>
-                            </div>
-
-                            <h3 class="text-md font-semibold mt-4">Stratégie et Gestion</h3>
-
-                            <div class="mb-3">
-                                <label for="post_acquisition_action" class="form-label">Actions Post-Acquisition</label>
-                                <textarea class="form-control" id="post_acquisition_action" name="post_acquisition_action" required></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="business_strategy" class="form-label">Stratégie d'Entreprise</label>
-                                <textarea class="form-control" id="business_strategy" name="business_strategy" required></textarea>
-                            </div>
-
-
-                            <button type="submit" class="py-2 px-4 rounded" style="background-color: #6A00B8; color: white;">Enregistrer</button>
+                            </p>
                         </form>
 
 
@@ -369,8 +735,8 @@
                     <nav class="pull-left">
 
                     </nav>
-                  <div class="copyright ml-auto">
-                      <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
+                    <div class="copyright ml-auto">
+                        <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
             </footer>
@@ -378,6 +744,246 @@
 
 
     </div>
+    <script>
+        // Affiche ou masque le champ de saisie pour une réponse personnalisée
+        function toggleOtherAttractionInput(show) {
+            const otherInput = document.getElementById('attraction_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur du bouton radio "Autre" en fonction de la saisie
+        function updateOtherAttractionValue() {
+            const otherRadio = document.getElementById('attraction_other_radio');
+            const otherInput = document.getElementById('attraction_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Réinitialise le champ texte lorsque d'autres options sont sélectionnées
+        document.querySelectorAll('input[name="business_attraction"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'attraction_other_radio') {
+                    toggleOtherAttractionInput(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie pour une réponse personnalisée
+        function toggleOtherSkillsInput(show) {
+            const otherInput = document.getElementById('develop_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur du bouton radio "Autre" en fonction de la saisie
+        function updateOtherSkillsValue() {
+            const otherRadio = document.getElementById('develop_other_radio');
+            const otherInput = document.getElementById('develop_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Réinitialise le champ texte lorsque d'autres options sont sélectionnées
+        document.querySelectorAll('input[name="skills_to_develop"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'develop_other_radio') {
+                    toggleOtherSkillsInput(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie pour une réponse personnalisée
+        function toggleOtherBoostAreaInput(show) {
+            const otherInput = document.getElementById('boost_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur du bouton radio "Autre" en fonction de la saisie
+        function updateOtherBoostAreaValue() {
+            const otherRadio = document.getElementById('boost_other_radio');
+            const otherInput = document.getElementById('boost_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Réinitialise le champ texte lorsque d'autres options sont sélectionnées
+        document.querySelectorAll('input[name="business_boost_area"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'boost_other_radio') {
+                    toggleOtherBoostAreaInput(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie pour une réponse personnalisée
+        function toggleOtherObjectiveInput(show) {
+            const otherInput = document.getElementById('objective_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur du bouton radio "Autre" en fonction de la saisie
+        function updateOtherObjectiveValue() {
+            const otherRadio = document.getElementById('objective_other_radio');
+            const otherInput = document.getElementById('objective_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Réinitialise le champ texte lorsque d'autres options sont sélectionnées
+        document.querySelectorAll('input[name="main_objective"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'objective_other_radio') {
+                    toggleOtherObjectiveInput(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie pour une réponse personnalisée
+        function toggleOtherMarketingInput(show) {
+            const otherInput = document.getElementById('marketing_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur du bouton radio "Autre" en fonction de la saisie
+        function updateOtherMarketingValue() {
+            const otherRadio = document.getElementById('marketing_other_radio');
+            const otherInput = document.getElementById('marketing_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Réinitialise le champ texte lorsque d'autres options sont sélectionnées
+        document.querySelectorAll('input[name="marketing_strategy"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'marketing_other_radio') {
+                    toggleOtherMarketingInput(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie pour une réponse personnalisée
+        function toggleOtherActionInput(show) {
+            const otherInput = document.getElementById('action_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur du bouton radio "Autre" en fonction de la saisie
+        function updateOtherActionValue() {
+            const otherRadio = document.getElementById('action_other_radio');
+            const otherInput = document.getElementById('action_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Réinitialise le champ texte lorsque d'autres options sont sélectionnées
+        document.querySelectorAll('input[name="first_action"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'action_other_radio') {
+                    toggleOtherActionInput(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie pour une motivation personnalisée
+        function toggleOtherMotivationInput(show) {
+            const otherInput = document.getElementById('specific_motivation_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur du bouton radio "Autre" en fonction de la saisie
+        function updateOtherMotivationValue() {
+            const otherRadio = document.getElementById('specific_motivation_other_radio');
+            const otherInput = document.getElementById('specific_motivation_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Réinitialise le champ texte lorsque d'autres options sont sélectionnées
+        document.querySelectorAll('input[name="specific_motivation"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'specific_motivation_other_radio') {
+                    toggleOtherMotivationInput(false);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Affiche ou masque le champ de saisie pour une raison personnalisée
+        function toggleOtherEntrepreneurInput(show) {
+            const otherInput = document.getElementById('entrepreneur_reason_other');
+            if (show) {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Réinitialise la valeur si non utilisée
+            }
+        }
+
+        // Met à jour la valeur du bouton radio "Autre" en fonction de la saisie
+        function updateOtherEntrepreneurValue() {
+            const otherRadio = document.getElementById('entrepreneur_reason_other_radio');
+            const otherInput = document.getElementById('entrepreneur_reason_other');
+            otherRadio.value = otherInput.value;
+        }
+
+        // Réinitialise le champ texte lorsque d'autres options sont sélectionnées
+        document.querySelectorAll('input[name="entrepreneur_reason"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                if (e.target.id !== 'entrepreneur_reason_other_radio') {
+                    toggleOtherEntrepreneurInput(false);
+                }
+            });
+        });
+    </script>
     <!--   Core JS Files   -->
     <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
     <script src="{{ asset('build/assets/js/core/popper.min.js') }}"></script>
