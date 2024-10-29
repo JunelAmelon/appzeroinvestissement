@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-
         //
         Schema::create('franchises', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('business_name');
+            $table->string('project_name');
+            $table->text('project_description');
             $table->string('character_comparison');
-            $table->text('activity_description');
             $table->string('business_age');
             $table->string('sector');
             $table->string('sucess_product');

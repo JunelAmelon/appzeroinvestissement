@@ -127,9 +127,9 @@ class ClientController extends Controller
     public function regfranchise(Request $request)
     {
         $validatedData = $request->validate([
-            'business_name' => 'required|string|max:255',
+            'project_name' => 'required|string|max:255',
             'character_comparison' => 'required|string|max:255',
-            'activity_description' => 'required|string',
+            'project_description' => 'required|string',
             'business_age' => 'required|string|max:255',
             'sector' => 'required|string|max:255',
             'sucess_product' => 'required|string|max:255',
@@ -300,7 +300,7 @@ class ClientController extends Controller
     {
         if (Auth::check()) {
             // Récupérer tous les projets de chaque modèle
-            $franchises = Franchise::select('id', 'business_name as nom', 'activity_description as description', 'status')->get()->map(function ($item) {
+            $franchises = Franchise::select('id', 'project_name as nom', 'project_description as description', 'status')->get()->map(function ($item) {
                 $item->type = 'Franchise';
                 return $item;
             });

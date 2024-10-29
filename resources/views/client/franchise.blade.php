@@ -280,7 +280,7 @@ Alors, prêt à transformer votre entreprise en la prochaine grande franchise ? 
                             <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle : Montrez-nous ce que vous avez !</h3>
                             <div class="mb-4">
                                 <label for="business_name" class="form-label">Nom de l'Entreprise</label>
-                                <input type="text" class="form-control" id="business_name" name="business_name" required>
+                                <input type="text" class="form-control" id="business_name" name="project_name" required>
                                 <small class="text-gray-500">Pourquoi ce nom ?</small>
                             </div>
                             <div class="mb-4">
@@ -289,7 +289,7 @@ Alors, prêt à transformer votre entreprise en la prochaine grande franchise ? 
                             </div>
                             <div class="mb-4">
                                 <label for="activity_description" class="form-label">Décrivez votre activité en une phrase, comme si vous deviez l'expliquer à un enfant de 5 ans.</label>
-                                <textarea class="form-control" id="activity_description" name="activity_description" required></textarea>
+                                <textarea class="form-control" id="activity_description" name="project_description" required></textarea>
                             </div>
                             <div class="mb-4">
                                 <label for="business_age" class="form-label">Depuis combien de temps votre entreprise existe-t-elle ?</label>
