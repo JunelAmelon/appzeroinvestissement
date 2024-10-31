@@ -194,7 +194,10 @@
                                     </li>
                                     <li>
                                         <a href="/marketplace">
-                                            <span class="sub-item">Marketplace</span>
+                                            <span class="sub-item">Marketplace Business</span>
+                                        </a>
+                                        <a href="/marketplace-business">
+                                            <span class="sub-item">Marketplace Dépôt</span>
                                         </a>
                                     </li>
                                     <li>
@@ -202,12 +205,12 @@
                                             <span class="sub-item">Incubateur</span>
                                         </a>
                                     </li>
-                                     
+
 
                                 </ul>
                             </div>
                         </li>
-                           <li class="nav-item ">
+                        <li class="nav-item ">
                             <a href="/faq">
                                 <i class="fas icon-question"></i>
                                 <p>Faq</p>
@@ -246,36 +249,36 @@
 
                 <section class="bg-gray-100">
                     <div class="container mx-auto mt-2 ">
-                      @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
 
-@if(session('success'))
-    <div class="alert alert-success">
-      {!! session('success') !!}
-    </div>
-@endif
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {!! session('success') !!}
+                        </div>
+                        @endif
 
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif    
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                        @endif
 
                         <!-- En-tête modifiée ici -->
                         <h2 class="text-center card-header mb-0 p-3" style="background-color: #6A00B8; color: white;">Franchise</h2>
-                        <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6"  enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('franchise.save') }}" class="bg-white p-6 rounded-lg shadow-lg mb-6" enctype="multipart/form-data">
                             @csrf
                             <h2 class="text-center mb-4">Bienvenue dans notre questionnaire hyper fun et essentiel pour faire de votre entreprise une franchise à succès sans dépenser un centime </h2>
                             <p class="text-center mb-4">Si vous avez une entreprise qui cartonne déjà et que vous voulez la voir grandir et conquérir de nouveaux territoires, vous êtes au bon endroit. Chez ZeroInvestissement.com, on adore les entreprises qui rêvent en grand, et on est là pour vous aider à franchiser sans stress !
-Alors, prêt à transformer votre entreprise en la prochaine grande franchise ? Répondez à ces questions et voyons comment on peut faire décoller tout ça !
-</p>
+                                Alors, prêt à transformer votre entreprise en la prochaine grande franchise ? Répondez à ces questions et voyons comment on peut faire décoller tout ça !
+                            </p>
 
                             <h3 class="text-lg font-semibold mb-2">🚀 Votre Entreprise Actuelle : Montrez-nous ce que vous avez !</h3>
                             <div class="mb-4">
@@ -356,7 +359,7 @@ Alors, prêt à transformer votre entreprise en la prochaine grande franchise ? 
                                     <label for="cinqk">Plus de 500 000 €</label>
                                 </div>
                             </div>
-                            
+
 
                             <div class="mb-4">
                                 <label for="scalability_score" class="form-label">Sur une échelle de 1 à 10, comment évaluez-vous la scalabilité de votre modèle ? (Indice : Scalabilité = possibilité de reproduire facilement votre concept ailleurs)
@@ -374,7 +377,7 @@ Alors, prêt à transformer votre entreprise en la prochaine grande franchise ? 
                                     <label for="pret">10 : Mon modèle est prêt à conquérir le monde !</label>
                                 </div>
 
-                               
+
                             </div>
 
                             <h3 class="text-lg font-semibold mb-2">🛠️ Le Grand Saut : Pourquoi franchiser votre entreprise ?</h3>
@@ -571,11 +574,11 @@ Alors, prêt à transformer votre entreprise en la prochaine grande franchise ? 
                             </div>
 
                             <button type="submit" class="py-2 px-4 rounded text-white" style="background-color:#6A00B8; color:white;">Enregistrer</button>
-                      <p style="padding-top:4%;">Merci d’avoir partagé votre vision !
-Notre équipe d’experts analysera votre projet avec attention et vous recevrez une réponse sous 15 jour ouvrée . Si votre modèle est validé, ZeroInvestissement.com vous accompagnera pour faire de votre entreprise la prochaine grande franchise, sans investissement de votre part. On est prêts à vous propulser vers le succès, et vous ?
-Pourquoi ce questionnaire ?
-Nous voulons nous assurer que votre entreprise est prête à franchir un cap, que votre modèle est duplicable, et que vous partagez nos valeurs. Plus on en sait sur vous et votre vision, mieux on pourra vous accompagner pour transformer votre réussite locale en succès national… voire mondial !
-</p>
+                            <p style="padding-top:4%;">Merci d’avoir partagé votre vision !
+                                Notre équipe d’experts analysera votre projet avec attention et vous recevrez une réponse sous 15 jour ouvrée . Si votre modèle est validé, ZeroInvestissement.com vous accompagnera pour faire de votre entreprise la prochaine grande franchise, sans investissement de votre part. On est prêts à vous propulser vers le succès, et vous ?
+                                Pourquoi ce questionnaire ?
+                                Nous voulons nous assurer que votre entreprise est prête à franchir un cap, que votre modèle est duplicable, et que vous partagez nos valeurs. Plus on en sait sur vous et votre vision, mieux on pourra vous accompagner pour transformer votre réussite locale en succès national… voire mondial !
+                            </p>
                         </form>
 
 
@@ -612,7 +615,7 @@ Nous voulons nous assurer que votre entreprise est prête à franchir un cap, qu
 
                     </nav>
                     <div class="copyright ml-auto">
-                      <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
+                        <a href="/politique-de-confidentialite">Politique de confidentialité </a> &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
                     </div>
                 </div>
             </footer>

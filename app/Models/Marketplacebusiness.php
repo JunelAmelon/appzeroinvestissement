@@ -10,8 +10,9 @@ class Marketplacebusiness extends Model
     use HasFactory;
 
     protected $fillable = [
-'user_id',
+        'user_id',
         'business_name',
+        'business_attraction',
         'animal_comparison',
         'conviction_level',
         'enthusiasm_reason',

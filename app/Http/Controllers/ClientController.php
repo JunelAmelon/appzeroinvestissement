@@ -250,10 +250,10 @@ class ClientController extends Controller
             }
 
             MarketplaceBusiness::create($validatedData);
-            return redirect()->route('marketplace')->with('success', 'Vos réponses ont été enregistrées avec succès !');
+            return redirect()->route('marketplace')->with('success', 'Détails du projet enregistrés avec succès. Vous pouvez retourner sur la <a href="' . url('/welcome') . '">page d\'accueil</a> en cliquant ici.');
         } catch (Exception $e) {
             // En cas d'erreur, rediriger avec un message d'erreur
-            return redirect()->route('marketplace')->with('error', 'Erreur : ' . $e->getMessage());
+            return redirect()->route('marketplace')->with('error', 'Erreur lors de l\'enregistrement: ' . $e->getMessage());
         }
     }
 
