@@ -1,550 +1,304 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" href="{{ asset('build/assets/img/icon.ico') }}" type="image/x-icon" />
+@section('title', 'Marketplace')
+@section('page-title', 'Soumettre un Projet')
+@section('page-subtitle', 'Partagez votre opportunité commerciale')
 
-    <!-- Fonts and icons -->
-    <script src="{{ asset('build/assets/js/plugin/webfont/webfont.min.js') }}"></script>
-    <script>
-        WebFont.load({
-            google: {
-                "families": ["Lato:300,400,700,900"]
-            },
-            custom: {
-                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
-                urls: ['../assets/css/fonts.min.css']
-            },
-            active: function() {
-                sessionStorage.fonts = true;
-            }
-        });
-    </script>
+@section('content')
+<style>
+    @media (max-width: 768px) {
+        .form-section-title {
+            font-size: 1.1rem !important;
+        }
+        
+        .form-label {
+            font-size: 0.9rem !important;
+        }
+        
+        .form-control, .form-select {
+            font-size: 0.9rem !important;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.2rem !important;
+            font-size: 0.9rem !important;
+        }
+        
+        .alert h5 {
+            font-size: 1rem !important;
+        }
+        
+        .alert p {
+            font-size: 0.85rem !important;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .form-section-title {
+            font-size: 1rem !important;
+            padding: 0.75rem 0 !important;
+        }
+        
+        .navigation-buttons {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+        
+        .navigation-buttons .btn {
+            width: 100% !important;
+        }
+    }
+</style>
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <x-card title="Marketplace" icon="shopping-cart">
+            
+            <!-- Message d'introduction -->
+            <div class="alert alert-info mb-4" style="background: var(--primary-color); border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(106, 0, 184, 0.3);">
+                <h5 style="color: white; font-weight: 600;">🚀 Partagez votre opportunité commerciale</h5>
+                <p style="margin-bottom: 0; color: rgba(255, 255, 255, 0.95);">
+                    Chez <strong style="color: white;">ZeroInvestissement.com</strong>, nous accompagnons les entrepreneurs dans leurs projets de marketplace. 
+                    Répondez à ces questions pour nous aider à comprendre votre vision et vos objectifs.
+                    <strong>Prenez le temps de détailler votre projet, nous sommes là pour vous aider !</strong>
+                </p>
+            </div>
+            
+            <form method="POST" action="{{ route('marketplace.save') }}" id="multiStepForm" class="needs-validation" novalidate>
+                @csrf
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/atlantis.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/fonts.min.css') }}">
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="{{ asset('build/assets/css/demo.css') }}">
-</head>
+                <!-- Étape 1: Informations Entreprise -->
+                <div class="form-step active" data-step="1">
+                    <div class="form-section-title">
+                        <i class="fas fa-building me-2"></i>Informations de l'Entreprise
+                    </div>
+                    <div class="divider"></div>
 
-<body>
-    <div class="wrapper">
-        <div class="main-header">
-            <!-- Logo Header -->
-            <div class="logo-header" data-background-color="" style="background-color: white; color:white;">
+                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                        <div>
+                            <x-form-field name="business_name" label="Nom de l'Entreprise" required />
+                        </div>
+                        <div>
+                            <x-form-field name="business_animal" label="Animal Représentatif" required />
+                        </div>
+                    </div>
 
-                <a href="{{ url('/') }}" class="logo">
-                    <img src="{{ asset('build/assets/img/logo.png') }}" style="width:100px;" alt="navbar brand" class="navbar-brand">
-                </a>
-
-                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
-                        <i class="icon-menu" style="color:#6A00B8;"></i>
-                    </span>
-                </button>
-                <button class="topbar-toggler more"><i class="icon-options-vertical" style="color:#6A00B8;"></i></button>
-                <div class="nav-toggle">
-                    <button class="btn btn-toggle toggle-sidebar">
-                        <i class="icon-menu"></i>
-                    </button>
+                    <x-form-field name="attraction_reason" label="Raison d'Attraction pour cette Entreprise" type="textarea" rows="3" required />
                 </div>
-            </div>
-            <!-- End Logo Header -->
 
-            <!-- Navbar Header -->
-            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="" style="background-color: #6A00B8; color:white;">
-
-                <div class="container-fluid">
-                    <div class="collapse" id="search-nav">
-
+                <!-- Étape 2: Conviction & Motivation -->
+                <div class="form-step" data-step="2">
+                    <div class="form-section-title">
+                        <i class="fas fa-fire me-2"></i>Conviction & Motivation
                     </div>
-                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                    <div class="divider"></div>
 
-
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                                <i class="fas fa-layer-group"></i>
-                            </a>
-                            <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
-                                <div class="quick-actions-header" style="background-color: #6A00B8; color:white;">
-                                    <span class="title mb-1">Quick Actions</span>
-                                    <span class="subtitle op-8">Shortcuts</span>
-                                </div>
-                                <div class="quick-actions-scroll scrollbar-outer">
-                                    <div class="quick-actions-items">
-                                        <div class="row m-0">
-                                            <a class="col-6 col-md-4 p-0" href="#">
-                                                <div class="quick-actions-item">
-                                                    <i class="flaticon-file-1"></i>
-                                                    <span class="text">Dashboard</span>
-                                                </div>
-                                            </a>
-                                            <a class="col-6 col-md-4 p-0" href="#">
-                                                <div class="quick-actions-item">
-                                                    <a href="{{ route('logout') }}">
-                                                        <i class="icon-logout"></i>
-                                                        <span class="text"> Deconnexion</span>
-                                                    </a>
-
-
-                                                </div>
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-                                <div class="avatar-sm">
-                                    <img src="https://img.freepik.com/free-vector/mans-face-flat-style_90220-2877.jpg?uid=R143971211&ga=GA1.1.1911634789.1729294558
-" alt="..." class="avatar-img rounded-circle">
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user animated fadeIn">
-                                <div class="dropdown-user-scroll scrollbar-outer">
-                                    <li>
-                                        <div class="user-box">
-                                            <div class="avatar-lg"><img src="https://img.freepik.com/free-vector/mans-face-flat-style_90220-2877.jpg?uid=R143971211&ga=GA1.1.1911634789.1729294558
-" alt="image profile" class="avatar-img rounded"></div>
-                                            <div class="u-text">
-                                                <h4>{{ Auth::user()->name }}</h4>
-                                                <p class="text-muted">{{ Auth::user()->email }}</p><a href="{{ route('logout') }}" class="btn btn-xs btn-secondary btn-sm">Se deconnecter</a>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                </div>
-                            </ul>
-                        </li>
-                    </ul>
+                    <x-form-field name="conviction_score" label="Score de Conviction (0-100)" type="number" required />
+                    <x-form-field name="business_motivation" label="Motivation Professionnelle" type="textarea" rows="3" required />
+                    <x-form-field name="entrepreneurial_approach" label="Approche Entrepreneuriale" type="textarea" rows="3" required />
+                    <x-form-field name="personal_strengths" label="Forces Personnelles" type="textarea" rows="3" required />
                 </div>
-            </nav>
-            <!-- End Navbar -->
-        </div>
 
-        <!-- Sidebar -->
-        <div class="sidebar sidebar-style-2" style="background-color: none ;">
-            <div class="sidebar-wrapper scrollbar scrollbar-inner">
-                <div class="sidebar-content">
-                    <div class="user">
-                        <div class="avatar-sm float-left mr-2">
-                            <img src="https://img.freepik.com/free-vector/mans-face-flat-style_90220-2877.jpg?uid=R143971211&ga=GA1.1.1911634789.1729294558
-" alt="..." class="avatar-img rounded-circle">
-                        </div>
-                        <div class="info">
-                            <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                                <span>
-                                    {{ Auth::user()->name }}
-                                    <span class="user-level">Espace client</span>
-                                    <!--<span class="caret"></span>-->
-                                </span>
-                            </a>
-                            <div class="clearfix"></div>
-
-                            <div class="collapse in" id="collapseExample">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="#profile">
-                                            <!--<span class="link-collapse">My Profile</span>-->
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
+                <!-- Étape 3: Financement & Budget -->
+                <div class="form-step" data-step="3">
+                    <div class="form-section-title">
+                        <i class="fas fa-dollar-sign me-2"></i>Financement & Budget
                     </div>
-                    <ul class="nav" style="color:white;">
-                        <li class="nav-item active">
-                            <a href="/welcome" class="collapsed" aria-expanded="false" style="background-color: bone;  color:white;">
-                                <i class="fas fa-home"></i>
-                                <p>Dashboard</p>
+                    <div class="divider"></div>
 
-                            </a>
+                    <x-form-field name="financing_plan" label="Plan de Financement" type="textarea" rows="3" required />
 
-                        </li>
-                        <li class="nav-section">
-                            <span class="sidebar-mini-icon">
-                                <i class="fa fa-ellipsis-h"></i>
-                            </span>
-                            <h4 class="text-section">Options</h4>
-                        </li>
-                        <li class="nav-item">
-                            <a data-toggle="collapse" href="#sidebarLayouts">
-                                <i class="fas flaticon-envelope-3"></i>
-                                <p>Soumettre un projet</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="sidebarLayouts">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a href="/siteapp">
-                                            <span class="sub-item">Mon site/Appli</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/franchise">
-                                            <span class="sub-item">Ma franchise</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/marketplace">
-                                            <span class="sub-item">Marketplace</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="static-sidebar.html">
-                                            <span class="sub-item">Incubateur</span>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('logout') }}">
-                                <i class="fas icon-logout"></i>
-                                <p>Se deconnecter</p>
-
-                            </a>
-
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- End Sidebar -->
-
-        <div class="main-panel">
-            <div class="content">
-                <div class="panel-header " style="background-color: none; ">
-                    <div class="page-inner py-5">
-                        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-                            <div>
-                                <h2 class=" pb-2 fw-bold" style=" color:#6A00B8;">Soumettre un projet</h2>
-                                <h5 class=" op-7 mb-2" style=" color:#6A00B8;">Veuillez remplir ces champs de formulaire {{ Auth::user()->name }} !</h5>
-                            </div>
-
+                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                        <div>
+                            <x-form-field name="budget" label="Budget Disponible" type="number" step="0.01" required />
                         </div>
-                    </div>
-        </div>
-
-
-
-
-
-<section class="bg-gray-100 mb-4">
-    <div class="container mx-auto mt-2">
-        @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-        @endif
-
-        @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-        @endif
-        <!-- En-tête modifiée ici -->
-        <h2 class="text-center mb-4 p-3" style="background-color: #6A00B8; color: white;">Marketplace</h2>
-
-        <form action="{{ route('marketplace.save') }}" method="POST" class="bg-white p-5 rounded shadow">
-            @csrf
-            <div class="mb-3">
-                <label for="business_name" class="form-label">Nom de l'Entreprise</label>
-                <input type="text" class="form-control" id="business_name" name="business_name" required>
-            </div>
-            <div class="mb-3">
-                <label for="attraction_reason" class="form-label">Raison d'Attraction</label>
-                <textarea class="form-control" id="attraction_reason" name="attraction_reason" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="business_animal" class="form-label">Animal de l'Entreprise</label>
-                <input type="text" class="form-control" id="business_animal" name="business_animal" required>
-            </div>
-            <div class="mb-3">
-                <label for="conviction_score" class="form-label">Score de Conviction</label>
-                <input type="number" class="form-control" id="conviction_score" name="conviction_score" required>
-            </div>
-            <div class="mb-3">
-                <label for="business_motivation" class="form-label">Motivation de l'Entreprise</label>
-                <textarea class="form-control" id="business_motivation" name="business_motivation" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="entrepreneurial_approach" class="form-label">Approche Entrepreneuriale</label>
-                <textarea class="form-control" id="entrepreneurial_approach" name="entrepreneurial_approach" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="personal_strengths" class="form-label">Forces Personnelles</label>
-                <textarea class="form-control" id="personal_strengths" name="personal_strengths" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="financing_plan" class="form-label">Plan de Financement</label>
-                <textarea class="form-control" id="financing_plan" name="financing_plan" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="financing_help" class="form-label">Aide au Financement</label>
-                <select class="form-select" id="financing_help" name="financing_help" required>
-                    <option value="1">Oui</option>
-                    <option value="0">Non</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="budget" class="form-label">Budget</label>
-                <input type="text" class="form-control" id="budget" name="budget" required>
-            </div>
-            <div class="mb-3">
-                <label for="post_acquisition_action" class="form-label">Actions Post-Acquisition</label>
-                <textarea class="form-control" id="post_acquisition_action" name="post_acquisition_action" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="business_strategy" class="form-label">Stratégie d'Entreprise</label>
-                <textarea class="form-control" id="business_strategy" name="business_strategy" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="status" class="form-label">Statut</label>
-                <input type="text" class="form-control" id="status" name="status" required>
-            </div>
-            <!-- Bouton modifié ici -->
-            <button type="submit" class="py-2 px-4 rounded" style="background-color: #6A00B8; color: white;">Enregistrer</button>
-        </form>
-
-    </section>
-
-
-
-
-
-
-            </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
-
-                    </nav>
-                    <div class="copyright ml-auto">
-                        &copy; Copyright <strong><span>Zeroinvestissement</span></strong>. All Rights Reserved
-                    </div>
-                </div>
-            </footer>
-        </div>
-
-        <!-- Custom template | don't include it in your project! -->
-        <div class="custom-template">
-            <div class="title">Settings</div>
-            <div class="custom-content">
-                <div class="switcher">
-                    <div class="switch-block">
-                        <h4>Logo Header</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="changeLogoHeaderColor" data-color="dark"></button>
-                            <button type="button" class="selected changeLogoHeaderColor" data-color="blue"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="green"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="red"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-                            <br />
-                            <button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
-                        </div>
-                    </div>
-                    <div class="switch-block">
-                        <h4>Navbar Header</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="changeTopBarColor" data-color="dark"></button>
-                            <button type="button" class="changeTopBarColor" data-color="blue"></button>
-                            <button type="button" class="changeTopBarColor" data-color="purple"></button>
-                            <button type="button" class="changeTopBarColor" data-color="light-blue"></button>
-                            <button type="button" class="changeTopBarColor" data-color="green"></button>
-                            <button type="button" class="changeTopBarColor" data-color="orange"></button>
-                            <button type="button" class="changeTopBarColor" data-color="red"></button>
-                            <button type="button" class="changeTopBarColor" data-color="white"></button>
-                            <br />
-                            <button type="button" class="changeTopBarColor" data-color="dark2"></button>
-                            <button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="purple2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="green2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="orange2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="red2"></button>
-                        </div>
-                    </div>
-                    <div class="switch-block">
-                        <h4>Sidebar</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="selected changeSideBarColor" data-color="white"></button>
-                            <button type="button" class="changeSideBarColor" data-color="dark"></button>
-                            <button type="button" class="changeSideBarColor" data-color="dark2"></button>
-                        </div>
-                    </div>
-                    <div class="switch-block">
-                        <h4>Background</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="changeBackgroundColor" data-color="bg2"></button>
-                            <button type="button" class="changeBackgroundColor selected" data-color="bg1"></button>
-                            <button type="button" class="changeBackgroundColor" data-color="bg3"></button>
-                            <button type="button" class="changeBackgroundColor" data-color="dark"></button>
+                        <div>
+                            <x-form-field 
+                                name="financing_help" 
+                                label="Avez-vous besoin d'aide au financement ?" 
+                                type="select"
+                                :options="['1' => 'Oui', '0' => 'Non']"
+                                required 
+                            />
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-        <!-- End Custom template -->
+                <!-- Étape 4: Stratégie & Actions -->
+                <div class="form-step" data-step="4">
+                    <div class="form-section-title">
+                        <i class="fas fa-chess me-2"></i>Stratégie & Actions
+                    </div>
+                    <div class="divider"></div>
+
+                    <x-form-field name="post_acquisition_action" label="Actions Post-Acquisition" type="textarea" rows="3" required />
+                    <x-form-field name="business_strategy" label="Stratégie d'Entreprise" type="textarea" rows="3" required />
+                    <x-form-field name="status" label="Statut Actuel" required />
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="mt-4 pt-3 d-flex justify-content-between">
+                    <div>
+                        <a href="/projects" class="btn btn-outline-secondary" id="backToProjectsBtn">
+                            <i class="fas fa-arrow-left me-2"></i>Retour à la sélection
+                        </a>
+                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                            <i class="fas fa-arrow-left me-2"></i>Précédent
+                        </button>
+                    </div>
+                    <div class="ms-auto">
+                        <button type="button" class="btn" id="nextBtn" style="background: var(--primary-color); color: white;">
+                            Suivant<i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                        <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                            <i class="fas fa-save me-2"></i>Enregistrer le Projet
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </x-card>
     </div>
-    <!--   Core JS Files   -->
-    <script src="{{ asset('build/assets/js/core/jquery.3.2.1.min.js') }}"></script>
-    <script src="{{ asset('build/assets/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('build/assets/js/core/bootstrap.min.js') }}"></script>
+</div>
 
-    <!-- jQuery UI -->
-    <script src="{{ asset('build/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('build/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
+<style>
+.progress-container {
+    margin-bottom: 2rem;
+}
 
-    <!-- jQuery Scrollbar -->
-    <script src="{{ asset('build/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+.form-section-title {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
 
-    <!-- Chart JS -->
-    <script src="{{ asset('build/assets/js/plugin/chart.js/chart.min.js') }}"></script>
+.step-indicators {
+    position: relative;
+}
 
-    <!-- jQuery Sparkline -->
-    <script src="{{ asset('build/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
+.step-indicator {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
 
-    <!-- Chart Circle -->
-    <script src="{{ asset('build/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
 
-    <!-- Datatables -->
-    <script src="{{ asset('build/assets/js/plugin/datatables/datatables.min.js') }}"></script>
+.step-indicator.active .step-number {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 0 4px rgba(106, 0, 184, 0.2);
+}
 
-    <!-- Bootstrap Notify -->
-    <script src="{{ asset('build/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+.step-indicator.completed .step-number {
+    background: var(--success-color);
+    color: white;
+}
 
-    <!-- jQuery Vector Maps -->
-    <script src="{{ asset('build/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('build/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script>
+.step-indicator.completed .step-number::before {
+    content: '✓';
+}
 
-    <!-- Sweet Alert -->
-    <script src="{{ asset('build/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
+.step-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-weight: 500;
+}
 
-    <!-- Atlantis JS -->
-    <script src="{{ asset('build/assets/js/atlantis.min.js') }}"></script>
+.step-indicator.active .step-label {
+    color: var(--primary-color);
+    font-weight: 600;
+}
 
-    <!-- Atlantis DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('build/assets/js/setting-demo.js') }}"></script>
-    <script src="{{ asset('build/assets/js/demo.js') }}"></script>
+.form-step {
+    display: none;
+    animation: fadeIn 0.3s;
+}
 
-    <script>
-        Circles.create({
-            id: 'circles-1',
-            radius: 45,
-            value: 60,
-            maxValue: 100,
-            width: 7,
-            text: 5,
-            colors: ['#f1f1f1', '#FF9E27'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
+.form-step.active {
+    display: block;
+}
 
-        Circles.create({
-            id: 'circles-2',
-            radius: 45,
-            value: 70,
-            maxValue: 100,
-            width: 7,
-            text: 36,
-            colors: ['#f1f1f1', '#2BB930'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+</style>
 
-        Circles.create({
-            id: 'circles-3',
-            radius: 45,
-            value: 40,
-            maxValue: 100,
-            width: 7,
-            text: 12,
-            colors: ['#f1f1f1', '#F25961'],
-            duration: 400,
-            wrpClass: 'circles-wrp',
-            textClass: 'circles-text',
-            styleWrapper: true,
-            styleText: true
-        })
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let currentStep = 1;
+    const totalSteps = 4;
+    const form = document.getElementById('multiStepForm');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
 
-        var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+    function showStep(step) {
+        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+        
+        document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
 
-        var mytotalIncomeChart = new Chart(totalIncomeChart, {
-            type: 'bar',
-            data: {
-                labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-                datasets: [{
-                    label: "Total Income",
-                    backgroundColor: '#ff9e27',
-                    borderColor: 'rgb(23, 125, 255)',
-                    data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    display: false,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            display: false //this will remove only the label
-                        },
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            drawBorder: false,
-                            display: false
-                        }
-                    }]
-                },
+        const backToProjectsBtn = document.getElementById('backToProjectsBtn');
+        backToProjectsBtn.style.display = step === 1 ? 'inline-block' : 'none';
+        prevBtn.style.display = step === 1 ? 'none' : 'inline-block';
+        nextBtn.style.display = step === totalSteps ? 'none' : 'inline-block';
+        submitBtn.style.display = step === totalSteps ? 'inline-block' : 'none';
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateStep(step) {
+        const currentStepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+        const inputs = currentStepElement.querySelectorAll('input[required], textarea[required], select[required]');
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                input.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                input.classList.remove('is-invalid');
             }
         });
 
-        $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: '#ffa534',
-            fillColor: 'rgba(255, 165, 52, .14)'
-        });
-    </script>
-</body>
+        return isValid;
+    }
 
-</html>
+    nextBtn.addEventListener('click', function() {
+        if (validateStep(currentStep)) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    });
+
+    prevBtn.addEventListener('click', function() {
+        currentStep--;
+        showStep(currentStep);
+    });
+
+    showStep(1);
+});
+</script>
+@endsection
 

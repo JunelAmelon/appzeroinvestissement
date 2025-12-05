@@ -1,0 +1,18 @@
+/* Main CSS file for the application */
+
+/* Variables */
+:root {
+    --primary-color: #6A00B8;
+    --secondary-color: #00d4ff;
+    --success-color: #00c853;
+    --danger-color: #d32f2f;
+    --warning-color: #ffc107;
+    --light-bg: #f8f9fa;
+}
+
+/* Global styles */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Additional custom styles can be added here */

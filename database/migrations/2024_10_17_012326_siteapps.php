@@ -38,7 +38,7 @@ return new class extends Migration
             $table->string('support_type');
             $table->string('platforms');
             $table->text('tech_requirements');
-            $table->string('status');
+            $table->string('status')->default('En attente');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

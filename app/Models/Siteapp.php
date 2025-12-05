@@ -35,4 +35,9 @@ class Siteapp extends Model
         'tech_requirements',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

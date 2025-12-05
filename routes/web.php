@@ -5,12 +5,14 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ClientController::class, 'showDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/projects', function () {
+    return view('projects');
+})->middleware(['auth', 'verified'])->name('projects');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -27,8 +29,21 @@ Route::post('/franchisesave', [ClientController::class, 'regfranchise'])->name('
 Route::get('/marketplace', [ClientController::class, 'showmarketplace'])->name('marketplace');
 Route::post('/marketplacesave', [ClientController::class, 'regmarketplace'])->name('marketplace.save');
 
+Route::get('/marketplace-depot', [ClientController::class, 'showMarketplaceDepot'])->name('marketplace.depot');
+Route::post('/marketplace-depot/save', [ClientController::class, 'regMarketplaceDepot'])->name('marketplace.depot.save');
+
+Route::get('/marketplace-achat', [ClientController::class, 'showMarketplaceAchat'])->name('marketplace.achat');
+Route::post('/marketplace-achat/save', [ClientController::class, 'regMarketplaceAchat'])->name('marketplace.achat.save');
+
+Route::get('/incubateur-zero', [ClientController::class, 'showIncubateurZero'])->name('incubateur.zero');
+Route::post('/incubateur-zero/save', [ClientController::class, 'regIncubateurZero'])->name('incubateur.zero.save');
+
+// Routes Admin (protégées par middleware admin)
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
+    Route::get('/admin', [ClientController::class, 'showAdmin'])->name('admin');
+    Route::get('/admin/projects', [ClientController::class, 'manageProjects'])->name('admin.projects');
+    Route::post('/admin/update-status', [ClientController::class, 'updateProjectStatus'])->name('admin.updateStatus');
+    Route::get('/admin/project/{type}/{id}', [ClientController::class, 'showProject'])->name('admin.project.show');
+});
+
 require __DIR__.'/auth.php';
-
-
-
-Route::get('/welcome', [ClientController::class, 'showWelcome'])->name(name: 'welcome');
