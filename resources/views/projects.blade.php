@@ -39,23 +39,23 @@
     }
 
     .project-card-site .project-icon {
-        background: linear-gradient(135deg, #6A00B8 0%, #8B00D4 100%);
+        background: #6A00B8;
     }
 
     .project-card-franchise .project-icon {
-        background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+        background: #FF6B6B;
     }
 
     .project-card-marketplace .project-icon {
-        background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+        background: #4ECDC4;
     }
 
     .project-card-achat .project-icon {
-        background: linear-gradient(135deg, #FFA500 0%, #FFB84D 100%);
+        background: #FFA500;
     }
 
     .project-card-incubateur .project-icon {
-        background: linear-gradient(135deg, #00C9FF 0%, #92FE9D 100%);
+        background: #00d4ff;
     }
 
     .project-title {
@@ -115,7 +115,7 @@
     }
 
     .project-btn {
-        background: linear-gradient(90deg, var(--primary-color) 0%, #8B00D4 100%);
+        background: var(--primary-color);
         color: white;
         padding: 0.75rem 1.5rem;
         border: none;
@@ -129,19 +129,19 @@
     }
 
     .project-card-franchise .project-btn {
-        background: linear-gradient(90deg, #FF6B6B 0%, #FF8E8E 100%);
+        background: #FF6B6B;
     }
 
     .project-card-marketplace .project-btn {
-        background: linear-gradient(90deg, #4ECDC4 0%, #44A08D 100%);
+        background: #4ECDC4;
     }
 
     .project-card-achat .project-btn {
-        background: linear-gradient(90deg, #FFA500 0%, #FFB84D 100%);
+        background: #FFA500;
     }
 
     .project-card-incubateur .project-btn {
-        background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+        background: #00d4ff;
     }
 
     .project-btn:hover {

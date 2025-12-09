@@ -52,17 +52,6 @@
 <div class="row">
     <div class="col-lg-10 mx-auto">
         <x-card title="Marketplace" icon="shopping-cart">
-            
-            <!-- Message d'introduction -->
-            <div class="alert alert-info mb-4" style="background: var(--primary-color); border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(106, 0, 184, 0.3);">
-                <h5 style="color: white; font-weight: 600;">🚀 Partagez votre opportunité commerciale</h5>
-                <p style="margin-bottom: 0; color: rgba(255, 255, 255, 0.95);">
-                    Chez <strong style="color: white;">ZeroInvestissement.com</strong>, nous accompagnons les entrepreneurs dans leurs projets de marketplace. 
-                    Répondez à ces questions pour nous aider à comprendre votre vision et vos objectifs.
-                    <strong>Prenez le temps de détailler votre projet, nous sommes là pour vous aider !</strong>
-                </p>
-            </div>
-            
             <form method="POST" action="{{ route('marketplace.save') }}" id="multiStepForm" class="needs-validation" novalidate>
                 @csrf
 

@@ -52,17 +52,6 @@
 <div class="row">
     <div class="col-lg-10 mx-auto">
         <x-card title="Mon Site/Application" icon="globe">
-            
-            <!-- Message d'introduction -->
-            <div class="alert alert-info mb-4" style="background: var(--primary-color); border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(106, 0, 184, 0.3);">
-                <h5 style="color: white; font-weight: 600;">🎉 Bienvenue dans notre questionnaire interactif !</h5>
-                <p style="margin-bottom: 0; color: rgba(255, 255, 255, 0.95);">
-                    Chez <strong style="color: white;">ZeroInvestissement.com</strong>, on adore transformer des idées en réalité, surtout quand elles sont brillantes comme la vôtre ! 
-                    Pour qu'on puisse bien comprendre votre projet et votre motivation, répondez à ces quelques questions. 
-                    <strong>C'est parti, amusez-vous et soyez créatif, on vous attend avec impatience !</strong>
-                </p>
-            </div>
-            
             <form method="POST" action="{{ route('siteapp.save') }}" id="multiStepForm" class="needs-validation" novalidate>
                 @csrf
 

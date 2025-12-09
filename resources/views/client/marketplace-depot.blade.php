@@ -52,17 +52,6 @@
 <div class="row">
     <div class="col-lg-10 mx-auto">
         <x-card title="Marketplace Dépôt" icon="upload">
-            
-            <!-- Message d'introduction -->
-            <div class="alert alert-info mb-4" style="background: var(--primary-color); border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(106, 0, 184, 0.3);">
-                <h5 style="color: white; font-weight: 600;">🚀 Vendez votre business avec nous !</h5>
-                <p style="margin-bottom: 0; color: rgba(255, 255, 255, 0.95);">
-                    Chez <strong style="color: var(--primary-color);">ZeroInvestissement.com</strong>, nous vous aidons à trouver le bon acheteur pour votre projet. 
-                    Soyez créatif, amusez-vous, et faites-nous rêver avec votre business !
-                    <strong>Plus vous êtes détaillé, mieux nous pourrons vous accompagner !</strong>
-                </p>
-            </div>
-
             <form method="POST" action="{{ route('marketplace.depot.save') }}" id="multiStepForm" class="needs-validation" novalidate>
                 @csrf
 

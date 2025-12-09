@@ -306,15 +306,17 @@
         </div>
         <div class="card-body">
             @foreach($projectData['details'] as $label => $value)
+                @if($value !== null && $value !== '')
                 <div class="detail-row">
                     <div class="detail-label">
                         <i class="fas fa-chevron-right"></i>
                         {{ $label }}
                     </div>
                     <div class="detail-value">
-                        {{ $value ?? 'Non renseigné' }}
+                        {{ $value }}
                     </div>
                 </div>
+                @endif
             @endforeach
         </div>
     </div>

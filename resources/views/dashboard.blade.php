@@ -486,32 +486,32 @@
     }
 
     .badge-webapp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #6A00B8;
         color: white;
     }
 
     .badge-marketplace {
-        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        background: #11998e;
         color: white;
     }
 
     .badge-marketplace-depot {
-        background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+        background: #4ECDC4;
         color: white;
     }
 
     .badge-marketplace-achat {
-        background: linear-gradient(135deg, #FFA500 0%, #FFB84D 100%);
+        background: #FFA500;
         color: white;
     }
 
     .badge-incubateur {
-        background: linear-gradient(135deg, #00C9FF 0%, #92FE9D 100%);
+        background: #00d4ff;
         color: white;
     }
 
     .badge-franchise {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: #f093fb;
         color: white;
     }
 
@@ -684,9 +684,9 @@
                     <table class="table datatable">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 35%;">Projet</th>
-                                <th scope="col" style="width: 20%;">Type</th>
-                                <th scope="col" style="width: 20%;">Statut</th>
+                                <th scope="col" style="width: 30%;">Projet</th>
+                                <th scope="col" style="width: 18%;">Type</th>
+                                <th scope="col" style="width: 18%;">Statut</th>
                                 <th scope="col" style="width: 15%;">Date</th>
                             </tr>
                         </thead>
@@ -695,7 +695,7 @@
                             <tr>
                                 <td>
                                     <span class="project-name">{{ $project['name'] }}</span>
-                                    <span class="project-description" style="display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $project['description'] }}</span>
+                                    <span class="project-description" style="display: block; max-width: 300px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.4;">{{ $project['description'] }}</span>
                                 </td>
                                 <td>
                                     @if($project['type'] == 'Web/App')

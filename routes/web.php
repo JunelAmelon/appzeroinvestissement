@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ProjectSubmitted;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -45,5 +47,26 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::post('/admin/update-status', [ClientController::class, 'updateProjectStatus'])->name('admin.updateStatus');
     Route::get('/admin/project/{type}/{id}', [ClientController::class, 'showProject'])->name('admin.project.show');
 });
+
+// Route de test pour l'envoi du mail (à supprimer en production)
+Route::get('/test-email', function () {
+    $projectType = 'Web/App';
+    $projectName = 'Application Mobile Innovante';
+    $projectDescription = 'Une application révolutionnaire qui simplifie la gestion quotidienne des tâches avec une interface intuitive et des fonctionnalités d\'intelligence artificielle avancées.';
+    $userName = 'Jean Dupont';
+    $userEmail = 'jean.dupont@example.com';
+
+    Mail::to('admin@appzeroinvestissement.com')->send(
+        new ProjectSubmitted(
+            $projectType,
+            $projectName,
+            $projectDescription,
+            $userName,
+            $userEmail
+        )
+    );
+
+    return 'Email de test envoyé avec succès ! Vérifiez votre boîte mail.';
+})->name('test.email');
 
 require __DIR__.'/auth.php';

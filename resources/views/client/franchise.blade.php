@@ -52,17 +52,6 @@
 <div class="row">
     <div class="col-lg-10 mx-auto">
         <x-card title="Ma Franchise" icon="store">
-            
-            <!-- Message d'introduction -->
-            <div class="alert alert-info mb-4" style="background: var(--primary-color); border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(106, 0, 184, 0.3);">
-                <h5 style="color: white; font-weight: 600;">🏪 Bienvenue dans notre questionnaire hyper fun !</h5>
-                <p style="margin-bottom: 0; color: rgba(255, 255, 255, 0.95);">
-                    Si vous avez une entreprise qui cartonne déjà et que vous voulez la voir grandir et conquérir de nouveaux territoires, vous êtes au bon endroit. 
-                    Chez <strong style="color: white;">ZeroInvestissement.com</strong>, on adore les entreprises qui rêvent en grand, et on est là pour vous aider à franchiser sans stress !
-                    <strong>Prêt à transformer votre entreprise en la prochaine grande franchise ? C'est parti !</strong>
-                </p>
-            </div>
-            
             <form method="POST" action="{{ route('franchise.save') }}" id="multiStepForm" class="needs-validation" novalidate>
                 @csrf
 
