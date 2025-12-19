@@ -113,4 +113,19 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Global "To" Address
+    |--------------------------------------------------------------------------
+    |
+    | This is the email address where all project notifications will be sent.
+    | You can configure this in your .env file using MAIL_TO_ADDRESS.
+    |
+    */
+
+    'to' => [
+        'address' => env('MAIL_TO_ADDRESS', 'admin@example.com'),
+        'name' => env('MAIL_TO_NAME', 'Admin'),
+    ],
+
 ];

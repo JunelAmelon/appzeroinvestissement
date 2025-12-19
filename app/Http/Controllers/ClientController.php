@@ -61,7 +61,7 @@ class ClientController extends Controller
             
             // Envoi de la notification par email
             try {
-                Mail::to('admin@appzeroinvestissement.com')->send(
+                Mail::to(config('mail.to.address'))->send(
                     new ProjectSubmitted(
                         'Site Web / Application',
                         $validatedData['name'],
@@ -141,7 +141,7 @@ class ClientController extends Controller
             
             // Envoi de la notification par email
             try {
-                Mail::to('admin@appzeroinvestissement.com')->send(
+                Mail::to(config('mail.to.address'))->send(
                     new ProjectSubmitted(
                         'Franchise',
                         $validatedData['business_name'],
@@ -192,7 +192,7 @@ class ClientController extends Controller
             
             // Envoi de la notification par email
             try {
-                Mail::to('admin@appzeroinvestissement.com')->send(
+                Mail::to(config('mail.to.address'))->send(
                     new ProjectSubmitted(
                         'Marketplace Business',
                         $validatedData['business_name'],
@@ -990,7 +990,7 @@ class ClientController extends Controller
             $project = MarketplaceDepot::create($validatedData);
             
             try {
-                Mail::to('admin@appzeroinvestissement.com')->send(
+                Mail::to(config('mail.to.address'))->send(
                     new ProjectSubmitted(
                         'Marketplace Dépôt',
                         $validatedData['business_name'],
@@ -1058,7 +1058,7 @@ class ClientController extends Controller
             $project = MarketplaceAchat::create($validatedData);
             
             try {
-                Mail::to('admin@appzeroinvestissement.com')->send(
+                Mail::to(config('mail.to.address'))->send(
                     new ProjectSubmitted(
                         'Marketplace Achat',
                         $validatedData['chosen_business'],
@@ -1137,7 +1137,7 @@ class ClientController extends Controller
             $project = IncubateurZero::create($validatedData);
             
             try {
-                Mail::to('admin@appzeroinvestissement.com')->send(
+                Mail::to(config('mail.to.address'))->send(
                     new ProjectSubmitted(
                         'Incubateur Zéro',
                         $validatedData['project_name'],

@@ -56,7 +56,7 @@ Route::get('/test-email', function () {
     $userName = 'Jean Dupont';
     $userEmail = 'jean.dupont@example.com';
 
-    Mail::to('admin@appzeroinvestissement.com')->send(
+    Mail::to(config('mail.to.address'))->send(
         new ProjectSubmitted(
             $projectType,
             $projectName,
@@ -66,7 +66,7 @@ Route::get('/test-email', function () {
         )
     );
 
-    return 'Email de test envoyé avec succès ! Vérifiez votre boîte mail.';
+    return 'Email de test envoyé avec succès à ' . config('mail.to.address') . ' ! Vérifiez votre boîte mail.';
 })->name('test.email');
 
 require __DIR__.'/auth.php';

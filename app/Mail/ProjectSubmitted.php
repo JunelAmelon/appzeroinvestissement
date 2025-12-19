@@ -37,6 +37,7 @@ class ProjectSubmitted extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new \Illuminate\Mail\Mailables\Address($this->userEmail, $this->userName),
             subject: '🎯 Nouveau Projet Soumis - ' . $this->projectType,
         );
     }
